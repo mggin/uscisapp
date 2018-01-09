@@ -1,0 +1,36 @@
+{
+  "name": "uscisapp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "native-base": "^2.3.5",
+    "react": "16.0.0",
+    "react-native": "0.51.0",
+    "react-native-fs": "^2.9.6",
+    "react-native-responsive-dimensions": "^1.0.2",
+    "react-native-router-flux": "^4.0.0-beta.24",
+    "react-native-sound": "^0.10.4",
+    "react-native-swiper": "^1.5.13",
+    "react-redux": "^5.0.6",
+    "realm": "^2.1.1",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "babel-jest": "21.2.0",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "21.2.1",
+    "react-test-renderer": "16.0.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
+  }
+}
