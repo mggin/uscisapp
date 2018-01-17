@@ -17,35 +17,59 @@ import {
   responsiveWidth, 
   responsiveFontSize 
 } from 'react-native-responsive-dimensions';
+import {
+  getTestData,
+  checkAnswer,
+  resetResult
+} from '../../actions'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux' 
+import Swiper from 'react-native-swiper'
 import * as color from '../components/color';
 import * as font from '../components/font';
 
-export default class Test extends Component<{}> {
+class Test extends Component<{}> {
+  componentDidMount() {
+    this.props.getTestData()
+  }
   render() {
   console.disableYellowBox = true;
     
     return (
       <View style={styles.main}>
-        <View style={styles.ques_box}>
-          <View style={styles.count_box}>
-            <Text style={styles.count_txt}>1/20</Text>
-          </View>
-          <Text style={styles.ques_txt}>At vero eos et accusamus et iusto odio dignissim ducimus qui blanditiis praesentium voluptatum?</Text>
-        </View>
-        <View style={styles.ans_box}>
-          <TouchableOpacity style={styles.choice_box}>
-            <Text style={styles.choice_txt}>Et harum quidem rerum facilis est</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.choice_box}>
-            <Text style={styles.choice_txt}>Et harum quidem rerum facilis est</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.choice_box}>
-            <Text style={styles.choice_txt}>Et harum quidem rerum facilis est</Text>
-          </TouchableOpacity>       
-          <TouchableOpacity style={styles.choice_box}>
-            <Text style={styles.choice_txt}>Et harum quidem rerum facilis est</Text>
-          </TouchableOpacity>
-        </View>
+      <Swiper style={styles.swiper_box}
+                  onIndexChanged={(index) => this.props.resetResult()}
+                  //ref='swiper'
+                  showsPagination={false}
+                  loop={false}>
+
+          {
+            this.props.testData.testItems.map((data) => 
+              <View style={styles.main}>
+                <View style={styles.ques_box}>
+                  <View style={styles.count_box}>
+                    <Text style={styles.count_txt}>1/20</Text>
+                  </View>
+                  <Text style={styles.ques_txt}>{data.ques}</Text>
+                </View>
+                <View style={styles.ans_box}>
+                  <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer()}>
+                    <Text style={styles.choice_txt, {color: this.props.testData.showResult && data.ans0.correct && true? 'yellow' : 'white'}}>{data.ans0.answer}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer()}>
+                    <Text style={styles.choice_txt, {color: this.props.testData.showResult && data.ans1.correct && true ? 'yellow' : 'white'}}>{data.ans1.answer}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer()}>
+                    <Text style={styles.choice_txt, {color: this.props.testData.showResult && data.ans2.correct && true ? 'yellow' : 'white'}}>{data.ans2.answer}</Text>
+                  </TouchableOpacity>       
+                  <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer()}>
+                    <Text style={styles.choice_txt, {color: this.props.testData.showResult && data.ans3.correct && true ? 'yellow' : 'white'}}>{data.ans3.answer}</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            )
+          }
+          </Swiper>
         <View style={{height: responsiveHeight(15)}}/>
       </View>
     );
@@ -94,7 +118,21 @@ const styles=StyleSheet.create({
   },
   choice_txt: {
     fontFamily: 'Times New Roman',
-    color: 'white',
   }
 })
+
+function mapStateToProps(state) {
+  return {
+    testData: state.testData,
+  }
+}
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({
+    getTestData,
+    checkAnswer,
+    resetResult,
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Test);
 

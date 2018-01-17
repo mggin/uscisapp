@@ -64,4 +64,29 @@ export const autoControl = () => {
 	}
 }
 
+export const getAllTestData = () => {
+	return {
+		type: 'GET_ALL_TEST_DATA'
+	}
+}
+
+export const getTestData = () => {
+	return {
+		type: 'GET_TEST_DATA'
+	}
+}
+
+export const checkAnswer = () => {
+	return {
+		type: 'CHECK_ANSWER',
+	}
+}
+
+export const resetResult = () => {
+	return {
+		type: 'RESET_RESULT',
+	}
+}
+
+
 

@@ -16,7 +16,7 @@ import Main from './containers/main'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getCardData, setCardData } from '../actions'
+import { getCardData, setCardData, getAllTestData } from '../actions'
 //import About from './components/about'
 
 class Route extends Component {
@@ -26,6 +26,7 @@ class Route extends Component {
     console.disableYellowBox = true;
     this.props.getCardData()
     this.props.setCardData()
+    this.props.getAllTestData()
     return (
       <Router>
         <Scene key='root' 
@@ -42,7 +43,8 @@ class Route extends Component {
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     getCardData,
-    setCardData
+    setCardData,
+    getAllTestData,
   }, dispatch);
 }
 export default connect(null, matchDispatchToProps)(Route);
