@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  AppState
 } from 'react-native';
 import { 
   responsiveHeight, 
@@ -19,7 +20,9 @@ import {
 } from 'react-native-responsive-dimensions';
 import {
   controlAudio,
-  changeAudio
+  changeAudio,
+  loopControl,
+  autoControl
 } from '../../actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux' 
@@ -28,8 +31,19 @@ import * as color from '../components/color';
 import * as font from '../components/font';
 
 class Audio extends Component<{}> {
+
+  _handleAutoControl() {
+    console.log('handling')
+    this.props.autoControl()
+  }
+  componentDidMount() {
+    this._interval = setInterval(() => this._handleAutoControl(), 5000);
+  }
+
   render() {
+  console.log(this.props.studyData.engData)
   console.disableYellowBox = true;
+
     
     return (
       <View style={{flex: 1, backgroundColor: "#4a86e8ff"}}>
@@ -40,11 +54,11 @@ class Audio extends Component<{}> {
         </View>
         <View style={styles.txt_box}>
           <View style={styles.card_innerbox}>
-            <Text style={styles.card_txt}>At vero eos et accusamus et iusto odio dignissim ducimus qui blanditiis praesentium voluptatum?</Text>
+            <Text style={styles.card_txt}>{this.props.studyData.engData[this.props.audioData.index - 1].quesEng}</Text>
           </View>
           <Text style={styles.dash_line}> . . . . . . . . . . </Text>
           <View style={styles.card_innerbox}>
-             <Text style={styles.card_txt}>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis </Text>
+             <Text style={styles.card_txt}>{this.props.studyData.engData[this.props.audioData.index - 1].ansEng}</Text>
           </View>
         </View>
         <View style={styles.control_box}>
@@ -62,11 +76,11 @@ class Audio extends Component<{}> {
               <Icon name='md-skip-forward' style={{fontSize: 20, color: 'white'}}/>
             </TouchableOpacity>
           </View>
-          <View style={styles.repeat_box}>
+          <TouchableOpacity style={styles.repeat_box} onPress={() => this.props.loopControl()}>
             <View>
-              <Icon name='md-repeat' style={{fontSize: 20, color: 'white'}}/>
+              {this.props.audioData.loop ? <Icon name='ios-repeat' style={{fontSize: 20, color: 'white'}}/> : <Icon name='ios-repeat-outline' style={{fontSize: 20, color: 'white'}}/> } 
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={{height: responsiveHeight(15)}}/>
       </View>
@@ -137,14 +151,17 @@ const styles=StyleSheet.create({
 
 function mapStateToProps(state) {
   return {
-    audioData: state.audioData
+    audioData: state.audioData,
+    studyData: state.studyData
 
   }
 }
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     controlAudio,
-    changeAudio
+    changeAudio,
+    loopControl,
+    autoControl
   }, dispatch);
 }
 

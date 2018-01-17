@@ -39,7 +39,7 @@ export default function(state = initState, action) {
         engData.push(
           {
             quesEng: engQues,
-            ansEng: ansQes
+            ansEng: engAns
           })
 				zomiCardData.push(
 					{

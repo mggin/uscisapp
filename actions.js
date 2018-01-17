@@ -51,3 +51,17 @@ export const changeAudio = (value) => {
 		payload: value
 	}
 }
+
+export const loopControl = () => {
+	return {
+		type: 'LOOP_CTRL',
+	}
+}
+
+export const autoControl = () => {
+	return {
+		type: 'AUTO_CTRL',
+	}
+}
+
+
