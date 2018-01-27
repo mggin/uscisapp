@@ -26,49 +26,104 @@ import Audio from './audio';
 import Test from './test';
 import State from './state';
 import Setting from './setting';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { changeTab } from '../../actions'
 
-export default class Main extends Component<{}> {
+class Main extends Component<{}> {
   render() {
+  console.log(this.props.mainData.settingTab)
   console.disableYellowBox = true;
     const studyIcon = (
       <View style={styles.icon_box}>
-        <Image source={require('../../assets/icons/icons8-paper-100.png')} style={styles.image_size}/>
-          <Text style={styles.icon_text}>Study</Text>
+        { this.props.mainData.studyTab ?
+          <View>
+            <Image source={require('../../assets/icons/icons8-study-filled-100.png')} style={styles.image_size}/>
+            <Text style={styles.icon_filled}>STUDY</Text>
+          </View> :
+          <View>
+            <Image source={require('../../assets/icons/icons8-study-100.png')} style={styles.image_size}/>
+            <Text style={styles.icon_outline}>STUDY</Text>
+          </View>
+        }
       </View> )
     const audioIcon = (
       <View style={styles.icon_box}>
-        <Image source={require('../../assets/icons/icons8-headphones-100.png')} style={styles.image_size}/>
-          <Text style={styles.icon_text}>Audio</Text>
+        { this.props.mainData.audioTab ?
+          <View>
+            <Image source={require('../../assets/icons/icons8-headphones-filled-100.png')} style={styles.image_size}/>
+            <Text style={styles.icon_filled}>AUDIO</Text>
+          </View> :
+          <View>
+            <Image source={require('../../assets/icons/icons8-headphones-100.png')} style={styles.image_size}/>
+            <Text style={styles.icon_outline}>AUDIO</Text>
+          </View>
+        }
       </View> )
     const testIcon = (
       <View style={styles.icon_box}>
-        <Image source={require('../../assets/icons/icons8-choice-100.png')} style={styles.image_size}/>
-          <Text style={styles.icon_text}>Test</Text>
+      { this.props.mainData.testTab ?
+        <View>
+          <Image source={require('../../assets/icons/icons8-test-passed-filled-100.png')} style={styles.image_size}/>
+          <Text style={styles.icon_filled}>TEST</Text>
+        </View> : 
+        <View>
+          <Image source={require('../../assets/icons/icons8-test-passed-100.png')} style={styles.image_size}/>
+          <Text style={styles.icon_outline}>TEST</Text>
+        </View>
+      }
       </View> )
     const stateIcon = (
       <View style={styles.icon_box}>
-        <Image source={require('../../assets/icons/icons8-museum-100.png')} style={styles.image_size}/>
-          <Text style={styles.icon_text}>States</Text>
+        { this.props.mainData.stateTab ?
+          <View>
+            <Image source={require('../../assets/icons/icons8-embassy-filled-100.png')} style={styles.image_size}/>
+            <Text style={styles.icon_filled}>STATE</Text>
+          </View> : 
+          <View>
+            <Image source={require('../../assets/icons/icons8-embassy-100.png')} style={styles.image_size}/>
+            <Text style={styles.icon_outline}>STATE</Text>
+          </View>
+        }
       </View> )
-    const bookIcon = (
+    const wordIcon = (
       <View style={styles.icon_box}>
-        <Image source={require('../../assets/icons/icons8-pdf-100.png')} style={styles.image_size}/>
-          <Text style={styles.icon_text}>Book</Text>
+       { this.props.mainData.wordTab ?
+          <View>
+            <Image source={require('../../assets/icons/icons8-brick-filled-100.png')} style={styles.image_size}/>
+            <Text style={styles.icon_filled}>WORDS</Text>
+          </View> : 
+          <View>
+            <Image source={require('../../assets/icons/icons8-brick-100.png')} style={styles.image_size}/>
+            <Text style={styles.icon_outline}>WORDS</Text>
+          </View>
+        }
       </View> )
-    const videoIcon = (
+    const writeIcon = (
       <View style={styles.icon_box}>
-        <Image source={require('../../assets/icons/icons8-video-playlist-100.png')} style={styles.image_size}/>
-          <Text style={styles.icon_text}>Video</Text>
-      </View> )
-    const infoIcon = (
-      <View style={styles.icon_box}>
-        <Image source={require('../../assets/icons/icons8-more-details-100.png')} style={styles.image_size}/>
-          <Text style={styles.icon_text}>More Info</Text>
+        { this.props.mainData.writeTab ?
+          <View>
+            <Image source={require('../../assets/icons/icons8-hand-with-pen-filled-100.png')} style={styles.image_size}/>
+            <Text style={styles.icon_filled}>WRITING</Text>
+          </View> : 
+          <View>
+            <Image source={require('../../assets/icons/icons8-hand-with-pen-100.png')} style={styles.image_size}/>
+            <Text style={styles.icon_outline}>WRITING</Text>
+          </View>
+        }
       </View> )
     const settingIcon = (
       <View style={styles.icon_box}>
-        <Image source={require('../../assets/icons/icons8-settings-100.png')} style={styles.image_size}/>
-          <Text style={styles.icon_text}>Setting</Text>
+        { this.props.mainData.settingTab ?
+          <View>
+            <Image source={require('../../assets/icons/icons8-settings-filled-100.png')} style={styles.image_size}/>
+            <Text style={styles.icon_filled}>SETTING</Text>
+          </View> : 
+          <View>
+            <Image source={require('../../assets/icons/icons8-settings-100.png')} style={styles.image_size}/>
+            <Text style={styles.icon_outline}>SETTING</Text>
+          </View>
+        }
       </View> )
     return (
       <Container>
@@ -76,6 +131,7 @@ export default class Main extends Component<{}> {
                 style={{backgroundColor: "#4a86e8ff"}}/>
         <Tabs renderTabBar={()=> <ScrollableTab />} 
               tabBarPosition='overlayBottom'
+              onChangeTab={(index) => this.props.changeTab(index)}
               tabBarUnderlineStyle={styles.tabBar_style}
               locked={true}>
           <Tab heading={studyIcon}>
@@ -90,12 +146,10 @@ export default class Main extends Component<{}> {
           <Tab heading={stateIcon}>
             <State />
           </Tab>
-          {/*
-          <Tab heading={bookIcon}>
+          <Tab heading={wordIcon}>
             <View/>
           </Tab>
-          */}
-          <Tab heading={infoIcon}>
+          <Tab heading={writeIcon}>
             <View/>
           </Tab>
           <Tab heading={settingIcon}>
@@ -120,17 +174,38 @@ const styles=StyleSheet.create({
     //backgroundColor: 'black'
   },
   tabBar_style: {
-    backgroundColor: color.blue_color,
+    backgroundColor: color.white_color,
     marginBottom: 0,
   },
   image_size: {
     width: 30,
     height: 30,
   },
-  icon_text: {
+  icon_filled: {
     fontFamily: font.righteous,
     fontSize: 10,
     fontWeight: '400',
     marginBottom: 4,
+    color: color.icon_filled
+  },
+  icon_outline: {
+    fontFamily: font.righteous,
+    fontSize: 10,
+    fontWeight: '400',
+    marginBottom: 4,
+    color: color.icon_outline
   }
 })
+
+function mapStateToProps(state) {
+  return {
+    mainData: state.mainData,
+  }
+}
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({
+    changeTab
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Main);

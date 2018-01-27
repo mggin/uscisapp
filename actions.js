@@ -88,5 +88,12 @@ export const resetResult = () => {
 	}
 }
 
+export const changeTab = (value) => {
+	return {
+		type: 'CHANGE_TAB',
+		payload: value.i,
+	}
+}
+
 
 
