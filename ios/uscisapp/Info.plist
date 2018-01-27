@@ -53,6 +53,13 @@
 		<string>Zocial.ttf</string>
 		<string>Righteous-Regular.ttf</string>
 		<string>ZawgyiOne.ttf</string>
+		<string>Cabin-Bold.ttf</string>
+		<string>Cabin-Medium.ttf</string>
+		<string>Cabin-Regular.ttf</string>
+		<string>Cabin-SemiBold.ttf</string>
+		<string>Myanmar3.ttf</string>
+		<string>Padauk.ttf</string>
+		<string>pyidaungsu.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

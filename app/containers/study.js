@@ -67,7 +67,7 @@ class Study extends Component<{}> {
                     <Text style={styles.card_txt}>{this.props.flashCard.front ? data.quesEng : data.quesLang}</Text>
                   </View>
                   <Text style={styles.dash_line}> . . . . . . . . </Text>
-                  <ScrollView style={styles.card_innerbox}>
+                  <ScrollView style={styles.card_innerbox} adjustsFontSizeToFit={true}>
                      <Text style={styles.card_txt}>{this.props.flashCard.front ? data.ansEng : data.ansLang}</Text>
                   </ScrollView>
                 </TouchableOpacity>
@@ -136,9 +136,10 @@ const styles=StyleSheet.create({
     margin: 3,
   },
   card_txt: {
-    fontSize: 16,
-    fontFamily: font.zawgyi,
+    fontSize: 18,
+    fontFamily: font.cabin_semibold,
     lineHeight: 25,
+    color: color.text,
   },
   dash_line: {
     alignSelf: 'center'

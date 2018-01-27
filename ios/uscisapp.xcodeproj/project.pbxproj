@@ -145,6 +145,13 @@
 		D84C5EDE97F246309E479544 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C75A165C5094104A874722B /* libz.tbd */; };
 		DEEC0779B25C4BAB98E7ED82 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 478C3265B3AF40719D16DB21 /* Zocial.ttf */; };
 		E7E3989C366C4B28A840A7DF /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B8A5A2F0FD64277854AC74E /* Octicons.ttf */; };
+		43FBE57147364CAFAB0832BA /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DFF6C4A726D543B088F23FD9 /* Cabin-Bold.ttf */; };
+		C4FDDA6C3FF84DB09CEC98D3 /* Cabin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7C35B558BB54BB4BF32DCC6 /* Cabin-Medium.ttf */; };
+		2C8C3A4885494D80B0BC9AF8 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5B712BF06D641A19DE65056 /* Cabin-Regular.ttf */; };
+		D59F1741A9964ADC97E3A94B /* Cabin-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31B6D8E8F56F4555A375BA46 /* Cabin-SemiBold.ttf */; };
+		08F5F56563AE459FA5D366F6 /* Myanmar3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADCA06971F58426792361CF3 /* Myanmar3.ttf */; };
+		B835B210E9934B6E9AD9B205 /* Padauk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 168D6C12059340D4A4F75A84 /* Padauk.ttf */; };
+		1EBFA7BB83B24912A082FAA2 /* pyidaungsu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A88A23455460494AB76EE9FC /* pyidaungsu.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -578,6 +585,13 @@
 		B239703CF0374B6AB2B6E647 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		B53476E9B968435099D9175A /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		BA7983A1E65C4FF38A574F2A /* RealmReact.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RealmReact.xcodeproj; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; };
+		DFF6C4A726D543B088F23FD9 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; name = "Cabin-Bold.ttf"; path = "../assets/fonts/Cabin-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C7C35B558BB54BB4BF32DCC6 /* Cabin-Medium.ttf */ = {isa = PBXFileReference; name = "Cabin-Medium.ttf"; path = "../assets/fonts/Cabin-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D5B712BF06D641A19DE65056 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; name = "Cabin-Regular.ttf"; path = "../assets/fonts/Cabin-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		31B6D8E8F56F4555A375BA46 /* Cabin-SemiBold.ttf */ = {isa = PBXFileReference; name = "Cabin-SemiBold.ttf"; path = "../assets/fonts/Cabin-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		ADCA06971F58426792361CF3 /* Myanmar3.ttf */ = {isa = PBXFileReference; name = "Myanmar3.ttf"; path = "../assets/fonts/Myanmar3.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		168D6C12059340D4A4F75A84 /* Padauk.ttf */ = {isa = PBXFileReference; name = "Padauk.ttf"; path = "../assets/fonts/Padauk.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A88A23455460494AB76EE9FC /* pyidaungsu.ttf */ = {isa = PBXFileReference; name = "pyidaungsu.ttf"; path = "../assets/fonts/pyidaungsu.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -974,6 +988,13 @@
 				478C3265B3AF40719D16DB21 /* Zocial.ttf */,
 				2513E594879644A795B460B8 /* Righteous-Regular.ttf */,
 				3826DA86F57E42A4AE4F4BEB /* ZawgyiOne.ttf */,
+				DFF6C4A726D543B088F23FD9 /* Cabin-Bold.ttf */,
+				C7C35B558BB54BB4BF32DCC6 /* Cabin-Medium.ttf */,
+				D5B712BF06D641A19DE65056 /* Cabin-Regular.ttf */,
+				31B6D8E8F56F4555A375BA46 /* Cabin-SemiBold.ttf */,
+				ADCA06971F58426792361CF3 /* Myanmar3.ttf */,
+				168D6C12059340D4A4F75A84 /* Padauk.ttf */,
+				A88A23455460494AB76EE9FC /* pyidaungsu.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1523,6 +1544,13 @@
 				00A82CC020043C5700F152B9 /* track_52.mp3 in Resources */,
 				00A82C8B20043C5700F152B9 /* track_4.mp3 in Resources */,
 				00A82CA520043C5700F152B9 /* track_78.mp3 in Resources */,
+				43FBE57147364CAFAB0832BA /* Cabin-Bold.ttf in Resources */,
+				C4FDDA6C3FF84DB09CEC98D3 /* Cabin-Medium.ttf in Resources */,
+				2C8C3A4885494D80B0BC9AF8 /* Cabin-Regular.ttf in Resources */,
+				D59F1741A9964ADC97E3A94B /* Cabin-SemiBold.ttf in Resources */,
+				08F5F56563AE459FA5D366F6 /* Myanmar3.ttf in Resources */,
+				B835B210E9934B6E9AD9B205 /* Padauk.ttf in Resources */,
+				1EBFA7BB83B24912A082FAA2 /* pyidaungsu.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

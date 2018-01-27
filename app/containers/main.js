@@ -182,17 +182,19 @@ const styles=StyleSheet.create({
     height: 30,
   },
   icon_filled: {
-    fontFamily: font.righteous,
+    fontFamily: font.cabin_bold,
     fontSize: 10,
-    fontWeight: '400',
+    fontWeight: '600',
     marginBottom: 4,
+    textAlign: 'center',
     color: color.icon_filled
   },
   icon_outline: {
-    fontFamily: font.righteous,
+    fontFamily: font.cabin_bold,
     fontSize: 10,
-    fontWeight: '400',
+    fontWeight: '600',
     marginBottom: 4,
+    textAlign: 'center',
     color: color.icon_outline
   }
 })
