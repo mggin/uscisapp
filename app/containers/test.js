@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableHighlight
 } from 'react-native';
 import { 
   responsiveHeight, 
@@ -39,7 +40,8 @@ class Test extends Component<{}> {
       <View style={{flex: 1, backgroundColor: color.bg}}>
       <Swiper style={styles.swiper_box}
                   onIndexChanged={(index) => this.props.resetResult()}
-                  //ref='swiper'
+                  ref='swiper'
+                  scrollEnabled={false}
                   showsPagination={false}
                   loop={false}>
 
@@ -68,12 +70,20 @@ class Test extends Component<{}> {
             )
           }
           </Swiper>
+          <View style={styles.next_box}>
+            <TouchableOpacity style={{backgroundColor: color.text, borderRadius: 20, paddingHorizontal: 10, paddingVertical: 5}}>
+              <Text style={styles.next_text}>NEXT</Text>
+            </TouchableOpacity>
+          </View>
       </View>
     );
   }
 }
 
 const styles=StyleSheet.create({
+  swiper_box: {
+    height: responsiveHeight(90)
+  },
   main: {
     flex: 1,
     marginHorizontal: 20,
@@ -115,6 +125,20 @@ const styles=StyleSheet.create({
     fontFamily: font.cabin_semibold,
     margin: 7,
   },
+  next_box: {
+    height: responsiveHeight(15),
+    marginBottom: 51,
+    marginTop: 5,
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  next_text: {
+    fontFamily: font.righteous,
+    color: color.white,
+    fontSize: 20,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  }
 })
 
 function mapStateToProps(state) {

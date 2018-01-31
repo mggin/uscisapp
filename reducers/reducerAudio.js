@@ -154,9 +154,15 @@ export default function(state = initState, action) {
       let newIndex = state.index
       if (action.payload == 'NEXT') {
         newIndex = newIndex + 1
+        if (newIndex == 100) {
+          newIndex = 1
+        }
         console.log(action.payload)
       } else if (action.payload == 'PREV') {
         newIndex = newIndex - 1
+        if (newIndex == 0) {
+          newIndex = 99
+        }
         console.log(action.payload)
       } else { }
       const track_name = 'track_'+ newIndex + '.mp3'

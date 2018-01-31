@@ -80,7 +80,7 @@ export const stateInfo = [
     {
       name: "Indiana",
       governor: "Michael Richard 'Mike' Pence",
-      city: "",
+      city: "Indianapolis",
       flag: require('../../assets/flags/flag_indiana.png')
     },
     {
@@ -176,7 +176,7 @@ export const stateInfo = [
     },
     {
       name: "New Jersey",
-      governor: "	Christopher James 'Chris' Christie",
+      governor: "Christopher James 'Chris' Christie",
       city: "Trenton",
       flag: require('../../assets/flags/flag_newjersey.png')
     },

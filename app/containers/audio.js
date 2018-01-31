@@ -49,7 +49,7 @@ class Audio extends Component<{}> {
       <View style={{flex: 1, backgroundColor: color.bg}}>
         <View style={styles.num_box}>
           <View style={styles.num_style}>
-            <Text style={styles.num_text}>{this.props.audioData.index + 1}/100</Text>
+            <Text style={styles.num_text}>{this.props.audioData.index}/100</Text>
           </View>
         </View>
         <View style={styles.txt_box}>

@@ -24,7 +24,8 @@ import * as color from '../components/color';
 import * as font from '../components/font';
 
 export default class State extends Component<{}> {
-  _renderItems(state) {
+  _renderItems(state, index) {
+    const tab = '     '
     return (
       <View style={styles.cell}>
         <View style={styles.box_one}>
@@ -34,13 +35,16 @@ export default class State extends Component<{}> {
           <View style={styles.name_box}>
             <Text style={styles.name_txt}>{state.name}</Text>
           </View>
+          <View style={styles.num_box}>
+            <Text style={styles.num_text}>{index+1}</Text>
+          </View>
         </View>
         <View style={styles.box_two}>
           <View style={styles.city_box}>
-            <Text style={styles.city_txt}>City:            {state.city}</Text>
+            <Text style={styles.city_txt}>City:{tab}{tab}{tab}{state.city}</Text>
           </View>
           <View style={styles.governor_box}>
-            <Text style={styles.governor_txt}>Governor:    {state.governor}</Text>
+            <Text style={styles.governor_txt}>Governor:{tab}{state.governor}</Text>
           </View>
         </View>
       </View>
@@ -50,7 +54,7 @@ export default class State extends Component<{}> {
     return (
       <View style={{flex: 1, backgroundColor: color.blue_color}}>
         <FlatList data={stateInfo}
-                  renderItem={({item}) => this._renderItems(item)}
+                  renderItem={({item, index}) => this._renderItems(item, index)}
         />
         <View style={{height: responsiveHeight(8)}}/>
       </View>
@@ -60,22 +64,22 @@ export default class State extends Component<{}> {
 
 const styles=StyleSheet.create({
   cell: {
-    height: responsiveHeight(18),
-    marginHorizontal: 10,
-    marginVertical: 2.5,
-    paddingLeft: 15,
-    padding: 8,
-    borderColor: color.white_color,
-    borderRadius: 5,
-    borderWidth: StyleSheet.hairlineWidth,
-    backgroundColor: color.white_color,
+    height: responsiveHeight(20),
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: 'rgba(51,51,51,0.6)',
   },
   box_one: {
     flexDirection: 'row',
-    flex: 1
+    flex: 1,
+    paddingTop: 10,
+    paddingBottom: 2,
+    paddingHorizontal: 10
   },
   box_two: {
-    flex: 2
+    flex: 2,
+    paddingTop: 3,
+    paddingBottom: 10,
+    paddingHorizontal: 10
   },
   img_box: {
     flex: 1,
@@ -88,9 +92,9 @@ const styles=StyleSheet.create({
     //backgroundColor: 'yellow'
   },
   name_txt: {
-    fontFamily: font.time,
+    fontFamily: font.cabin_bold,
     fontSize: 20,
-    color: color.black_color,
+    color: color.text
   },
   city_box: {
     flex: 1,
@@ -98,9 +102,9 @@ const styles=StyleSheet.create({
     marginTop: 15,
   },
   city_txt: {
-    fontFamily: font.time,
-    lineHeight: 20,
-    color: color.black_color,
+    fontFamily: font.cabin_semibold,
+    lineHeight: 22,
+    color: color.text,
     fontSize: 17,
   },
   governor_box: {
@@ -109,10 +113,25 @@ const styles=StyleSheet.create({
     //backgroundColor: 'red'
   },
   governor_txt: {
-    fontFamily: font.time,
-    lineHeight: 20,
-    color: color.black_color,
+    fontFamily: font.cabin_semibold,
+    lineHeight: 22,
+    color: color.text,
     fontSize: 17,
+  },
+  num_box: {
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 50,
+    width: 30,
+    height: 30,
+    padding: 5,
+    backgroundColor: 'rgba(51,51,51,0.6)'
+  },
+  num_text: {
+    textAlign: 'center',
+    fontFamily: font.cabin_regular,
+    color: color.white,
   }
 })
 
