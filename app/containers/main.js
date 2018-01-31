@@ -25,15 +25,24 @@ import Study from './study';
 import Audio from './audio';
 import Test from './test';
 import State from './state';
+import Words from'./words';
+import Writing from './writing';
 import Setting from './setting';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { changeTab } from '../../actions'
+import Tts from 'react-native-tts';
 
 class Main extends Component<{}> {
+  componentDidMount() {
+    Tts.addEventListener('tts-start', (event) => console.log("start", event));
+Tts.addEventListener('tts-finish', (event) => console.log("finish", event));
+Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
+    }
   render() {
   console.log(this.props.mainData.settingTab)
   console.disableYellowBox = true;
+
     const studyIcon = (
       <View style={styles.icon_box}>
         { this.props.mainData.studyTab ?
@@ -147,10 +156,10 @@ class Main extends Component<{}> {
             <State />
           </Tab>
           <Tab heading={wordIcon}>
-            <View/>
+            <Words />
           </Tab>
           <Tab heading={writeIcon}>
-            <View/>
+            <Writing />
           </Tab>
           <Tab heading={settingIcon}>
             <Setting />

@@ -36,7 +36,7 @@ class Test extends Component<{}> {
   console.disableYellowBox = true;
     
     return (
-      <View style={styles.main}>
+      <View style={{flex: 1, backgroundColor: color.bg}}>
       <Swiper style={styles.swiper_box}
                   onIndexChanged={(index) => this.props.resetResult()}
                   //ref='swiper'
@@ -47,30 +47,27 @@ class Test extends Component<{}> {
             this.props.testData.testItems.map((data) => 
               <View style={styles.main}>
                 <View style={styles.ques_box}>
-                  <View style={styles.count_box}>
-                    <Text style={styles.count_txt}>1/20</Text>
-                  </View>
+                  <Text style={styles.count_txt}>1/20</Text>
                   <Text style={styles.ques_txt}>{data.ques}</Text>
                 </View>
                 <View style={styles.ans_box}>
                   <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer()}>
-                    <Text style={styles.choice_txt, {color: this.props.testData.showResult && data.ans0.correct && true? 'yellow' : 'white'}}>{data.ans0.answer}</Text>
+                    <Text style={{ fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans0.correct && true? 'yellow' : 'white'}}>{data.ans0.answer}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer()}>
-                    <Text style={styles.choice_txt, {color: this.props.testData.showResult && data.ans1.correct && true ? 'yellow' : 'white'}}>{data.ans1.answer}</Text>
+                    <Text style={{fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans1.correct && true ? 'yellow' : 'white'}}>{data.ans1.answer}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer()}>
-                    <Text style={styles.choice_txt, {color: this.props.testData.showResult && data.ans2.correct && true ? 'yellow' : 'white'}}>{data.ans2.answer}</Text>
+                    <Text style={{fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans2.correct && true ? 'yellow' : 'white'}}>{data.ans2.answer}</Text>
                   </TouchableOpacity>       
                   <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer()}>
-                    <Text style={styles.choice_txt, {color: this.props.testData.showResult && data.ans3.correct && true ? 'yellow' : 'white'}}>{data.ans3.answer}</Text>
+                    <Text style={{fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans3.correct && true ? 'yellow' : 'white'}}>{data.ans3.answer}</Text>
                   </TouchableOpacity>
                 </View>
               </View>
             )
           }
           </Swiper>
-        <View style={{height: responsiveHeight(15)}}/>
       </View>
     );
   }
@@ -78,47 +75,46 @@ class Test extends Component<{}> {
 
 const styles=StyleSheet.create({
   main: {
-    justifyContent: 'center',
-    alignItems: 'center',
     flex: 1,
-    backgroundColor: '#4a86e8ff'
+    marginHorizontal: 20,
   },
   ques_box: {
-    marginHorizontal: 30,
-  },
-  count_box: {
-    width: responsiveWidth(15),
-    borderRadius: 5,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'white',
-    padding: 5,
-    marginBottom: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flex: 1,
+    marginTop: 40,
+    marginBottom: 40,
   },
   count_txt: {
-    color: 'white',
+    color: color.white,
+    fontFamily: font.cabin_semibold,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    width: responsiveWidth(22),
+    borderWidth: 1.5,
+    borderColor: color.white,
+    textAlign: 'center',
+    marginVertical: 5,
+    marginLeft: 7,
   },
   ques_txt: {
-    color: 'white',
-    lineHeight: 20,
-    marginBottom: 10,
-    fontFamily: 'Times New Roman'
+    color: color.white,
+    lineHeight: 22,
+    fontSize: 18,
+    marginTop: 10,
+    marginHorizontal: 7,
+    fontFamily: font.cabin_bold,
   },
   ans_box: {
-    marginHorizontal: 40,
+    flex: 6,
   },
   choice_box: {
-    borderRadius: 50,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'white',
+    borderRadius: 5,
+    backgroundColor: color.text,
     paddingHorizontal: 15,
-    paddingVertical: 10,
-    margin: 10,
+    paddingVertical: 15,
+    fontFamily: font.cabin_semibold,
+    margin: 7,
   },
-  choice_txt: {
-    fontFamily: 'Times New Roman',
-  }
 })
 
 function mapStateToProps(state) {

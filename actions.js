@@ -95,5 +95,12 @@ export const changeTab = (value) => {
 	}
 }
 
+export const triggerSpeech = (value) => {
+	return {
+		type: 'TRIGGER_SPEECH',
+		payload: value,
+	}
+}
+
 
 

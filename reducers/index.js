@@ -5,6 +5,7 @@ import settingReducer from './reducerSetting'
 import audioReducer from './reducerAudio'
 import testReducer from './reducerTest'
 import mainReducer from './reducerMain'
+import wordsReducer from './reducerWords'
 
 
 
@@ -15,6 +16,7 @@ const allReducers = combineReducers({
    audioData: audioReducer,
    testData: testReducer,
    mainData: mainReducer,
+   wordsData: wordsReducer,
 
 })
 

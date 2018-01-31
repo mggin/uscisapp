@@ -152,6 +152,7 @@
 		08F5F56563AE459FA5D366F6 /* Myanmar3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADCA06971F58426792361CF3 /* Myanmar3.ttf */; };
 		B835B210E9934B6E9AD9B205 /* Padauk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 168D6C12059340D4A4F75A84 /* Padauk.ttf */; };
 		1EBFA7BB83B24912A082FAA2 /* pyidaungsu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A88A23455460494AB76EE9FC /* pyidaungsu.ttf */; };
+		424F097124B74A6293ED4ACD /* libTextToSpeech.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54AD49787821410786614868 /* libTextToSpeech.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -592,6 +593,8 @@
 		ADCA06971F58426792361CF3 /* Myanmar3.ttf */ = {isa = PBXFileReference; name = "Myanmar3.ttf"; path = "../assets/fonts/Myanmar3.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		168D6C12059340D4A4F75A84 /* Padauk.ttf */ = {isa = PBXFileReference; name = "Padauk.ttf"; path = "../assets/fonts/Padauk.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		A88A23455460494AB76EE9FC /* pyidaungsu.ttf */ = {isa = PBXFileReference; name = "pyidaungsu.ttf"; path = "../assets/fonts/pyidaungsu.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		34CFB3381EAA44619D5D4EE5 /* TextToSpeech.xcodeproj */ = {isa = PBXFileReference; name = "TextToSpeech.xcodeproj"; path = "../node_modules/react-native-tts/ios/TextToSpeech.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		54AD49787821410786614868 /* libTextToSpeech.a */ = {isa = PBXFileReference; name = "libTextToSpeech.a"; path = "libTextToSpeech.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -625,6 +628,7 @@
 				265EE2506AA04A44BE2A7341 /* libRealmReact.a in Frameworks */,
 				764A54DF1F604477A358D2B7 /* libc++.tbd in Frameworks */,
 				D84C5EDE97F246309E479544 /* libz.tbd in Frameworks */,
+				424F097124B74A6293ED4ACD /* libTextToSpeech.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -925,6 +929,7 @@
 				85B208A4359F4130B37E8546 /* RNFS.xcodeproj */,
 				4D21F65C933E47F0BD909877 /* RNSound.xcodeproj */,
 				BA7983A1E65C4FF38A574F2A /* RealmReact.xcodeproj */,
+				34CFB3381EAA44619D5D4EE5 /* TextToSpeech.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1628,12 +1633,14 @@
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/realm/src/**",
+					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
 				);
 				INFOPLIST_FILE = uscisappTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1658,12 +1665,14 @@
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/realm/src/**",
+					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
 				);
 				INFOPLIST_FILE = uscisappTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1689,6 +1698,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/realm/src/**",
+					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
 				);
 				INFOPLIST_FILE = uscisapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1714,6 +1724,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/realm/src/**",
+					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
 				);
 				INFOPLIST_FILE = uscisapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
