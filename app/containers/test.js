@@ -21,7 +21,9 @@ import {
 import {
   getTestData,
   checkAnswer,
-  resetResult
+  resetResult,
+  indexChanged,
+  hideScore,
 } from '../../actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux' 
@@ -30,52 +32,85 @@ import * as color from '../components/color';
 import * as font from '../components/font';
 
 class Test extends Component<{}> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    }
+  }
   componentDidMount() {
     this.props.getTestData()
+  }
+  _nextFunc() {
+    this.state.count++
+    range = this.state.count - this.props.testData.currentIndex
+    this.refs.swiper.scrollBy(range, false)
+    
+  }
+  _udpateScreen() {
+    this.props.getTestData()
+    this.setState({count: 0})
+    this.props.hideScore()
   }
   render() {
   console.disableYellowBox = true;
     
     return (
-      <View style={{flex: 1, backgroundColor: color.bg}}>
-      <Swiper style={styles.swiper_box}
-                  onIndexChanged={(index) => this.props.resetResult()}
-                  ref='swiper'
-                  scrollEnabled={false}
-                  showsPagination={false}
-                  loop={false}>
+        <View style={{flex: 1}}>
+        { this.props.testData.showScore ?
+          <View style={{flex: 1, backgroundColor: 'red'}}>
+            <TouchableOpacity onPress={() => this._udpateScreen()}>
+              <Text>Stop</Text>
+            </TouchableOpacity>
+          </View> :
+          <View style={{flex: 1, backgroundColor: color.bg}}>
+            <Swiper style={styles.swiper_box}
+                        onTouchStart={() => this.props.resetResult()}
+                        onIndexChanged={(index) => this.props.indexChanged(index)}
+                        ref='swiper'
+                        autoplayTimeout={1}
+                        scrollEnabled={false}
+                        showsPagination={false}
+                        loop={false}>
 
-          {
-            this.props.testData.testItems.map((data) => 
-              <View style={styles.main}>
-                <View style={styles.ques_box}>
-                  <Text style={styles.count_txt}>1/20</Text>
-                  <Text style={styles.ques_txt}>{data.ques}</Text>
-                </View>
-                <View style={styles.ans_box}>
-                  <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer()}>
-                    <Text style={{ fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans0.correct && true? 'yellow' : 'white'}}>{data.ans0.answer}</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer()}>
-                    <Text style={{fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans1.correct && true ? 'yellow' : 'white'}}>{data.ans1.answer}</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer()}>
-                    <Text style={{fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans2.correct && true ? 'yellow' : 'white'}}>{data.ans2.answer}</Text>
-                  </TouchableOpacity>       
-                  <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer()}>
-                    <Text style={{fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans3.correct && true ? 'yellow' : 'white'}}>{data.ans3.answer}</Text>
-                  </TouchableOpacity>
+                {
+                  this.props.testData.testItems.map((data, index) => 
+                    <View style={styles.main}>
+                      <View style={styles.ques_box}>
+                        <Text style={styles.count_txt}>{index+1}/20</Text>
+                        <Text style={styles.ques_txt}>{data.ques}</Text>
+                      </View>
+                      <View style={styles.ans_box}>
+                        <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer(data.ans0.correct)}>
+                          <Text style={{ fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans0.correct && true? 'yellow' : 'white'}}>{data.ans0.answer}</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer(data.ans1.correct)}>
+                          <Text style={{fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans1.correct && true ? 'yellow' : 'white'}}>{data.ans1.answer}</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer(data.ans2.correct)}>
+                          <Text style={{fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans2.correct && true ? 'yellow' : 'white'}}>{data.ans2.answer}</Text>
+                        </TouchableOpacity>       
+                        <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer(data.ans3.correct)}>
+                          <Text style={{fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans3.correct && true ? 'yellow' : 'white'}}>{data.ans3.answer}</Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  )
+                }
+                </Swiper>
+                <View style={styles.next_box}>
+                { this.props.testData.nextBtn ?
+                  <TouchableOpacity style={{backgroundColor: color.text, borderRadius: 30, paddingHorizontal: 10, paddingVertical: 5}}
+                                    activeOpacity={0.6}
+                                    onPress={() => this._nextFunc()}>
+                    <Text style={styles.next_text}>NEXT</Text>
+                  </TouchableOpacity> :
+                  null
+                }
                 </View>
               </View>
-            )
-          }
-          </Swiper>
-          <View style={styles.next_box}>
-            <TouchableOpacity style={{backgroundColor: color.text, borderRadius: 20, paddingHorizontal: 10, paddingVertical: 5}}>
-              <Text style={styles.next_text}>NEXT</Text>
-            </TouchableOpacity>
+            }
           </View>
-      </View>
     );
   }
 }
@@ -135,7 +170,7 @@ const styles=StyleSheet.create({
   next_text: {
     fontFamily: font.righteous,
     color: color.white,
-    fontSize: 20,
+    fontSize: 18,
     paddingHorizontal: 10,
     paddingVertical: 5,
   }
@@ -151,6 +186,8 @@ function matchDispatchToProps(dispatch) {
     getTestData,
     checkAnswer,
     resetResult,
+    indexChanged,
+    hideScore
   }, dispatch);
 }
 

@@ -4,7 +4,11 @@ const Realm = require('realm')
 const initState = {
 	allTestData: [],
 	testItems: [],
+	currentIndex: 0,
 	showResult: false,
+	nextBtn: false,
+	score: 0,
+	showScore: false,
 
 }
 export default function(state = initState, action) {
@@ -42,15 +46,45 @@ export default function(state = initState, action) {
  			}
  			break
  		case 'CHECK_ANSWER':
+ 			console.log('he')
+ 			let score = 0
+ 			if (state.currentIndex == 5 ) {
+ 				return {
+ 					...state,
+ 					showScore: true,
+ 					currentIndex: 0,
+					showResult: false,
+					nextBtn: false,
+					score: 0,
+ 				}
+ 			}
+ 			if (action.payload) {
+ 				score++	
+ 			}
  			return {
  				...state,
+ 				nextBtn: true,
  				showResult: true,
+ 				score,
  			}
  		case 'RESET_RESULT':
- 		console.log('reset result')
+ 		    console.log('reset result')
  			return {
  				...state,
  				showResult: false,
+ 				nextBtn: false,
+ 			}
+ 		case 'INDEX_CHANGED':
+ 			return {
+ 				...state,
+ 				currentIndex: action.payload,
+ 				showResult: false,
+ 				nextBtn: false,
+ 			}
+ 		case 'HIDE_SCORE':
+ 			return {
+ 				...state,
+ 				showScore: false,
  			}
  		default:
  			return state

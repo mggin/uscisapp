@@ -76,15 +76,23 @@ export const getTestData = () => {
 	}
 }
 
-export const checkAnswer = () => {
+export const checkAnswer = (value) => {
 	return {
 		type: 'CHECK_ANSWER',
+		payload: value,
 	}
 }
 
 export const resetResult = () => {
 	return {
 		type: 'RESET_RESULT',
+	}
+}
+
+export const indexChanged = (value) => {
+	return {
+		type: 'INDEX_CHANGED',
+		payload: value,
 	}
 }
 
@@ -99,6 +107,12 @@ export const triggerSpeech = (value) => {
 	return {
 		type: 'TRIGGER_SPEECH',
 		payload: value,
+	}
+}
+
+export const hideScore = () => {
+	return {
+		type: 'HIDE_SCORE',
 	}
 }
 
