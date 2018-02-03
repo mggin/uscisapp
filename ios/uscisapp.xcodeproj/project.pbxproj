@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00A82C8720043C5700F152B9 /* track_9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 00A82C2320043C5700F152B9 /* track_9.mp3 */; };
 		00A82C8820043C5700F152B9 /* track_8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 00A82C2420043C5700F152B9 /* track_8.mp3 */; };
@@ -114,6 +115,7 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* uscisappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* uscisappTests.m */; };
+		08F5F56563AE459FA5D366F6 /* Myanmar3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADCA06971F58426792361CF3 /* Myanmar3.ttf */; };
 		11B27B660B0948428DABBB63 /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A7625DA62094B18AF73A5C4 /* libRNFS.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
@@ -127,32 +129,32 @@
 		168406CB47F94FA09CED9949 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B239703CF0374B6AB2B6E647 /* FontAwesome.ttf */; };
 		1A9437A8A65C4358B9563B35 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B7D71D39BA147FAAA27BBD2 /* MaterialIcons.ttf */; };
 		1D9C69C368574A0B90872658 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53A45CB0FFA348AF8C00218B /* EvilIcons.ttf */; };
+		1EBFA7BB83B24912A082FAA2 /* pyidaungsu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A88A23455460494AB76EE9FC /* pyidaungsu.ttf */; };
 		265EE2506AA04A44BE2A7341 /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23373DA020CE466CB699A6F2 /* libRealmReact.a */; };
 		2A4301F5C0A3488EA7EB5AB7 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3C9A8C506C040A5BF5C3539 /* Entypo.ttf */; };
 		2BD9CF53D9E241D28DE2590C /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65CB2E85FA5D4D1ABCD1E220 /* rubicon-icon-font.ttf */; };
+		2C8C3A4885494D80B0BC9AF8 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5B712BF06D641A19DE65056 /* Cabin-Regular.ttf */; };
 		2F5F84F9B8C9496EBDB47A48 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99F697E6D5204EA19AFF0C9E /* Roboto_medium.ttf */; };
 		3466B54E623B4745A0B9227D /* ZawgyiOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3826DA86F57E42A4AE4F4BEB /* ZawgyiOne.ttf */; };
 		387ADCE2E2AF4DB5AA4A9BC5 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02591EAD19354B75BD3683FE /* Ionicons.ttf */; };
+		424F097124B74A6293ED4ACD /* libTextToSpeech.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54AD49787821410786614868 /* libTextToSpeech.a */; };
+		43FBE57147364CAFAB0832BA /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DFF6C4A726D543B088F23FD9 /* Cabin-Bold.ttf */; };
+		4BA1B6522023F02F000F4C5D /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA1B6532023F02F000F4C5D /* libART.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		764A54DF1F604477A358D2B7 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 933A4763A9F34ABC8F8EA45C /* libc++.tbd */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		9787E83C7B684CB5A18C765E /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ED042F5D7CD4428AC3BF0C4 /* Foundation.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B06506E4D6FC4C5691CB73AD /* Righteous-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2513E594879644A795B460B8 /* Righteous-Regular.ttf */; };
+		B835B210E9934B6E9AD9B205 /* Padauk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 168D6C12059340D4A4F75A84 /* Padauk.ttf */; };
 		C2B187A1FEAF4C7681540F45 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B53476E9B968435099D9175A /* Roboto.ttf */; };
+		C4FDDA6C3FF84DB09CEC98D3 /* Cabin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7C35B558BB54BB4BF32DCC6 /* Cabin-Medium.ttf */; };
 		C53986E4A23C418D8EA1369A /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 897670D606B04A418ABFE1A2 /* SimpleLineIcons.ttf */; };
 		CF7A5C7EB428447CB33CBF15 /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39791603E2154125A2984EBC /* libRNSound.a */; };
+		D59F1741A9964ADC97E3A94B /* Cabin-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31B6D8E8F56F4555A375BA46 /* Cabin-SemiBold.ttf */; };
 		D84C5EDE97F246309E479544 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C75A165C5094104A874722B /* libz.tbd */; };
 		DEEC0779B25C4BAB98E7ED82 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 478C3265B3AF40719D16DB21 /* Zocial.ttf */; };
 		E7E3989C366C4B28A840A7DF /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B8A5A2F0FD64277854AC74E /* Octicons.ttf */; };
-		43FBE57147364CAFAB0832BA /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DFF6C4A726D543B088F23FD9 /* Cabin-Bold.ttf */; };
-		C4FDDA6C3FF84DB09CEC98D3 /* Cabin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7C35B558BB54BB4BF32DCC6 /* Cabin-Medium.ttf */; };
-		2C8C3A4885494D80B0BC9AF8 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5B712BF06D641A19DE65056 /* Cabin-Regular.ttf */; };
-		D59F1741A9964ADC97E3A94B /* Cabin-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31B6D8E8F56F4555A375BA46 /* Cabin-SemiBold.ttf */; };
-		08F5F56563AE459FA5D366F6 /* Myanmar3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADCA06971F58426792361CF3 /* Myanmar3.ttf */; };
-		B835B210E9934B6E9AD9B205 /* Padauk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 168D6C12059340D4A4F75A84 /* Padauk.ttf */; };
-		1EBFA7BB83B24912A082FAA2 /* pyidaungsu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A88A23455460494AB76EE9FC /* pyidaungsu.ttf */; };
-		424F097124B74A6293ED4ACD /* libTextToSpeech.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54AD49787821410786614868 /* libTextToSpeech.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -401,6 +403,13 @@
 			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
 			remoteInfo = "jschelpers-tvOS";
 		};
+		4BA1B63E2023EE0A000F4C5D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34CFB3381EAA44619D5D4EE5 /* TextToSpeech.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3A6FB2081D99E12200593599;
+			remoteInfo = TextToSpeech;
+		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -561,15 +570,20 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = uscisapp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = uscisapp/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		168D6C12059340D4A4F75A84 /* Padauk.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Padauk.ttf; path = ../assets/fonts/Padauk.ttf; sourceTree = "<group>"; };
 		1B8A5A2F0FD64277854AC74E /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		23373DA020CE466CB699A6F2 /* libRealmReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRealmReact.a; sourceTree = "<group>"; };
 		2513E594879644A795B460B8 /* Righteous-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Righteous-Regular.ttf"; path = "../assets/fonts/Righteous-Regular.ttf"; sourceTree = "<group>"; };
 		2A7625DA62094B18AF73A5C4 /* libRNFS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFS.a; sourceTree = "<group>"; };
+		31B6D8E8F56F4555A375BA46 /* Cabin-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cabin-SemiBold.ttf"; path = "../assets/fonts/Cabin-SemiBold.ttf"; sourceTree = "<group>"; };
+		34CFB3381EAA44619D5D4EE5 /* TextToSpeech.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = TextToSpeech.xcodeproj; path = "../node_modules/react-native-tts/ios/TextToSpeech.xcodeproj"; sourceTree = "<group>"; };
 		3826DA86F57E42A4AE4F4BEB /* ZawgyiOne.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = ZawgyiOne.ttf; path = ../assets/fonts/ZawgyiOne.ttf; sourceTree = "<group>"; };
 		39791603E2154125A2984EBC /* libRNSound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSound.a; sourceTree = "<group>"; };
 		478C3265B3AF40719D16DB21 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		4BA1B6532023F02F000F4C5D /* libART.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libART.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D21F65C933E47F0BD909877 /* RNSound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
 		53A45CB0FFA348AF8C00218B /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		54AD49787821410786614868 /* libTextToSpeech.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libTextToSpeech.a; sourceTree = "<group>"; };
 		5C75A165C5094104A874722B /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		5ED042F5D7CD4428AC3BF0C4 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
@@ -582,19 +596,15 @@
 		99F697E6D5204EA19AFF0C9E /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
 		9B7D71D39BA147FAAA27BBD2 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		A3C9A8C506C040A5BF5C3539 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		A88A23455460494AB76EE9FC /* pyidaungsu.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = pyidaungsu.ttf; path = ../assets/fonts/pyidaungsu.ttf; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		ADCA06971F58426792361CF3 /* Myanmar3.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Myanmar3.ttf; path = ../assets/fonts/Myanmar3.ttf; sourceTree = "<group>"; };
 		B239703CF0374B6AB2B6E647 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		B53476E9B968435099D9175A /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		BA7983A1E65C4FF38A574F2A /* RealmReact.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RealmReact.xcodeproj; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; };
-		DFF6C4A726D543B088F23FD9 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; name = "Cabin-Bold.ttf"; path = "../assets/fonts/Cabin-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C7C35B558BB54BB4BF32DCC6 /* Cabin-Medium.ttf */ = {isa = PBXFileReference; name = "Cabin-Medium.ttf"; path = "../assets/fonts/Cabin-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D5B712BF06D641A19DE65056 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; name = "Cabin-Regular.ttf"; path = "../assets/fonts/Cabin-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		31B6D8E8F56F4555A375BA46 /* Cabin-SemiBold.ttf */ = {isa = PBXFileReference; name = "Cabin-SemiBold.ttf"; path = "../assets/fonts/Cabin-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		ADCA06971F58426792361CF3 /* Myanmar3.ttf */ = {isa = PBXFileReference; name = "Myanmar3.ttf"; path = "../assets/fonts/Myanmar3.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		168D6C12059340D4A4F75A84 /* Padauk.ttf */ = {isa = PBXFileReference; name = "Padauk.ttf"; path = "../assets/fonts/Padauk.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A88A23455460494AB76EE9FC /* pyidaungsu.ttf */ = {isa = PBXFileReference; name = "pyidaungsu.ttf"; path = "../assets/fonts/pyidaungsu.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		34CFB3381EAA44619D5D4EE5 /* TextToSpeech.xcodeproj */ = {isa = PBXFileReference; name = "TextToSpeech.xcodeproj"; path = "../node_modules/react-native-tts/ios/TextToSpeech.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		54AD49787821410786614868 /* libTextToSpeech.a */ = {isa = PBXFileReference; name = "libTextToSpeech.a"; path = "libTextToSpeech.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		C7C35B558BB54BB4BF32DCC6 /* Cabin-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cabin-Medium.ttf"; path = "../assets/fonts/Cabin-Medium.ttf"; sourceTree = "<group>"; };
+		D5B712BF06D641A19DE65056 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cabin-Regular.ttf"; path = "../assets/fonts/Cabin-Regular.ttf"; sourceTree = "<group>"; };
+		DFF6C4A726D543B088F23FD9 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cabin-Bold.ttf"; path = "../assets/fonts/Cabin-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -610,6 +620,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BA1B6522023F02F000F4C5D /* libART.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -884,9 +895,29 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4BA1B6132023EDFB000F4C5D /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				2A7625DA62094B18AF73A5C4 /* libRNFS.a */,
+				39791603E2154125A2984EBC /* libRNSound.a */,
+				23373DA020CE466CB699A6F2 /* libRealmReact.a */,
+				54AD49787821410786614868 /* libTextToSpeech.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		4BA1B63B2023EE0A000F4C5D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4BA1B63F2023EE0A000F4C5D /* libTextToSpeech.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		56FBC569774041AF9FF1F54E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4BA1B6532023F02F000F4C5D /* libART.a */,
 				933A4763A9F34ABC8F8EA45C /* libc++.tbd */,
 				5C75A165C5094104A874722B /* libz.tbd */,
 			);
@@ -952,6 +983,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				D09B68E24A5C47F4AE16276E /* Resources */,
 				56FBC569774041AF9FF1F54E /* Frameworks */,
+				4BA1B6132023EDFB000F4C5D /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -1133,6 +1165,10 @@
 				{
 					ProductGroup = 002B8BAA1FFC990F00D40C09 /* Products */;
 					ProjectRef = 4D21F65C933E47F0BD909877 /* RNSound.xcodeproj */;
+				},
+				{
+					ProductGroup = 4BA1B63B2023EE0A000F4C5D /* Products */;
+					ProjectRef = 34CFB3381EAA44619D5D4EE5 /* TextToSpeech.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1380,6 +1416,13 @@
 			fileType = archive.ar;
 			path = libjschelpers.a;
 			remoteRef = 3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4BA1B63F2023EE0A000F4C5D /* libTextToSpeech.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTextToSpeech.a;
+			remoteRef = 4BA1B63E2023EE0A000F4C5D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
@@ -1701,6 +1744,7 @@
 					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
 				);
 				INFOPLIST_FILE = uscisapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1709,6 +1753,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gin.usicsapp;
 				PRODUCT_NAME = uscisapp;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1727,6 +1772,7 @@
 					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
 				);
 				INFOPLIST_FILE = uscisapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1735,6 +1781,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gin.usicsapp;
 				PRODUCT_NAME = uscisapp;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

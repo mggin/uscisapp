@@ -144,7 +144,7 @@ Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
               tabBarUnderlineStyle={styles.tabBar_style}
               locked={true}>
           <Tab heading={studyIcon}>
-            <Study />
+            <Test />
           </Tab>
           <Tab heading={audioIcon}>
             <Audio />

@@ -11,7 +11,8 @@ import {
   Text,
   View,
   TouchableOpacity,
-  TouchableHighlight
+  TouchableHighlight,
+  Image,
 } from 'react-native';
 import { 
   responsiveHeight, 
@@ -24,12 +25,15 @@ import {
   resetResult,
   indexChanged,
   hideScore,
+  submit,
 } from '../../actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux' 
+import PercentageCircle from 'react-native-percentage-circle';
 import Swiper from 'react-native-swiper'
 import * as color from '../components/color';
 import * as font from '../components/font';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 class Test extends Component<{}> {
   constructor(props) {
@@ -45,6 +49,10 @@ class Test extends Component<{}> {
     this.state.count++
     range = this.state.count - this.props.testData.currentIndex
     this.refs.swiper.scrollBy(range, false)
+    if (this.state.count == 3) {
+       this.props.submit()
+       console.log('in')
+    }
     
   }
   _udpateScreen() {
@@ -58,10 +66,27 @@ class Test extends Component<{}> {
     return (
         <View style={{flex: 1}}>
         { this.props.testData.showScore ?
-          <View style={{flex: 1, backgroundColor: 'red'}}>
-            <TouchableOpacity onPress={() => this._udpateScreen()}>
-              <Text>Stop</Text>
+          <View style={{flex: 1, backgroundColor: 'rgba(41, 128, 185,0.3)', justifyContent: 'center', alignItems: 'center'}}>
+              <AnimatedCircularProgress
+                    size={200}
+                    width={15}
+                    style={{alignSelf: 'center'}}
+                    fill={100}
+                    tintColor={true ? color.green: color.red}
+                    onAnimationComplete={() => console.log('onAnimationComplete')}
+                    backgroundColor={color.grey}>
+                    {
+                      (fill) => (
+                        <Text style={{fontFamily: font.righteous, fontSize: 40, color: color.text}}>
+                          {this.props.testData.percentage}%
+                        </Text>
+                      )
+                    }
+            </AnimatedCircularProgress>
+            <TouchableOpacity onPress={() => this._udpateScreen()} style={styles.beginBtn}>
+              <Text style={{fontFamily: font.righteous, fontSize: 20, color: color.white}}>BEGIN TEST</Text>
             </TouchableOpacity>
+    
           </View> :
           <View style={{flex: 1, backgroundColor: color.bg}}>
             <Swiper style={styles.swiper_box}
@@ -173,6 +198,15 @@ const styles=StyleSheet.create({
     fontSize: 18,
     paddingHorizontal: 10,
     paddingVertical: 5,
+  },
+  beginBtn: {
+    alignSelf: 'center',
+    borderColor: color.bg,
+    backgroundColor: color.text,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 100,
+    marginTop: 50,
   }
 })
 
@@ -187,7 +221,8 @@ function matchDispatchToProps(dispatch) {
     checkAnswer,
     resetResult,
     indexChanged,
-    hideScore
+    hideScore,
+    submit,
   }, dispatch);
 }
 

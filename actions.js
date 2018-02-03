@@ -116,5 +116,11 @@ export const hideScore = () => {
 	}
 }
 
+export const submit = () => {
+	return {
+		type: 'SUBMIT'
+	}
+}
+
 
 

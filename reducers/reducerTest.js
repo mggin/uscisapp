@@ -1,4 +1,5 @@
 import fs from 'react-native-fs'
+import * as color from '../app/components/color';
 const Realm = require('realm')
 
 const initState = {
@@ -9,6 +10,8 @@ const initState = {
 	nextBtn: false,
 	score: 0,
 	showScore: false,
+	isSuccess: false,
+	percentage: undefined,
 
 }
 export default function(state = initState, action) {
@@ -47,17 +50,7 @@ export default function(state = initState, action) {
  			break
  		case 'CHECK_ANSWER':
  			console.log('he')
- 			let score = 0
- 			if (state.currentIndex == 5 ) {
- 				return {
- 					...state,
- 					showScore: true,
- 					currentIndex: 0,
-					showResult: false,
-					nextBtn: false,
-					score: 0,
- 				}
- 			}
+ 			let score = state.score
  			if (action.payload) {
  				score++	
  			}
@@ -85,6 +78,25 @@ export default function(state = initState, action) {
  			return {
  				...state,
  				showScore: false,
+ 			}
+ 		case 'SUBMIT':
+ 			let percentage = state.score * 100/3
+ 			console.log(state.score)
+ 			console.log(percentage)
+ 			let isSuccess;
+  			if (percentage >= 50) {
+ 				isSuccess = true
+ 			}
+ 			return {
+ 				...state,
+ 				showScore: true,
+				currentIndex: 0,
+				showResult: false,
+				nextBtn: false,
+				score: 0,
+ 				percentage,
+ 				isSuccess,
+
  			}
  		default:
  			return state
