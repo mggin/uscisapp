@@ -172,6 +172,7 @@ export default function(state = initState, action) {
               } else if (state.loop) {
                 // track.setNumberOfloops(-1);
                 track.setNumberOfLoops(-1);
+                track.setSpeed(5)
                 track.play((success) => {
                     if (success) {
                       console.log('successfully finished playing');
@@ -198,6 +199,7 @@ export default function(state = initState, action) {
           });
       mainTrack = track
       nextMode = false
+      mainTrack.setSpeed(1)
       return {
         ...state,
         isPlaying: true,

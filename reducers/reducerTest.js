@@ -11,6 +11,7 @@ const initState = {
 	score: 0,
 	showScore: false,
 	isSuccess: false,
+	isSubmit: false,
 	percentage: undefined,
 
 }
@@ -39,9 +40,14 @@ export default function(state = initState, action) {
  			break
  		case 'GET_TEST_DATA':
  			testItems = []
- 			for (let i = 0; i < 20; i++) {
+ 			condition = true
+ 			while (condition) {
  				let randomItem = state.allTestData[Math.floor(Math.random()*state.allTestData.length)];
- 				testItems.push(randomItem)
+ 				if (testItems.length == 20) {
+ 					condition = false
+ 				} else if (!testItems.includes(randomItem)) {
+ 					testItems.push(randomItem)
+ 				} else { }
  			}
  			return {
  				...state,
@@ -80,7 +86,7 @@ export default function(state = initState, action) {
  				showScore: false,
  			}
  		case 'SUBMIT':
- 			let percentage = state.score * 100/3
+ 			let percentage = state.score * 100/20
  			console.log(state.score)
  			console.log(percentage)
  			let isSuccess;
@@ -93,11 +99,18 @@ export default function(state = initState, action) {
 				currentIndex: 0,
 				showResult: false,
 				nextBtn: false,
+				isSubmit: false,
 				score: 0,
  				percentage,
  				isSuccess,
 
  			}
+ 		case 'CHANGE_BTN': {
+ 			return {
+ 				...state,
+ 				isSubmit: true
+ 			}
+ 		}
  		default:
  			return state
  	}

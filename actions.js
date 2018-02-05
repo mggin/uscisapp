@@ -122,5 +122,11 @@ export const submit = () => {
 	}
 }
 
+export const changeBtn = () => {
+	return {
+		type: 'CHANGE_BTN'
+	}
+}
+
 
 

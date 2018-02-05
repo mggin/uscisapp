@@ -26,6 +26,7 @@ import {
   indexChanged,
   hideScore,
   submit,
+  changeBtn,
 } from '../../actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux' 
@@ -49,9 +50,11 @@ class Test extends Component<{}> {
     this.state.count++
     range = this.state.count - this.props.testData.currentIndex
     this.refs.swiper.scrollBy(range, false)
-    if (this.state.count == 3) {
-       this.props.submit()
+    if (this.state.count == 18) {
+       this.props.changeBtn()
        console.log('in')
+    } else if (this.state.count == 19) {
+      this.props.submit()
     }
     
   }
@@ -71,8 +74,8 @@ class Test extends Component<{}> {
                     size={200}
                     width={15}
                     style={{alignSelf: 'center'}}
-                    fill={100}
-                    tintColor={true ? color.green: color.red}
+                    fill={this.props.testData.percentage}
+                    tintColor={this.props.testData.isSuccess ? color.green: color.red}
                     onAnimationComplete={() => console.log('onAnimationComplete')}
                     backgroundColor={color.grey}>
                     {
@@ -122,13 +125,14 @@ class Test extends Component<{}> {
                     </View>
                   )
                 }
+
                 </Swiper>
                 <View style={styles.next_box}>
                 { this.props.testData.nextBtn ?
                   <TouchableOpacity style={{backgroundColor: color.text, borderRadius: 30, paddingHorizontal: 10, paddingVertical: 5}}
                                     activeOpacity={0.6}
                                     onPress={() => this._nextFunc()}>
-                    <Text style={styles.next_text}>NEXT</Text>
+                    <Text style={styles.next_text}>{this.props.testData.isSubmit ? 'VIEW RESULTS' : 'NEXT'}</Text>
                   </TouchableOpacity> :
                   null
                 }
@@ -142,16 +146,17 @@ class Test extends Component<{}> {
 
 const styles=StyleSheet.create({
   swiper_box: {
-    height: responsiveHeight(90)
+    height: responsiveHeight(85)
   },
   main: {
     flex: 1,
     marginHorizontal: 20,
   },
   ques_box: {
-    flex: 1,
-    marginTop: 40,
+    flexShrink: 0.5,
+    marginTop: 20,
     marginBottom: 40,
+    backgroundColor: '#000000'
   },
   count_txt: {
     color: color.white,
@@ -170,12 +175,12 @@ const styles=StyleSheet.create({
     color: color.white,
     lineHeight: 22,
     fontSize: 18,
-    marginTop: 10,
+    marginVertical: 10,
     marginHorizontal: 7,
     fontFamily: font.cabin_bold,
   },
   ans_box: {
-    flex: 6,
+    
   },
   choice_box: {
     borderRadius: 5,
@@ -190,7 +195,8 @@ const styles=StyleSheet.create({
     marginBottom: 51,
     marginTop: 5,
     justifyContent: 'flex-start',
-    alignItems: 'center'
+    alignItems: 'center',
+
   },
   next_text: {
     fontFamily: font.righteous,
@@ -223,6 +229,7 @@ function matchDispatchToProps(dispatch) {
     indexChanged,
     hideScore,
     submit,
+    changeBtn
   }, dispatch);
 }
 
