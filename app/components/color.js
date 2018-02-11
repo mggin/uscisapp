@@ -1,7 +1,7 @@
 export const bg = '#3498dbc1'
 export const icon_filled = '#3498db'
 export const icon_outline = '#333333'
-export const text = '#333'
+export const text = '#2d3436'
 export const white = '#ffffffff'
 export const gray_color = '#607D8B'
 export const black_color = '#000000ff'

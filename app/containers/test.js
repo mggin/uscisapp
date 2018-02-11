@@ -29,6 +29,7 @@ import {
   changeBtn,
 } from '../../actions'
 import { connect } from 'react-redux'
+import { Icon } from 'native-base';
 import { bindActionCreators } from 'redux' 
 import PercentageCircle from 'react-native-percentage-circle';
 import Swiper from 'react-native-swiper'
@@ -109,17 +110,17 @@ class Test extends Component<{}> {
                         <Text style={styles.ques_txt}>{data.ques}</Text>
                       </View>
                       <View style={styles.ans_box}>
-                        <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer(data.ans0.correct)}>
-                          <Text style={{ fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans0.correct && true? 'yellow' : 'white'}}>{data.ans0.answer}</Text>
+                        <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer(data.ans0.correct)} activeOpacity={0.7}>
+                          <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans0.correct && true? 'yellow' : 'white'}}>{data.ans0.answer}</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer(data.ans1.correct)}>
-                          <Text style={{fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans1.correct && true ? 'yellow' : 'white'}}>{data.ans1.answer}</Text>
+                        <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer(data.ans1.correct)} activeOpacity={0.7}>
+                          <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans1.correct && true ? 'yellow' : 'white'}}>{data.ans1.answer}</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer(data.ans2.correct)}>
-                          <Text style={{fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans2.correct && true ? 'yellow' : 'white'}}>{data.ans2.answer}</Text>
+                        <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer(data.ans2.correct)} activeOpacity={0.7}>
+                          <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans2.correct && true ? 'yellow' : 'white'}}>{data.ans2.answer}</Text>
                         </TouchableOpacity>       
-                        <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer(data.ans3.correct)}>
-                          <Text style={{fontFamily: font.cabin_semibold, fontSize: 16, color: this.props.testData.showResult && data.ans3.correct && true ? 'yellow' : 'white'}}>{data.ans3.answer}</Text>
+                        <TouchableOpacity style={styles.choice_box} onPress={() => this.props.checkAnswer(data.ans3.correct)} activeOpacity={0.7}>
+                          <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans3.correct && true ? 'yellow' : 'white'}}>{data.ans3.answer}</Text>
                         </TouchableOpacity>
                       </View>
                     </View>
@@ -129,10 +130,13 @@ class Test extends Component<{}> {
                 </Swiper>
                 <View style={styles.next_box}>
                 { this.props.testData.nextBtn ?
-                  <TouchableOpacity style={{backgroundColor: color.text, borderRadius: 30, paddingHorizontal: 10, paddingVertical: 5}}
-                                    activeOpacity={0.6}
+                  <TouchableOpacity style={{backgroundColor: color.text, borderRadius: 50, paddingHorizontal: 25, paddingVertical: 3}}
+                                    activeOpacity={0.7}
                                     onPress={() => this._nextFunc()}>
-                    <Text style={styles.next_text}>{this.props.testData.isSubmit ? 'VIEW RESULTS' : 'NEXT'}</Text>
+                    {this.props.testData.isSubmit ? 
+                    <Text style={styles.next_text}>VIEW RESULT</Text> :
+                    <Icon name='md-arrow-forward' style={{fontSize: 30, color: 'white'}}/>
+                  }
                   </TouchableOpacity> :
                   null
                 }
@@ -155,8 +159,7 @@ const styles=StyleSheet.create({
   ques_box: {
     flexShrink: 0.5,
     marginTop: 20,
-    marginBottom: 40,
-    backgroundColor: '#000000'
+    marginBottom: 20,
   },
   count_txt: {
     color: color.white,
@@ -174,20 +177,22 @@ const styles=StyleSheet.create({
   ques_txt: {
     color: color.white,
     lineHeight: 22,
-    fontSize: 18,
+    fontSize: 15,
     marginVertical: 10,
     marginHorizontal: 7,
-    fontFamily: font.cabin_bold,
+    fontFamily: font.cabin_semibold,
   },
-  ans_box: {
-    
+  ans_text: {
+    fontFamily: font.cabin_regular,
+    fontSize: 19, 
+    fontWeight: '900',
   },
   choice_box: {
     borderRadius: 5,
     backgroundColor: color.text,
     paddingHorizontal: 15,
     paddingVertical: 15,
-    fontFamily: font.cabin_semibold,
+    fontFamily: font.cabin_regular,
     margin: 7,
   },
   next_box: {
@@ -199,10 +204,9 @@ const styles=StyleSheet.create({
 
   },
   next_text: {
-    fontFamily: font.righteous,
+    fontFamily: font.cabin_semibold,
     color: color.white,
-    fontSize: 18,
-    paddingHorizontal: 10,
+    fontSize: 16,
     paddingVertical: 5,
   },
   beginBtn: {

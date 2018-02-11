@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
+import RNFS from 'react-native-fs'
 import React, { Component } from 'react';
 import {
           StyleSheet,
@@ -24,6 +24,9 @@ class Route extends Component {
   
   render() {
     console.disableYellowBox = true;
+    const sourcePath2 = RNFS.MainBundlePath + '/' + 'uscis_test.realm';
+    const destinPath2 = RNFS.LibraryDirectoryPath + '/' + 'uscis_test.realm';
+    RNFS.copyFile(sourcePath2, destinPath2)
     this.props.getCardData()
     this.props.setCardData()
     this.props.getAllTestData()

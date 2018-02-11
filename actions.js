@@ -31,6 +31,13 @@ export const updateIndex = (value) => {
 	}
 }
 
+export const countIndex = (value) => {
+	return {
+		type: 'COUNT_INDEX',
+		payload: value
+	}
+}
+
 export const setLang = (value) => {
 	return {
 		type: 'SET_LANG',

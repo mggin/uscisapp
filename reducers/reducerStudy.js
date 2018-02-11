@@ -8,12 +8,30 @@ const initState = {
   engData: [],
 }
 
+const stringObj = {
+  name: 'stringObj',
+  properties: {
+    ques: 'string',
+    ans: 'string'
+  }
+}
+
+const uscis = {
+  name: 'uscis',
+  properties: {
+    id: 'int',
+    english: 'stringObj[]',
+    zomi: 'stringObj[]',
+    burma: 'stringObj[]'
+  }
+}
 export default function(state = initState, action) {
   
   switch(action.type) {
     case 'GET_CARD_DATA':
     	// console.log(fs)
-    	const realm = new Realm({path: fs.MainBundlePath + '/uscis.realm'})
+
+    	  const realm = new Realm({path: fs.LibraryDirectoryPath +'/' +'uscis.realm', scheme: [uscis]})
  		    const dataObj = realm.objects('uscis')
  		    const zomiCardData = []
  		    const burmeseCardData = []

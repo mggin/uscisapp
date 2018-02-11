@@ -2,6 +2,7 @@
 
 const initState = {
 	index: 0,
+	count: 0,
 	front: false,
 }
 export default function(state = initState, action) {
@@ -34,7 +35,13 @@ export default function(state = initState, action) {
  			//console.log('payload')
  			return {
  				...state,
+ 				count: action.payload,
  				index: action.payload
+ 			}
+ 		case 'COUNT_INDEX':
+ 			return {
+ 				...state,
+ 				count: action.payload
  			}
  		default:
  			return state

@@ -107,8 +107,6 @@
 		00A82CE820043C5800F152B9 /* track_11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 00A82C8420043C5700F152B9 /* track_11.mp3 */; };
 		00A82CE920043C5800F152B9 /* track_12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 00A82C8520043C5700F152B9 /* track_12.mp3 */; };
 		00A82CEA20043C5800F152B9 /* track_10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 00A82C8620043C5700F152B9 /* track_10.mp3 */; };
-		00BC48261FFB5739002E3B78 /* uscis_test.realm in Resources */ = {isa = PBXBuildFile; fileRef = 00BC48241FFB5739002E3B78 /* uscis_test.realm */; };
-		00BC48271FFB5739002E3B78 /* uscis.realm in Resources */ = {isa = PBXBuildFile; fileRef = 00BC48251FFB5739002E3B78 /* uscis.realm */; };
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
 		00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
@@ -140,6 +138,8 @@
 		424F097124B74A6293ED4ACD /* libTextToSpeech.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54AD49787821410786614868 /* libTextToSpeech.a */; };
 		43FBE57147364CAFAB0832BA /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DFF6C4A726D543B088F23FD9 /* Cabin-Bold.ttf */; };
 		4BA1B6522023F02F000F4C5D /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA1B6532023F02F000F4C5D /* libART.a */; };
+		4BEA8265202A82180061D137 /* uscis.realm in Resources */ = {isa = PBXBuildFile; fileRef = 4BEA8264202A82170061D137 /* uscis.realm */; };
+		4BEA8267202A852F0061D137 /* uscis_test.realm in Resources */ = {isa = PBXBuildFile; fileRef = 4BEA8266202A852F0061D137 /* uscis_test.realm */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		764A54DF1F604477A358D2B7 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 933A4763A9F34ABC8F8EA45C /* libc++.tbd */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -549,8 +549,6 @@
 		00A82C8420043C5700F152B9 /* track_11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = track_11.mp3; sourceTree = "<group>"; };
 		00A82C8520043C5700F152B9 /* track_12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = track_12.mp3; sourceTree = "<group>"; };
 		00A82C8620043C5700F152B9 /* track_10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = track_10.mp3; sourceTree = "<group>"; };
-		00BC48241FFB5739002E3B78 /* uscis_test.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = uscis_test.realm; path = uscisapp/uscis_test.realm; sourceTree = "<group>"; };
-		00BC48251FFB5739002E3B78 /* uscis.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = uscis.realm; path = uscisapp/uscis.realm; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
 		00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGeolocation.xcodeproj; path = "../node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj"; sourceTree = "<group>"; };
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
@@ -581,6 +579,8 @@
 		39791603E2154125A2984EBC /* libRNSound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSound.a; sourceTree = "<group>"; };
 		478C3265B3AF40719D16DB21 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		4BA1B6532023F02F000F4C5D /* libART.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libART.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BEA8264202A82170061D137 /* uscis.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = uscis.realm; path = uscisapp/uscis.realm; sourceTree = "<group>"; };
+		4BEA8266202A852F0061D137 /* uscis_test.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = uscis_test.realm; path = uscisapp/uscis_test.realm; sourceTree = "<group>"; };
 		4D21F65C933E47F0BD909877 /* RNSound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
 		53A45CB0FFA348AF8C00218B /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		54AD49787821410786614868 /* libTextToSpeech.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libTextToSpeech.a; sourceTree = "<group>"; };
@@ -860,9 +860,9 @@
 		13B07FAE1A68108700A75B9A /* uscisapp */ = {
 			isa = PBXGroup;
 			children = (
+				4BEA8266202A852F0061D137 /* uscis_test.realm */,
+				4BEA8264202A82170061D137 /* uscis.realm */,
 				00A82BFB20043C3900F152B9 /* audio */,
-				00BC48241FFB5739002E3B78 /* uscis_test.realm */,
-				00BC48251FFB5739002E3B78 /* uscis.realm */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -1499,6 +1499,7 @@
 				00A82CBA20043C5700F152B9 /* track_58.mp3 in Resources */,
 				00A82CA920043C5700F152B9 /* track_75.mp3 in Resources */,
 				00A82CB620043C5700F152B9 /* track_61.mp3 in Resources */,
+				4BEA8267202A852F0061D137 /* uscis_test.realm in Resources */,
 				00A82CB520043C5700F152B9 /* track_63.mp3 in Resources */,
 				2A4301F5C0A3488EA7EB5AB7 /* Entypo.ttf in Resources */,
 				00A82CAE20043C5700F152B9 /* track_70.mp3 in Resources */,
@@ -1520,7 +1521,6 @@
 				00A82CE020043C5800F152B9 /* track_22.mp3 in Resources */,
 				00A82C9B20043C5700F152B9 /* track_89.mp3 in Resources */,
 				00A82CC920043C5800F152B9 /* track_44.mp3 in Resources */,
-				00BC48271FFB5739002E3B78 /* uscis.realm in Resources */,
 				00A82CCC20043C5800F152B9 /* track_40.mp3 in Resources */,
 				00A82C9720043C5700F152B9 /* track_92.mp3 in Resources */,
 				9787E83C7B684CB5A18C765E /* Foundation.ttf in Resources */,
@@ -1535,7 +1535,6 @@
 				00A82CC620043C5800F152B9 /* track_47.mp3 in Resources */,
 				1A9437A8A65C4358B9563B35 /* MaterialIcons.ttf in Resources */,
 				E7E3989C366C4B28A840A7DF /* Octicons.ttf in Resources */,
-				00BC48261FFB5739002E3B78 /* uscis_test.realm in Resources */,
 				00A82CDD20043C5800F152B9 /* track_23.mp3 in Resources */,
 				00A82CB920043C5700F152B9 /* track_60.mp3 in Resources */,
 				00A82C9020043C5700F152B9 /* track_100.mp3 in Resources */,
@@ -1577,6 +1576,7 @@
 				00A82CA420043C5700F152B9 /* track_80.mp3 in Resources */,
 				00A82C8A20043C5700F152B9 /* track_7.mp3 in Resources */,
 				00A82C9620043C5700F152B9 /* track_94.mp3 in Resources */,
+				4BEA8265202A82180061D137 /* uscis.realm in Resources */,
 				00A82CDF20043C5800F152B9 /* track_21.mp3 in Resources */,
 				00A82CCA20043C5800F152B9 /* track_42.mp3 in Resources */,
 				00A82CBD20043C5700F152B9 /* track_55.mp3 in Resources */,

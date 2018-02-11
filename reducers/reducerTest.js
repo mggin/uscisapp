@@ -15,10 +15,29 @@ const initState = {
 	percentage: undefined,
 
 }
+const ansObj = {
+  name: 'ansObj',
+  properties: {
+    answer: 'string',
+    correct: 'bool'
+  }
+}
+
+const test = {
+  name: 'test',
+  properties: {
+    id: 'int',
+    ques: 'string',
+    ans0: 'ansObj[]',
+    ans1: 'ansObj[]',
+    ans2: 'ansObj[]',
+    ans3: 'ansObj[]'
+  }
+}
 export default function(state = initState, action) {
  	switch(action.type){
  		case 'GET_ALL_TEST_DATA':
- 			const realm = new Realm({path: fs.MainBundlePath + '/uscis_test.realm'})
+ 			const realm = new Realm({path: fs.LibraryDirectoryPath + '/' + 'uscis_test.realm', scheme: [test]})
  		    const dataObj = realm.objects('test')
  		    const allTestData = []
  		    for (let data of dataObj) {

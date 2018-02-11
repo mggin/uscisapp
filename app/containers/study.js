@@ -24,6 +24,7 @@ import {
           flipCard,
           updateIndex,
           getCardData,
+          countIndex,
         } from '../../actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux' 
@@ -37,7 +38,6 @@ class Study extends Component<{}> {
   _sliderFunc(value) {
     range = value - this.props.flashCard.index
     this.refs.swiper.scrollBy(range)
-    
   }
   render() {
   console.disableYellowBox = true;
@@ -48,7 +48,7 @@ class Study extends Component<{}> {
         <View style={{flex: 1, backgroundColor: color.bg}}>
           <View style={styles.num_box}>
             <View style={styles.num_style}>
-              <Text style={styles.num_text}>{this.props.flashCard.index + 1}/100</Text>
+              <Text style={styles.num_text}>{this.props.flashCard.count + 1}/100</Text>
             </View>
           </View>
           <View style={styles.card_box}>
@@ -77,12 +77,14 @@ class Study extends Component<{}> {
             </Swiper>
           </View>
           <View style={styles.slider_box}>
-            <Slider thumbImage={require('../../assets/thumb.png')}
+            <Slider //thumbImage={require('../../assets/thumb.png')}
                     minimumTrackTintColor="white"
+                    //maximumTrackTintColor=''
                     step={1}
                     maximumValue={99}
                     minimumValue={0}
                     value={this.props.flashCard.index}
+                    onValueChange={(value)  => this.props.countIndex(value)}
                     onSlidingComplete={(value) => this._sliderFunc(value)}
                     />
           </View>
@@ -136,8 +138,8 @@ const styles=StyleSheet.create({
     margin: 3,
   },
   card_txt: {
-    fontSize: 18,
-    fontFamily: font.cabin_semibold,
+    fontSize: 16,
+    fontFamily: font.cabin_regular,
     lineHeight: 25,
     color: color.text,
   },
@@ -158,6 +160,7 @@ function matchDispatchToProps(dispatch) {
     flipCard,
     updateIndex,
     getCardData,
+    countIndex,
   }, dispatch);
 }
 

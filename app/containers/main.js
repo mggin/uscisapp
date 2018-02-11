@@ -18,7 +18,7 @@ import {
   responsiveWidth, 
   responsiveFontSize 
 } from 'react-native-responsive-dimensions';
-import { Container, Header, Tab, Tabs, ScrollableTab } from 'native-base';
+import { Container, Header, Tab, Tabs, ScrollableTab, Body, Title } from 'native-base';
 import * as color from '../components/color';
 import * as font from '../components/font';
 import Study from './study';
@@ -137,14 +137,20 @@ Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
     return (
       <Container>
         <Header hasTabs
-                style={{backgroundColor: "#4a86e8ff"}}/>
+                style={{backgroundColor: "#4a86e8ff"}}>
+          <Body>
+            <Title style={{fontFamily: font.righteous, color: color.white, fontSize: 20}}>USCIS</Title>
+          </Body>
+        </Header>
         <Tabs renderTabBar={()=> <ScrollableTab />} 
               tabBarPosition='overlayBottom'
               onChangeTab={(index) => this.props.changeTab(index)}
               tabBarUnderlineStyle={styles.tabBar_style}
+              style={{backgroundColor: 'black'}}
+              //tabStyle={{backgroundColor: '#000000', color: color.text}}
               locked={true}>
           <Tab heading={studyIcon}>
-            <Test />
+            <Study />
           </Tab>
           <Tab heading={audioIcon}>
             <Audio />
@@ -189,11 +195,13 @@ const styles=StyleSheet.create({
   image_size: {
     width: 30,
     height: 30,
+    marginTop: 5,
+    //backgroundColor: '#000000'
   },
   icon_filled: {
     fontFamily: font.cabin_bold,
     fontSize: 10,
-    fontWeight: '600',
+    fontWeight: '800',
     marginBottom: 4,
     textAlign: 'center',
     color: color.icon_filled
@@ -201,10 +209,10 @@ const styles=StyleSheet.create({
   icon_outline: {
     fontFamily: font.cabin_bold,
     fontSize: 10,
-    fontWeight: '600',
+    fontWeight: '800',
     marginBottom: 4,
     textAlign: 'center',
-    color: color.icon_outline
+    color: color.icon_outline,
   }
 })
 

@@ -87,8 +87,8 @@ const styles=StyleSheet.create({
   },
   item_text: {
     flex: 4,
-    fontFamily: font.cabin_semibold,
-    fontSize: 18,
+    fontFamily: font.cabin_regular,
+    fontSize: 16,
     color: color.text,
     paddingVertical: 20,
     paddingHorizontal: 10,
