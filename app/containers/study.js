@@ -43,6 +43,7 @@ class Study extends Component<{}> {
   console.disableYellowBox = true;
   //console.log(this.props.studyData.cardData[this.props.flashCard.index])
   //console.log('re run')
+  const fontSize = this.props.settingData.fontSize
     return (
       <View style={{flex: 1, backgroundColor: color.white}}> 
         <View style={{flex: 1, backgroundColor: color.bg}}>
@@ -64,11 +65,11 @@ class Study extends Component<{}> {
 
                 <TouchableOpacity style={styles.card_style} key={data.id} activeOpacity={0.70} onPress={() => this.props.flipCard()}>
                   <View style={styles.card_innerbox}>
-                    <Text style={styles.card_txt}>{this.props.flashCard.front ? data.quesEng : data.quesLang}</Text>
+                    <Text style={[styles.card_txt, {fontSize}]}>{this.props.flashCard.front ? data.quesEng : data.quesLang}</Text>
                   </View>
                   <Text style={styles.dash_line}> . . . . . . . . </Text>
                   <ScrollView style={styles.card_innerbox} adjustsFontSizeToFit={true}>
-                     <Text style={styles.card_txt}>{this.props.flashCard.front ? data.ansEng : data.ansLang}</Text>
+                     <Text style={[styles.card_txt, {fontSize}]}>{this.props.flashCard.front ? data.ansEng : data.ansLang}</Text>
                   </ScrollView>
                 </TouchableOpacity>
               )
@@ -138,7 +139,6 @@ const styles=StyleSheet.create({
     margin: 3,
   },
   card_txt: {
-    fontSize: 16,
     fontFamily: font.cabin_regular,
     lineHeight: 25,
     color: color.text,
@@ -151,7 +151,8 @@ const styles=StyleSheet.create({
 function mapStateToProps(state) {
   return {
     studyData: state.studyData,
-    flashCard: state.flashCard
+    flashCard: state.flashCard,
+    settingData: state.settingData
   }
 }
 function matchDispatchToProps(dispatch) {

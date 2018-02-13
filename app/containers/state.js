@@ -20,17 +20,20 @@ import {
   responsiveFontSize 
 } from 'react-native-responsive-dimensions';
 import { stateInfo } from '../components/stateInfo'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import * as color from '../components/color';
 import * as font from '../components/font';
 
-export default class State extends Component<{}> {
-  _renderItems(state, index) {
+class State extends Component<{}> {
+  _renderItems(state, index, fontSize) {
     const tab = '     '
+    // const fontSize = this.props.settingData.fontSize
     return (
       <View style={styles.cell}>
         <View style={styles.box_one}>
           <View style={styles.img_box}>
-            <Image source={state.flag} style={{borderRadius: 3}}/>
+            <Image source={state.flag} style={{}}/>
           </View>
           <View style={styles.name_box}>
             <Text style={styles.name_txt}>{state.name}</Text>
@@ -41,20 +44,21 @@ export default class State extends Component<{}> {
         </View>
         <View style={styles.box_two}>
           <View style={styles.city_box}>
-            <Text style={styles.city_txt}>City:{tab}{tab}{tab}{state.city}</Text>
+            <Text style={[styles.city_txt, {fontSize}]}>City:{tab}{tab}{tab}{state.city}</Text>
           </View>
           <View style={styles.governor_box}>
-            <Text style={styles.governor_txt}>Governor:{tab}{state.governor}</Text>
+            <Text style={[styles.governor_txt, {fontSize}]}>Governor:{tab}{state.governor}</Text>
           </View>
         </View>
       </View>
       )
   }
   render() {
+    const fontSize = this.props.settingData.fontSize - 1
     return (
       <View style={{flex: 1, backgroundColor: color.blue_color}}>
         <FlatList data={stateInfo}
-                  renderItem={({item, index}) => this._renderItems(item, index)}
+                  renderItem={({item, index}) => this._renderItems(item, index, fontSize )}
         />
         <View style={{height: responsiveHeight(8)}}/>
       </View>
@@ -66,7 +70,7 @@ const styles=StyleSheet.create({
   cell: {
     height: responsiveHeight(20),
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(51,51,51,0.6)',
+    borderBottomColor: color.bg,
   },
   box_one: {
     flexDirection: 'row',
@@ -83,7 +87,7 @@ const styles=StyleSheet.create({
   },
   img_box: {
     flex: 1,
-    borderRadius: 10,
+    //borderRadius: 10,
     //backgroundColor: 'green',
   },
   name_box: {
@@ -92,8 +96,9 @@ const styles=StyleSheet.create({
     //backgroundColor: 'yellow'
   },
   name_txt: {
-    fontFamily: font.cabin_bold,
-    fontSize: 20,
+    fontFamily: font.cabin_regular,
+    fontSize: 18,
+    fontWeight: '900',
     color: color.text
   },
   city_box: {
@@ -102,10 +107,11 @@ const styles=StyleSheet.create({
     marginTop: 15,
   },
   city_txt: {
-    fontFamily: font.cabin_semibold,
+    fontFamily: font.cabin_regular,
     lineHeight: 22,
+    fontWeight: '500',
     color: color.text,
-    fontSize: 17,
+    //fontSize: 15,
   },
   governor_box: {
     flex: 1,
@@ -113,10 +119,11 @@ const styles=StyleSheet.create({
     //backgroundColor: 'red'
   },
   governor_txt: {
-    fontFamily: font.cabin_semibold,
+    fontFamily: font.cabin_regular,
+    fontWeight: '500',
     lineHeight: 22,
     color: color.text,
-    fontSize: 17,
+    //fontSize: 15,
   },
   num_box: {
     alignSelf: 'center',
@@ -135,3 +142,10 @@ const styles=StyleSheet.create({
   }
 })
 
+function mapStateToProps(state) {
+  return {
+    settingData: state.settingData
+  }
+}
+
+export default connect(mapStateToProps, null)(State);

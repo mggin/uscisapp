@@ -41,8 +41,9 @@ class Audio extends Component<{}> {
   }
 
   render() {
-  console.log(this.props.studyData.engData)
+  //console.log(this.props.studyData.engData)
   console.disableYellowBox = true;
+  const fontSize = this.props.settingData.fontSize
 
     
     return (
@@ -54,11 +55,11 @@ class Audio extends Component<{}> {
         </View>
         <View style={styles.txt_box}>
           <View style={styles.card_innerbox}>
-            <Text style={styles.card_txt}>{this.props.studyData.engData[this.props.audioData.index - 1].quesEng}</Text>
+            <Text style={[styles.card_txt, {fontSize}]}>{this.props.studyData.engData[this.props.audioData.index - 1].quesEng}</Text>
           </View>
           <Text style={styles.dash_line}> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  </Text>
           <View style={styles.card_innerbox}>
-             <Text style={styles.card_txt}>{this.props.studyData.engData[this.props.audioData.index - 1].ansEng}</Text>
+             <Text style={[styles.card_txt, {fontSize}]}>{this.props.studyData.engData[this.props.audioData.index - 1].ansEng}</Text>
           </View>
         </View>
         <View style={styles.control_box}>
@@ -154,8 +155,8 @@ const styles=StyleSheet.create({
     margin: 3,
   },
   card_txt: {
-    fontSize: 18,
-    fontFamily: font.cabin_semibold,
+    fontWeight: '800',
+    fontFamily: font.cabin_regular,
     textAlign: 'left',
     lineHeight: 22,
     color: color.white,
@@ -170,7 +171,8 @@ const styles=StyleSheet.create({
 function mapStateToProps(state) {
   return {
     audioData: state.audioData,
-    studyData: state.studyData
+    studyData: state.studyData,
+    settingData: state.settingData,
 
   }
 }

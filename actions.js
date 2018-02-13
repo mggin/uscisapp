@@ -135,5 +135,28 @@ export const changeBtn = () => {
 	}
 }
 
+export const setZomiLang = (value) => {
+	return {
+		type: 'SET_ZOMI_LANG',
+		payload: value,
+	}
+}
 
+export const setBurmeseLang = (value) => {
+	return {
+		type: 'SET_BURMESE_LANG',
+		payload: value,
+	}
+}
 
+export const increaseFontSize = () => {
+	return {
+		type: 'INCREASE_FONT_SIZE'
+	}
+}
+
+export const decreaseFontSize = () => {
+	return {
+		type: 'DECREASE_FONT_SIZE'
+	}
+}
