@@ -33,6 +33,10 @@ import Tts from 'react-native-tts';
 
 class Writing extends Component<{}> {
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('writing updated')
+    return true
+  }
   _triggerSpeech = (value) => {
     Tts.stop()
     Tts.speak(value)

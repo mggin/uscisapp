@@ -31,14 +31,16 @@ export const updateIndex = (value) => {
 	}
 }
 
-export const countIndex = (value) => {
+export const countIndex = (value, value1) => {
 	return {
 		type: 'COUNT_INDEX',
-		payload: value
+		payload: value,
+		args: value1,
 	}
 }
 
 export const setLang = (value) => {
+	console.log('setlang')
 	return {
 		type: 'SET_LANG',
 		payload: value

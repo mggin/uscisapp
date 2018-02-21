@@ -4,7 +4,7 @@ import { AsyncStorage, Dimensions} from 'react-native'
 const initState = {
 	zomiLang: true,
 	burmeseLang: false,
-  	fontSize: 16,
+  	fontSize: 17,
   	iconSize: 30,
 }
 

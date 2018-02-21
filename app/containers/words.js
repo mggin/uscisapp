@@ -43,7 +43,19 @@ const dataSource = [
 ]
 
 class Words extends Component<{}> {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    }
+  }
+  componentWillMount() {
+    console.log('words Mount')
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('words updated')
+    return true
+  }
   _triggerSpeech = (value) => {
     Tts.stop()
     Tts.speak(value)

@@ -3,7 +3,7 @@
 const initState = {
 	index: 0,
 	count: 0,
-	front: false,
+	front: true,
 }
 export default function(state = initState, action) {
  	switch(action.type){
@@ -24,24 +24,42 @@ export default function(state = initState, action) {
  			}
  			break
  		case 'UPDATE_CARD':
- 			return {
- 				...state,
- 				front: true
+ 			if (state.front) {
+ 				return state
+ 			} else {
+ 				return {
+ 					...state,
+ 					front: true
+ 				}
  			}
  			break
- 		case 'UPDATE_INDEX':
- 			//if (action.payload)
- 			//console.log(action.payload)
- 			//console.log('payload')
- 			return {
- 				...state,
- 				count: action.payload,
- 				index: action.payload
- 			}
  		case 'COUNT_INDEX':
- 			return {
- 				...state,
- 				count: action.payload
+ 			if (action.args == 'RIGHT') {
+ 				if (action.payload == 99) {
+ 					return {
+ 						...state,
+ 						count: 0,
+ 					}
+ 				} else {
+ 					return {
+ 						...state,
+ 						count: state.count + 1
+ 					}
+ 				}
+ 			} else if (action.args == 'LEFT') {
+	 			if (action.payload == 0) {
+	 				return {
+	 					...state,
+	 					count: 99
+	 				}
+	 			} else {
+	 				return {
+	 					...state,
+	 					count: state.count - 1
+	 				}
+	 			}
+ 			} else {
+ 				console.log('Piggy got mad')
  			}
  		default:
  			return state

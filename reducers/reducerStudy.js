@@ -31,7 +31,8 @@ export default function(state = initState, action) {
     case 'GET_CARD_DATA':
     	// console.log(fs)
 
-    	  const realm = new Realm({path: fs.LibraryDirectoryPath +'/' +'uscis.realm', scheme: [uscis]})
+    	  const realm = new Realm({path: fs.MainBundlePath +'/' +'uscis.realm', scheme: [uscis]})
+        //const realm = new Realm({path: fs.LibraryDirectoryPath +'/' +'uscis.realm', scheme: [uscis]})
  		    const dataObj = realm.objects('uscis')
  		    const zomiCardData = []
  		    const burmeseCardData = []

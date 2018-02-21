@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux'
+import { ignoreActions } from 'redux-ignore';
 import studyReducer from './reducerStudy'
 import flashCardReducer from './reducerFlashCard'
 import settingReducer from './reducerSetting'
@@ -10,7 +11,7 @@ import wordsReducer from './reducerWords'
 
 
 const allReducers = combineReducers({
-   studyData: studyReducer,
+   studyData: ignoreActions(studyReducer, ['DECREASE_FONT_SIZE', 'INCREASE_FONT_SIZE', 'SET_BURMESE_LANG', 'SET_ZOMI_LANG', 'GET_TEST_DATA']),
    flashCard: flashCardReducer,
    settingData: settingReducer,
    audioData: audioReducer,

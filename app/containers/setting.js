@@ -35,14 +35,50 @@ import * as color from '../components/color';
 import * as font from '../components/font';
 
 class Setting extends Component<{}> {
-
-  _onValueChange(value) {
-    this.props.setLang(value)
-    //this.getData(value)
-    this.props.setCardData(value)
+  constructor(props) {
+    super(props);
+    this.state={
+      burmeseLang: false,
+      zomiLang: true
+    }
   }
+  _onValueChange(value, name) {
+    //this.props.setLang(value)
+    //this.getData(value)
+    //this.props.setCardData(value)
+    if (name == 'burmese') {
+      if (!value) {
+        this.setState({
+          burmeseLang: false,
+          zomiLang: true
+        })
+      } else {
+        this.setState({
+          burmeseLang: true,
+          zomiLang: false
+        })
+      }
+    } else if (name == 'zomi') {
+      if (!value) {
+        this.setState({
+          burmeseLang: true,
+          zomiLang: false,
+        })
+      } else {
+        this.setState({
+          burmeseLang: false,
+          zomiLang: true
+        })
+      }
+    } else {
+      //console.log('log nothing')
+    }
+
+  }
+  _onV
   render() {
   console.disableYellowBox = true;
+  console.log('setting.js')
   return (
       <View style={{flex: 1, backgroundColor: color.bg}}>
       {/*}
@@ -56,16 +92,16 @@ class Setting extends Component<{}> {
           <Text style={styles.itemtxt}>Burmese</Text>
           <View style={styles.switch_box}>
             <Switch style={styles.switch_style}
-                    onValueChange={(value) => this.props.setBurmeseLang(value)}
-                    value={this.props.settingData.burmeseLang}/>
+                    onValueChange={(value) => this._onValueChange(value,'burmese')}
+                    value={this.state.burmeseLang}/>
           </View>
         </View>
         <View style={styles.itembox}>
           <Text style={styles.itemtxt}>Zomi</Text>
           <View style={styles.switch_box}>
             <Switch style={styles.switch_style}
-                    onValueChange={(value) => this.props.setZomiLang(value)}
-                    value={this.props.settingData.zomiLang}/>
+                    onValueChange={(value) => this._onValueChange(value,'zomi')}
+                    value={this.state.zomiLang}/>
           </View>
         </View>
          <View style={styles.itembox}>
@@ -123,10 +159,10 @@ const styles=StyleSheet.create({
 
   },
   font_sty: {
-    fontFamily: font.cabin_regular,
+    fontFamily: font.righteous,
     color: color.text,
     margin: 10,
-    width: 30,
+    width: 60,
     textAlign: 'center',
   }
 })

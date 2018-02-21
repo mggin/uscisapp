@@ -14,6 +14,7 @@ import {
        } from 'react-redux'
 import allReducers from './reducers'
 import Route from './app/route'
+import Study from './app/containers/study'
 
 
 const store = createStore(allReducers);

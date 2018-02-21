@@ -7,6 +7,7 @@ import RNFS from 'react-native-fs'
 import React, { Component } from 'react';
 import {
           StyleSheet,
+          View,
        } from 'react-native';
 import {  Router,
           Scene,
@@ -18,6 +19,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getCardData, setCardData, getAllTestData } from '../actions'
 //import About from './components/about'
+import Study from './containers/study'
 
 class Route extends Component {
 
@@ -31,14 +33,9 @@ class Route extends Component {
     this.props.setCardData()
     this.props.getAllTestData()
     return (
-      <Router>
-        <Scene key='root' 
-               hideNavBar={true}>
-          <Scene key='menu'
-                 initial={true}
-                 component={Main}/>
-        </Scene>
-      </Router>
+      <View style={{flex: 1}}>
+        <Main />
+      </View>
     )
   }
 }

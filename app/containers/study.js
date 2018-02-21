@@ -12,7 +12,9 @@ import {
   View,
   Slider,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  FlatList,
+  Alert,
 } from 'react-native';
 import { 
   responsiveHeight, 
@@ -28,21 +30,45 @@ import {
         } from '../../actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux' 
-import Swiper from 'react-native-swiper'
+import { DeckSwiper, CardItem, Card } from 'native-base'
+import Swiper from 'react-native-deck-swiper'
 import * as color from '../components/color';
 import * as font from '../components/font';
+//import Slider from 'react-native-slider'
 //import PageChild from './page'
+import Carousel from 'react-native-snap-carousel';
 
 class Study extends Component<{}> {
-  
-  _sliderFunc(value) {
-    range = value - this.props.flashCard.index
-    this.refs.swiper.scrollBy(range)
+  constructor(props) {
+    super(props)
+    this.state = {
+      cardCount: -1,
+    }
   }
+  _flipCard() {
+    if (this.state.cardFront) {
+      this.setState({cardFront: false})
+      //this.state.cardFront = false
+    } else {
+      this.setState({cardFront: true})
+    }
+  }
+   _updateCard() {
+    this.setState({cardFront: true})
+    //this.state.cardFront = true
+  }
+
+  _updateIndex(value) {
+    this.setState({cardCount: value})
+  }
+
   render() {
   console.disableYellowBox = true;
+  console.log('study.js')
   //console.log(this.props.studyData.cardData[this.props.flashCard.index])
   //console.log('re run')
+  //Piggy wake up early!!
+  //Don't leave me on seen please again.:-)
   const fontSize = this.props.settingData.fontSize
     return (
       <View style={{flex: 1, backgroundColor: color.white}}> 
@@ -53,41 +79,63 @@ class Study extends Component<{}> {
             </View>
           </View>
           <View style={styles.card_box}>
-            <Swiper style={styles.swiper_box}
-                    onScrollBeginDrag={() => this.props.updateCard()}
-                    ref='swiper'
-                    showsPagination={false}
-                    loop={false}
-                    onIndexChanged={(index) => this.props.updateIndex(index)}>
 
-            {
-              this.props.studyData.cardData.map((data) => 
+              <Swiper
+                 cards={this.props.studyData.cardData}
+                 cardIndex={0}
+                 verticalSwipe={false}
+                 //showSecondCard={false}
+                 horizontalThreshold={responsiveHeight(5)}
 
-                <TouchableOpacity style={styles.card_style} key={data.id} activeOpacity={0.70} onPress={() => this.props.flipCard()}>
-                  <View style={styles.card_innerbox}>
-                    <Text style={[styles.card_txt, {fontSize}]}>{this.props.flashCard.front ? data.quesEng : data.quesLang}</Text>
+                 secondCardZoom={1}
+                 zoomAnimationDuration={10}
+                 cardHorizontalMargin={0}
+                 cardVerticalMargin={0}
+                 //animateCardOpacity={true}
+                 infinite={true}
+                 //childrenOnTop={true}
+                 backgroundColor={'rgba(0,0,0,0)'}
+                 goBackToPreviousCardOnSwipeLeft={true}
+                 //animatedCardOpacity={false}
+                 //outputRotationRange={["-2deg", "0deg", "2deg"]}
+                 // cardStyle={{flex: }}
+                 onSwiped={() => this.props.updateCard()}
+                 onSwipedRight={(index) => this.props.countIndex(index, 'RIGHT')}
+                 onSwipedLeft={(index) => this.props.countIndex(index, 'LEFT')}
+                 //Shwe Htoo Infinity was driving me crazy !!!!!
+                  renderCard={(data) => {
+                    return (
+                      <View style={styles.card_style}>
+                   <TouchableOpacity style={{flex: 1}} key={data.id} activeOpacity={0.7} onPress={() => this.props.flipCard()}>
+                    <View style={styles.card_innerbox}>
+                      <Text style={[styles.card_txt, {fontSize}]}>{this.props.flashCard.front ? data.quesEng : data.quesLang}</Text>
+                    </View>
+                    <Text style={styles.dash_line}> . . . . . . . . </Text>
+                    <ScrollView style={styles.card_innerbox} adjustsFontSizeToFit={true}>
+                       <Text style={[styles.card_txt, {fontSize}]}>{this.props.flashCard.front ? data.ansEng : data.ansLang}</Text>
+                    </ScrollView>
+                  </TouchableOpacity>
                   </View>
-                  <Text style={styles.dash_line}> . . . . . . . . </Text>
-                  <ScrollView style={styles.card_innerbox} adjustsFontSizeToFit={true}>
-                     <Text style={[styles.card_txt, {fontSize}]}>{this.props.flashCard.front ? data.ansEng : data.ansLang}</Text>
-                  </ScrollView>
-                </TouchableOpacity>
-              )
-            }
-      
-            </Swiper>
+
+               )}      
+              }>   
+        </Swiper>
+              
           </View>
           <View style={styles.slider_box}>
+          {/*
             <Slider //thumbImage={require('../../assets/thumb.png')}
                     minimumTrackTintColor="white"
                     //maximumTrackTintColor=''
                     step={1}
                     maximumValue={99}
                     minimumValue={0}
-                    value={this.props.flashCard.index}
-                    onValueChange={(value)  => this.props.countIndex(value)}
-                    onSlidingComplete={(value) => this._sliderFunc(value)}
-                    />
+                    horizontal={true}
+                    value={this.state.index}
+                    onValueChange={(value) => this._countIndex(value)}
+                    onSlidingComplete={(value) => this._sliderFunc(value)}/>
+          }
+        */}
           </View>
         </View>
       </View>
@@ -97,28 +145,30 @@ class Study extends Component<{}> {
 
 const styles=StyleSheet.create({
   num_box: {
-    flex: 0.7,
+    flex: 1,
     marginLeft: 15,
     marginVertical: 15,
     justifyContent: 'center',
     alignItems: 'flex-start',
   },
   card_box: {
-    flexGrow: 6,
+    flex: 6,
     marginHorizontal: 0,
   },
    slider_box: {
     flex: 2,
     marginVertical: 20,
     marginHorizontal: 15,
+    //backgroundColor: 'white'
 
   },
   card_style: {
-    flex: 1,
+    height: responsiveHeight(55),
     borderRadius: 5,
     padding: 15,
+    overflow: 'hidden',
     marginHorizontal: 15,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   num_style: {
     borderRadius: 5,

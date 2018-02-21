@@ -120,7 +120,6 @@ const styles=StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    color: color.text,
   },
   btn_box: {
     flex: 3,
@@ -155,7 +154,7 @@ const styles=StyleSheet.create({
     margin: 3,
   },
   card_txt: {
-    fontWeight: '800',
+    fontWeight: '600',
     fontFamily: font.cabin_regular,
     textAlign: 'left',
     lineHeight: 22,

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00A82C8720043C5700F152B9 /* track_9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 00A82C2320043C5700F152B9 /* track_9.mp3 */; };
 		00A82C8820043C5700F152B9 /* track_8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 00A82C2420043C5700F152B9 /* track_8.mp3 */; };
@@ -143,6 +142,7 @@
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		764A54DF1F604477A358D2B7 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 933A4763A9F34ABC8F8EA45C /* libc++.tbd */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		93699F2CE0F7479899CB08E8 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7193CFDA854D1E8593ADDA /* libRCTActionSheet.a */; };
 		9787E83C7B684CB5A18C765E /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ED042F5D7CD4428AC3BF0C4 /* Foundation.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B06506E4D6FC4C5691CB73AD /* Righteous-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2513E594879644A795B460B8 /* Righteous-Regular.ttf */; };
@@ -403,6 +403,20 @@
 			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
 			remoteInfo = "jschelpers-tvOS";
 		};
+		4B39CC3F203904EC0064345C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D0666E1B3E54704A3EEB2E9 /* rnpc_demo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 13B07F961A680F5B00A75B9A;
+			remoteInfo = rnpc_demo;
+		};
+		4B39CC41203904EC0064345C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D0666E1B3E54704A3EEB2E9 /* rnpc_demo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 00E356EE1AD99517003FC87E;
+			remoteInfo = rnpc_demoTests;
+		};
 		4BA1B63E2023EE0A000F4C5D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 34CFB3381EAA44619D5D4EE5 /* TextToSpeech.xcodeproj */;
@@ -558,6 +572,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* uscisappTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uscisappTests.m; sourceTree = "<group>"; };
 		02591EAD19354B75BD3683FE /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		0D0666E1B3E54704A3EEB2E9 /* rnpc_demo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = rnpc_demo.xcodeproj; path = "../node_modules/react-native-percentage-circle/rnpc_demo/ios/rnpc_demo.xcodeproj"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* uscisapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uscisapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -573,6 +588,7 @@
 		23373DA020CE466CB699A6F2 /* libRealmReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRealmReact.a; sourceTree = "<group>"; };
 		2513E594879644A795B460B8 /* Righteous-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Righteous-Regular.ttf"; path = "../assets/fonts/Righteous-Regular.ttf"; sourceTree = "<group>"; };
 		2A7625DA62094B18AF73A5C4 /* libRNFS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFS.a; sourceTree = "<group>"; };
+		2F7193CFDA854D1E8593ADDA /* libRCTActionSheet.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTActionSheet.a; sourceTree = "<group>"; };
 		31B6D8E8F56F4555A375BA46 /* Cabin-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cabin-SemiBold.ttf"; path = "../assets/fonts/Cabin-SemiBold.ttf"; sourceTree = "<group>"; };
 		34CFB3381EAA44619D5D4EE5 /* TextToSpeech.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = TextToSpeech.xcodeproj; path = "../node_modules/react-native-tts/ios/TextToSpeech.xcodeproj"; sourceTree = "<group>"; };
 		3826DA86F57E42A4AE4F4BEB /* ZawgyiOne.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = ZawgyiOne.ttf; path = ../assets/fonts/ZawgyiOne.ttf; sourceTree = "<group>"; };
@@ -640,6 +656,7 @@
 				764A54DF1F604477A358D2B7 /* libc++.tbd in Frameworks */,
 				D84C5EDE97F246309E479544 /* libz.tbd in Frameworks */,
 				424F097124B74A6293ED4ACD /* libTextToSpeech.a in Frameworks */,
+				93699F2CE0F7479899CB08E8 /* libRCTActionSheet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +912,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4B39CC3B203904EC0064345C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4B39CC40203904EC0064345C /* rnpc_demo.app */,
+				4B39CC42203904EC0064345C /* rnpc_demoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		4BA1B6132023EDFB000F4C5D /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -902,6 +928,7 @@
 				39791603E2154125A2984EBC /* libRNSound.a */,
 				23373DA020CE466CB699A6F2 /* libRealmReact.a */,
 				54AD49787821410786614868 /* libTextToSpeech.a */,
+				2F7193CFDA854D1E8593ADDA /* libRCTActionSheet.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -961,6 +988,7 @@
 				4D21F65C933E47F0BD909877 /* RNSound.xcodeproj */,
 				BA7983A1E65C4FF38A574F2A /* RealmReact.xcodeproj */,
 				34CFB3381EAA44619D5D4EE5 /* TextToSpeech.xcodeproj */,
+				0D0666E1B3E54704A3EEB2E9 /* rnpc_demo.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1161,6 +1189,10 @@
 				{
 					ProductGroup = 002B8BE11FFC991300D40C09 /* Products */;
 					ProjectRef = 85B208A4359F4130B37E8546 /* RNFS.xcodeproj */;
+				},
+				{
+					ProductGroup = 4B39CC3B203904EC0064345C /* Products */;
+					ProjectRef = 0D0666E1B3E54704A3EEB2E9 /* rnpc_demo.xcodeproj */;
 				},
 				{
 					ProductGroup = 002B8BAA1FFC990F00D40C09 /* Products */;
@@ -1416,6 +1448,20 @@
 			fileType = archive.ar;
 			path = libjschelpers.a;
 			remoteRef = 3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4B39CC40203904EC0064345C /* rnpc_demo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = rnpc_demo.app;
+			remoteRef = 4B39CC3F203904EC0064345C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4B39CC42203904EC0064345C /* rnpc_demoTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = rnpc_demoTests.xctest;
+			remoteRef = 4B39CC41203904EC0064345C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		4BA1B63F2023EE0A000F4C5D /* libTextToSpeech.a */ = {
@@ -1677,12 +1723,14 @@
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
+					"$(SRCROOT)/../node_modules/react-native-percentage-circle/rnpc_demo/ios/rnpc_demo",
 				);
 				INFOPLIST_FILE = uscisappTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1709,12 +1757,14 @@
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
+					"$(SRCROOT)/../node_modules/react-native-percentage-circle/rnpc_demo/ios/rnpc_demo",
 				);
 				INFOPLIST_FILE = uscisappTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1742,6 +1792,7 @@
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
+					"$(SRCROOT)/../node_modules/react-native-percentage-circle/rnpc_demo/ios/rnpc_demo",
 				);
 				INFOPLIST_FILE = uscisapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1770,6 +1821,7 @@
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
+					"$(SRCROOT)/../node_modules/react-native-percentage-circle/rnpc_demo/ios/rnpc_demo",
 				);
 				INFOPLIST_FILE = uscisapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

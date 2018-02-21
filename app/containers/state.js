@@ -54,6 +54,7 @@ class State extends Component<{}> {
       )
   }
   render() {
+    console.log('state.js')
     const fontSize = this.props.settingData.fontSize - 1
     return (
       <View style={{flex: 1, backgroundColor: color.blue_color}}>
@@ -133,7 +134,7 @@ const styles=StyleSheet.create({
     width: 30,
     height: 30,
     padding: 5,
-    backgroundColor: 'rgba(51,51,51,0.6)'
+    backgroundColor: 'rgba(51,51,51,1)'
   },
   num_text: {
     textAlign: 'center',
