@@ -13,6 +13,8 @@ const initState = {
 	isSuccess: false,
 	isSubmit: false,
 	percentage: 0,
+	count: 0,
+	//isTesting: false,
 
 }
 const ansObj = {
@@ -72,6 +74,7 @@ export default function(state = initState, action) {
  			return {
  				...state,
  				testItems,
+ 				count: 0,
  			}
  			break
  		case 'CHECK_ANSWER':
@@ -104,6 +107,7 @@ export default function(state = initState, action) {
  			return {
  				...state,
  				showScore: false,
+ 				//isTesting: true,
  			}
  		case 'SUBMIT':
  			let percentage = state.score * 100/20

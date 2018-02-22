@@ -35,50 +35,23 @@ import * as color from '../components/color';
 import * as font from '../components/font';
 
 class Setting extends Component<{}> {
-  constructor(props) {
-    super(props);
-    this.state={
-      burmeseLang: false,
-      zomiLang: true
-    }
-  }
+
   _onValueChange(value, name) {
+    if (name == 'BURMESE') {
+      this.props.setBurmeseLang(value)
+      this.props.setCardData('BURMESE')
+    } else if (name == 'ZOMI') {
+      this.props.setZomiLang(value)
+      this.props.setCardData('ZOMI')
+    } else {
+      console.log('print error at setting onValuecChange function')
+    }
     //this.props.setLang(value)
     //this.getData(value)
     //this.props.setCardData(value)
-    if (name == 'burmese') {
-      if (!value) {
-        this.setState({
-          burmeseLang: false,
-          zomiLang: true
-        })
-      } else {
-        this.setState({
-          burmeseLang: true,
-          zomiLang: false
-        })
-      }
-    } else if (name == 'zomi') {
-      if (!value) {
-        this.setState({
-          burmeseLang: true,
-          zomiLang: false,
-        })
-      } else {
-        this.setState({
-          burmeseLang: false,
-          zomiLang: true
-        })
-      }
-    } else {
-      //console.log('log nothing')
-    }
-
   }
-  _onV
   render() {
   console.disableYellowBox = true;
-  console.log('setting.js')
   return (
       <View style={{flex: 1, backgroundColor: color.bg}}>
       {/*}
@@ -92,16 +65,16 @@ class Setting extends Component<{}> {
           <Text style={styles.itemtxt}>Burmese</Text>
           <View style={styles.switch_box}>
             <Switch style={styles.switch_style}
-                    onValueChange={(value) => this._onValueChange(value,'burmese')}
-                    value={this.state.burmeseLang}/>
+                    onValueChange={(value) => this._onValueChange(value, 'BURMESE')}
+                    value={this.props.settingData.burmeseLang}/>
           </View>
         </View>
         <View style={styles.itembox}>
           <Text style={styles.itemtxt}>Zomi</Text>
           <View style={styles.switch_box}>
             <Switch style={styles.switch_style}
-                    onValueChange={(value) => this._onValueChange(value,'zomi')}
-                    value={this.state.zomiLang}/>
+                    onValueChange={(value) => this._onValueChange(value, 'ZOMI')}
+                    value={this.props.settingData.zomiLang}/>
           </View>
         </View>
          <View style={styles.itembox}>
@@ -159,10 +132,10 @@ const styles=StyleSheet.create({
 
   },
   font_sty: {
-    fontFamily: font.righteous,
+    fontFamily: font.cabin_regular,
     color: color.text,
     margin: 10,
-    width: 60,
+    width: 30,
     textAlign: 'center',
   }
 })
@@ -184,4 +157,3 @@ function matchDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Setting);
-

@@ -81,7 +81,7 @@ export const getAllTestData = () => {
 
 export const getTestData = () => {
 	return {
-		type: 'GET_TEST_DATA'
+		type: 'GET_TEST_DATA',
 	}
 }
 
@@ -106,6 +106,8 @@ export const indexChanged = (value) => {
 }
 
 export const changeTab = (value) => {
+	hideScore();
+	getTestData();
 	return {
 		type: 'CHANGE_TAB',
 		payload: value.i,
@@ -120,12 +122,14 @@ export const triggerSpeech = (value) => {
 }
 
 export const hideScore = () => {
+	console.log('hidescore')
 	return {
 		type: 'HIDE_SCORE',
 	}
 }
 
 export const submit = () => {
+	trueTesting()
 	return {
 		type: 'SUBMIT'
 	}
@@ -160,5 +164,17 @@ export const increaseFontSize = () => {
 export const decreaseFontSize = () => {
 	return {
 		type: 'DECREASE_FONT_SIZE'
+	}
+}
+
+export const falseTesting = () => {
+	return {
+		type: 'FALSE_TESTING'
+	}
+}
+
+export const trueTesting = () => {
+	return {
+		type: 'TRUE_TESTING'
 	}
 }

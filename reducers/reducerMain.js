@@ -7,7 +7,8 @@ const initState = {
 	stateTab: false,
 	wordTab: false,
 	writeTab: false,
-	settingTab: false
+	settingTab: false,
+	isTesting: false,
 }
 export default function(state = initState, action) {
  	switch(action.type){
@@ -21,7 +22,8 @@ export default function(state = initState, action) {
 					stateTab: false,
 					wordTab: false,
 					writeTab: false,
-					settingTab: false
+					settingTab: false,
+					isTesting: false,
  				}
  			} else if (action.payload == 1) {
  				return {
@@ -32,7 +34,8 @@ export default function(state = initState, action) {
 					stateTab: false,
 					wordTab: false,
 					writeTab: false,
-					settingTab: false
+					settingTab: false,
+					isTesting: false,
  				}
  			} else if (action.payload == 2) {
  				return {
@@ -43,7 +46,8 @@ export default function(state = initState, action) {
 					stateTab: false,
 					wordTab: false,
 					writeTab: false,
-					settingTab: false
+					settingTab: false,
+					isTesting: true,
  				}
  			} else if (action.payload == 3) {
  				return {
@@ -54,7 +58,8 @@ export default function(state = initState, action) {
 					stateTab: true,
 					wordTab: false,
 					writeTab: false,
-					settingTab: false
+					settingTab: false,
+					isTesting: false,
  				}
  			} else if (action.payload == 4) {
  				return {
@@ -65,7 +70,8 @@ export default function(state = initState, action) {
 					stateTab: false,
 					wordTab: true,
 					writeTab: false,
-					settingTab: false
+					settingTab: false,
+					isTesting: false,
  				}
  			} else if (action.payload == 5) {
  				return {
@@ -76,7 +82,8 @@ export default function(state = initState, action) {
 					stateTab: false,
 					wordTab: false,
 					writeTab: true,
-					settingTab: false
+					settingTab: false,
+					isTesting: false,
  				}
  			} else if (action.payload == 6) {
  				return {
@@ -87,13 +94,27 @@ export default function(state = initState, action) {
 					stateTab: false,
 					wordTab: false,
 					writeTab: false,
-					settingTab: true
+					settingTab: true,
+					isTesting: false,
  				}
  			} else {
  				console.log('error occcured')
  			}
- 			return state
- 			break
+ 			return {
+ 				...state
+ 			}
+ 			//break
+ 		case 'TRUE_TESTING':
+ 			return {
+ 				...state,
+ 				isTesting: false,
+ 			}
+ 		case 'FALSE_TESTING':
+ 			return {
+ 				...state,
+ 				isTesting: true,
+ 			}
+ 			//break
  		default:
  			return state
  	}

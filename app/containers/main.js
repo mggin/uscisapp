@@ -34,13 +34,18 @@ import { changeTab } from '../../actions'
 import Tts from 'react-native-tts';
 
 class Main extends Component<{}> {
+
+  _onChangeTab(index) {
+    // Test.render()
+    this.props.changeTab(index)
+  }
   componentDidMount() {
     Tts.addEventListener('tts-start', (event) => console.log("start", event));
 Tts.addEventListener('tts-finish', (event) => console.log("finish", event));
 Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
     }
   render() {
-  console.log(this.props.mainData.settingTab)
+  //console.log(this.props.mainData.settingTab)
   console.disableYellowBox = true;
 
     const studyIcon = (
@@ -144,7 +149,7 @@ Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
         </Header>
         <Tabs renderTabBar={()=> <ScrollableTab />} 
               tabBarPosition='overlayBottom'
-              onChangeTab={(index) => this.props.changeTab(index)}
+              onChangeTab={(index) => this._onChangeTab(index)}
               tabBarUnderlineStyle={styles.tabBar_style}
               style={{backgroundColor: 'black'}}
               //tabStyle={{backgroundColor: '#000000', color: color.text}}

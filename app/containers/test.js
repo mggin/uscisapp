@@ -27,6 +27,7 @@ import {
   hideScore,
   submit,
   changeBtn,
+  falseTesting,
 } from '../../actions'
 import { connect } from 'react-redux'
 import { Icon } from 'native-base';
@@ -48,14 +49,16 @@ class Test extends Component<{}> {
     this.props.getTestData()
   }
   _nextFunc() {
-    this.state.count++
-    range = this.state.count - this.props.testData.currentIndex
+    this.props.testData.count++
+    range = this.props.testData.count - this.props.testData.currentIndex
     this.refs.swiper.scrollBy(range, false)
-    if (this.state.count == 18) {
+    if (this.props.testData.count == 2) {
        this.props.changeBtn()
        console.log('in')
-    } else if (this.state.count == 19) {
+    } else if (this.props.testData.count == 3) {
       this.props.submit()
+    } else {
+      console.log('submit')
     }
     
   }
@@ -72,15 +75,29 @@ class Test extends Component<{}> {
   }
   _udpateScreen() {
     this.props.getTestData()
-    this.setState({count: 0})
+    //this.props.setCountToZero()
     this.props.hideScore()
+    this.props.falseTesting()
+  }
+  _showTest() {
+    console.log(this.props.testData.showScore)
+    if (this.props.mainData.isTesting) {
+      if (this.props.testData.showScore) {
+        return true
+      } else {
+        console.log('false show score')
+        return false
+      }
+    } else {
+      return false
+    }
   }
   render() {
   console.disableYellowBox = true;
     
     return (
         <View style={{flex: 1}}>
-        { this.props.testData.showScore ?
+        { this._showTest() ?
           <View style={{flex: 1, backgroundColor: 'rgba(41, 128, 185,0.3)', alignItems: 'center'}}>
               <View style={styles.score_box}>
                  <Text style={styles.score_txt}>YOUR SCORE</Text>
@@ -101,73 +118,75 @@ class Test extends Component<{}> {
                       )
                     }
             </AnimatedCircularProgress>
-            <TouchableOpacity onPress={() => this._udpateScreen()} style={styles.beginBtn}>
+            <TouchableOpacity onPress={() => this._udpateScreen()} style={styles.beginBtn} activeOpacity={0.8}>
               <Text style={{fontFamily: font.cabin_bold, fontSize: 20, color: color.white}}>BEGIN TEST</Text>
             </TouchableOpacity>
     
           </View> :
           <View style={{flex: 1, backgroundColor: color.bg}}>
-            <Swiper style={styles.swiper_box}
-                        onTouchStart={() => this.props.resetResult()}
-                        onIndexChanged={(index) => this.props.indexChanged(index)}
-                        ref='swiper'
-                        //removeClippedSubviews={false}
-                        //autoplayTimeout={1}
-                        scrollEnabled={false}
-                        showsPagination={false}
-                        loop={false}>
+            <View style={styles.main} pointerEvents={this.props.testData.showResult ? 'none' : 'auto'}>
+              <Swiper style={styles.swiper_box}
+                          onTouchStart={() => this.props.resetResult()}
+                          onIndexChanged={(index) => this.props.indexChanged(index)}
+                          ref='swiper'
+                          //removeClippedSubviews={false}
+                          //autoplayTimeout={1}
+                          scrollEnabled={false}
+                          showsPagination={false}
+                          loop={false}>
 
-                {
-                  this.props.testData.testItems.map((data, index) => 
-                    <View style={styles.main} key={index} pointerEvents={true ? 'auto' : 'none'}>
-                      <View style={styles.ques_box}>
-                        <Text style={styles.count_txt}>{index+1}/20</Text>
-                        <Text style={styles.ques_txt}>{data.ques}</Text>
+                  {
+                    this.props.testData.testItems.map((data, index) => 
+                      <View style={styles.main} key={index}>
+                        <View style={styles.ques_box}>
+                          <Text style={styles.count_txt}>{index+1}/20</Text>
+                          <Text style={styles.ques_txt}>{data.ques}</Text>
+                        </View>
+                        <View style={styles.ans_box}>
+                          <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans0.correct)} activeOpacity={0.7}>
+                            {
+                              this._showResultElement(data.ans0.correct)
+                            }
+                            <View style={styles.choice_box}>
+                              <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans0.correct && true? 'yellow' : 'white'}}>{data.ans0.answer}</Text>
+                            </View>
+                          </TouchableOpacity>
+                          <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans1.correct)} activeOpacity={0.7}>
+                            {
+                              this._showResultElement(data.ans1.correct)
+                            }
+                            <View style={styles.choice_box}>
+                              <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans1.correct && true? 'yellow' : 'white'}}>{data.ans1.answer}</Text>
+                            </View>
+                          </TouchableOpacity>
+                          <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans2.correct)} activeOpacity={0.7}>
+                            {
+                              this._showResultElement(data.ans2.correct)
+                            }
+                            <View style={styles.choice_box}>
+                              <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans2.correct && true? 'yellow' : 'white'}}>{data.ans2.answer}</Text>
+                            </View>
+                          </TouchableOpacity>
+                          <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans3.correct)} activeOpacity={0.7}>
+                            {
+                              this._showResultElement(data.ans3.correct)
+                            }
+                            <View style={styles.choice_box}>
+                              <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans3.correct && true? 'yellow' : 'white'}}>{data.ans3.answer}</Text>
+                            </View>
+                          </TouchableOpacity>
+                          
+                        </View>
                       </View>
-                      <View style={styles.ans_box}>
-                        <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans0.correct)} activeOpacity={0.7}>
-                          {
-                            this._showResultElement(data.ans0.correct)
-                          }
-                          <View style={styles.choice_box}>
-                            <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans0.correct && true? 'yellow' : 'white'}}>{data.ans0.answer}</Text>
-                          </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans1.correct)} activeOpacity={0.7}>
-                          {
-                            this._showResultElement(data.ans1.correct)
-                          }
-                          <View style={styles.choice_box}>
-                            <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans1.correct && true? 'yellow' : 'white'}}>{data.ans1.answer}</Text>
-                          </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans2.correct)} activeOpacity={0.7}>
-                          {
-                            this._showResultElement(data.ans2.correct)
-                          }
-                          <View style={styles.choice_box}>
-                            <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans2.correct && true? 'yellow' : 'white'}}>{data.ans2.answer}</Text>
-                          </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans3.correct)} activeOpacity={0.7}>
-                          {
-                            this._showResultElement(data.ans3.correct)
-                          }
-                          <View style={styles.choice_box}>
-                            <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans3.correct && true? 'yellow' : 'white'}}>{data.ans3.answer}</Text>
-                          </View>
-                        </TouchableOpacity>
-                        
-                      </View>
-                    </View>
-                  )
-                }
+                    )
+                  }
 
-                </Swiper>
+                  </Swiper>
+                </View>
                 <View style={styles.next_box}>
                 { this.props.testData.nextBtn ?
                   <TouchableOpacity style={{backgroundColor: color.text, borderRadius: 50, paddingHorizontal: 25, paddingVertical: 3}}
-                                    activeOpacity={0.7}
+                                    activeOpacity={0.8}
                                     onPress={() => this._nextFunc()}>
                     {this.props.testData.isSubmit ? 
                     <Text style={styles.next_text}>VIEW RESULT</Text> :
@@ -245,14 +264,14 @@ const styles=StyleSheet.create({
     marginTop: 5,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#000000'
+    //backgroundColor: '#000000'
   },
   next_text: {
     fontFamily: font.cabin_semibold,
     color: color.white,
     fontSize: 16,
     paddingVertical: 5,
-    backgroundColor: '#000000'
+    //backgroundColor: '#000000'
   },
   beginBtn: {
     alignSelf: 'center',
@@ -265,9 +284,9 @@ const styles=StyleSheet.create({
   },
   score_txt: {
     fontFamily: font.cabin_bold,
-    fontSize: 25,
+    fontSize: 22,
     textAlign: 'center',
-    marginVertical: 20,
+    marginVertical: 15,
     color: color.white,
     //backgroundColor: '#000000',
     //marginBottom: 40,
@@ -289,6 +308,7 @@ const styles=StyleSheet.create({
 function mapStateToProps(state) {
   return {
     testData: state.testData,
+    mainData: state.mainData,
   }
 }
 function matchDispatchToProps(dispatch) {
@@ -299,7 +319,8 @@ function matchDispatchToProps(dispatch) {
     indexChanged,
     hideScore,
     submit,
-    changeBtn
+    changeBtn,
+    falseTesting
   }, dispatch);
 }
 
