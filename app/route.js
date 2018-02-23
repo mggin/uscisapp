@@ -34,12 +34,12 @@ class Route extends Component {
     //Alert.alert('hello')
     AsyncStorage.multiGet(['@fontSize', '@lang', '@score'])
       .then((fontInfo) => {
-         //console.log(fontInfo[0][1])
-         // console.log(fontInfo)
-         // console.log(fontInfo[0][1])
+        //console.log(fontInfo[0][1])
+        // console.log(fontInfo)
+        // console.log(fontInfo[0][1])
         // Alert.alert(fontInfo[0][1])
         //Alert.alert(fontInfo)
-         //this.props.getScore(fontInfo[2][1])
+        //this.props.getScore(fontInfo[2][1])
          this.props.getFontInfo(fontInfo[0][1], fontInfo[1][1])
          if (fontInfo[1][1] == 'BURMESE') {
             //this.props.setBurmeseLang(value)
@@ -52,7 +52,7 @@ class Route extends Component {
           }
       })
       AsyncStorage.getItem('@score', (err, result) => {
-            Alert.alert(result+ 'here')
+            //Alert.alert(result+ 'here')
             this.props.getScore(result)
       })
   }

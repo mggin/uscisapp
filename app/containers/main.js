@@ -156,6 +156,7 @@ Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
               onChangeTab={(index) => this._onChangeTab(index)}
               tabBarUnderlineStyle={styles.tabBar_style}
               style={{backgroundColor: 'black'}}
+              //scrollWithoutAnimation={true}
               //tabStyle={{backgroundColor: '#000000', color: color.text}}
               locked={true}>
           <Tab heading={studyIcon}>
@@ -167,14 +168,14 @@ Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
           <Tab heading={testIcon}>
             <Test />
           </Tab>
-          <Tab heading={stateIcon}>
-            <State />
-          </Tab>
           <Tab heading={wordIcon}>
             <Words />
           </Tab>
           <Tab heading={writeIcon}>
             <Writing />
+          </Tab>
+          <Tab heading={stateIcon}>
+            <State />
           </Tab>
           <Tab heading={settingIcon}>
             <Setting />

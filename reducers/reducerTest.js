@@ -126,9 +126,6 @@ export default function(state = initState, action) {
  				isSuccess = true
  			}
  			AsyncStorage.setItem('@score', percentage.toString())
-      		AsyncStorage.getItem('@score', (err, result) => {
-      			Alert.alert(result+"kkkk")
-    		})
  			return {
  				...state,
  				showScore: true,

@@ -53,10 +53,10 @@ class Test extends Component<{}> {
     this.props.testData.count++
     range = this.props.testData.count - this.props.testData.currentIndex
     this.refs.swiper.scrollBy(range, false)
-    if (this.props.testData.count == 2) {
+    if (this.props.testData.count == 19) {
        this.props.changeBtn()
        console.log('in')
-    } else if (this.props.testData.count == 3) {
+    } else if (this.props.testData.count == 20) {
       this.props.submit()
     } else {
       console.log('submit')

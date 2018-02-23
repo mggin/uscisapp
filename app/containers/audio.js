@@ -64,7 +64,7 @@ class Audio extends Component<{}> {
         </View>
         <View style={styles.control_box}>
           <View style={styles.auto_box}>
-            <Text style={{fontFamily: font.cabin_bold, color: color.text}}>AUTO</Text>
+            <Text style={{fontFamily: font.cabin_bold, color: color.white}}>AUTO</Text>
           </View>
           <View style={styles.btn_box}>
             <TouchableOpacity style={styles.skip_backward} onPress={() => this.props.changeAudio('PREV')}>
@@ -79,7 +79,7 @@ class Audio extends Component<{}> {
           </View>
           <TouchableOpacity style={styles.repeat_box} onPress={() => this.props.loopControl()}>
             <View>
-              {this.props.audioData.loop ? <Icon name='ios-repeat' style={{fontSize: 30, color: color.icon_outline}}/> : <Icon name='ios-repeat' style={{fontSize: 30, color: color.white}}/> } 
+              {this.props.audioData.loop ? <Icon name='ios-repeat' style={{fontSize: 30, color: color.red}}/> : <Icon name='ios-repeat' style={{fontSize: 30, color: color.white}}/> } 
             </View>
           </TouchableOpacity>
         </View>
