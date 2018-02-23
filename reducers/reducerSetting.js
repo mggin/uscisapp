@@ -20,7 +20,7 @@ export default function(state = initState, action) {
         return state 
       } else {
         //console.log(action.size)
-        Alert.alert(action.lang)
+        //Alert.alert(action.lang)
         if (action.lang == 'ZOMI') {
           return {
             ...state,
@@ -29,7 +29,7 @@ export default function(state = initState, action) {
             fontSize: parseInt(action.fontSize)
           }
         } else if (action.lang == 'BURMESE') {
-          Alert.alert(action.lang)
+          //Alert.alert(action.lang)
           return {
             ...state,
             zomiLang: false,

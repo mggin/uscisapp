@@ -201,3 +201,15 @@ export const showScore = () => {
 		type: 'SHOW_SCORE'
 	}
 }
+
+export const getScore = (score) => {
+	return {
+		type: 'GET_SCORE',
+		payload: score
+	}
+}
+export const storeScore = () => {
+	return {
+		type: 'STORE_SCORE',
+	}
+}

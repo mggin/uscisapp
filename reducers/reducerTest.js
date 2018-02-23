@@ -1,6 +1,6 @@
 import fs from 'react-native-fs'
 import * as color from '../app/components/color';
-import { Alert } from 'react-native'
+import { Alert, AsyncStorage } from 'react-native'
 const Realm = require('realm')
 
 const initState = {
@@ -125,6 +125,10 @@ export default function(state = initState, action) {
   			if (percentage >= 50) {
  				isSuccess = true
  			}
+ 			AsyncStorage.setItem('@score', percentage.toString())
+      		AsyncStorage.getItem('@score', (err, result) => {
+      			Alert.alert(result+"kkkk")
+    		})
  			return {
  				...state,
  				showScore: true,
@@ -141,6 +145,21 @@ export default function(state = initState, action) {
  			return {
  				...state,
  				isSubmit: true
+ 			}
+ 		}
+ 		
+ 		case 'GET_SCORE': {
+ 			if (action.payload == null) {
+ 				Alert.alert(action.payload)
+ 				return {
+ 					...state,
+ 					percentage: 0,
+ 				}
+ 			} else {
+				return {
+ 					...state,
+ 					percentage: parseInt(action.payload)
+ 				}
  			}
  		}
  		default:

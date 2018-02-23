@@ -12,6 +12,7 @@ import {
   View,
   Image,
   ScrollView,
+  AsyncStorage
 } from 'react-native';
 import { 
   responsiveHeight, 
@@ -30,13 +31,14 @@ import Writing from './writing';
 import Setting from './setting';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { changeTab, showScore, setFontInfo } from '../../actions'
+import { changeTab, showScore, setFontInfo, storeScore } from '../../actions'
 import Tts from 'react-native-tts';
 
 class Main extends Component<{}> {
 
   _onChangeTab(index) {
     // Test.render()
+    //this.props.storeScore()
     this.props.showScore()
     this.props.setFontInfo()
     this.props.changeTab(index)
@@ -155,7 +157,7 @@ Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
               tabBarUnderlineStyle={styles.tabBar_style}
               style={{backgroundColor: 'black'}}
               //tabStyle={{backgroundColor: '#000000', color: color.text}}
-              locked={false}>
+              locked={true}>
           <Tab heading={studyIcon}>
             <Study />
           </Tab>
@@ -232,7 +234,8 @@ function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     changeTab,
     showScore,
-    setFontInfo
+    setFontInfo,
+    storeScore,
   }, dispatch);
 }
 
