@@ -1,4 +1,4 @@
-export const bg = '#3498dbc1'
+export const bg = '#002868ff'
 export const icon_filled = '#3498db'
 export const icon_outline = '#333333'
 export const text = '#2d3436'

@@ -84,7 +84,7 @@ const styles=StyleSheet.create({
   },
   item_box: {
     flexDirection: 'row',
-    borderColor: 'rgba(52, 152, 219, 0.5)',
+    borderColor: color.bg,
     borderWidth: StyleSheet.hairlineWidth,
     marginHorizontal: 0,
     backgroundColor: color.white,

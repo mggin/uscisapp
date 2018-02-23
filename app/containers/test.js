@@ -13,6 +13,7 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   Image,
+  Alert
 } from 'react-native';
 import { 
   responsiveHeight, 
@@ -86,6 +87,7 @@ class Test extends Component<{}> {
         return true
       } else {
         console.log('false show score')
+        //Alert.alert('Alert Title')
         return false
       }
     } else {
@@ -185,7 +187,7 @@ class Test extends Component<{}> {
                 </View>
                 <View style={styles.next_box}>
                 { this.props.testData.nextBtn ?
-                  <TouchableOpacity style={{backgroundColor: color.text, borderRadius: 50, paddingHorizontal: 25, paddingVertical: 3}}
+                  <TouchableOpacity style={styles.nav_box}
                                     activeOpacity={0.8}
                                     onPress={() => this._nextFunc()}>
                     {this.props.testData.isSubmit ? 
@@ -246,6 +248,8 @@ const styles=StyleSheet.create({
     flex: 1,
     borderRadius: 5,
     backgroundColor: color.text,
+    borderColor: color.white,
+    borderWidth: StyleSheet.hairlineWidth,
     paddingHorizontal: 15,
     paddingVertical: 15,
     //marginLeft: 7,
@@ -270,7 +274,7 @@ const styles=StyleSheet.create({
     fontFamily: font.cabin_semibold,
     color: color.white,
     fontSize: 16,
-    paddingVertical: 5,
+    paddingVertical: 7,
     //backgroundColor: '#000000'
   },
   beginBtn: {
@@ -302,6 +306,14 @@ const styles=StyleSheet.create({
     width: 25,
     height: 25,
     marginRight: 5,
+  },
+  nav_box: {
+    borderColor: color.white,
+    borderWidth: StyleSheet.hairlineWidth,
+    backgroundColor: color.text,
+    borderRadius: 50,
+    paddingHorizontal: 25,
+    paddingVertical: 3
   }
 })
 

@@ -1,8 +1,24 @@
+import { Alert } from 'react-native'
+
 export const getCardData = (value) => {
 	return {
 		type: 'GET_CARD_DATA',
 		payload: value,
 	}
+}
+
+export const getFontInfo = (fontSize, lang) => {
+	return {
+		type: 'GET_FONT_INFO',
+		fontSize,
+		lang
+	}
+}
+
+export const setFontInfo = () => {
+  return {
+    type: 'SET_FONT_INFO'
+  }
 }
 
 export const setCardData = (value) => {
@@ -106,8 +122,9 @@ export const indexChanged = (value) => {
 }
 
 export const changeTab = (value) => {
-	hideScore();
-	getTestData();
+	//Alert.alert('Alert Title')
+	//hideScore();
+	//getTestData();
 	return {
 		type: 'CHANGE_TAB',
 		payload: value.i,
@@ -176,5 +193,11 @@ export const falseTesting = () => {
 export const trueTesting = () => {
 	return {
 		type: 'TRUE_TESTING'
+	}
+}
+
+export const showScore = () => {
+	return {
+		type: 'SHOW_SCORE'
 	}
 }

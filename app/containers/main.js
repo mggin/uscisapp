@@ -30,13 +30,15 @@ import Writing from './writing';
 import Setting from './setting';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { changeTab } from '../../actions'
+import { changeTab, showScore, setFontInfo } from '../../actions'
 import Tts from 'react-native-tts';
 
 class Main extends Component<{}> {
 
   _onChangeTab(index) {
     // Test.render()
+    this.props.showScore()
+    this.props.setFontInfo()
     this.props.changeTab(index)
   }
   componentDidMount() {
@@ -142,7 +144,7 @@ Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
     return (
       <Container>
         <Header hasTabs
-                style={{backgroundColor: "#4a86e8ff"}}>
+                style={{backgroundColor: "#bf0a30ff"}}>
           <Body>
             <Title style={{fontFamily: font.righteous, color: color.white, fontSize: 20}}>USCIS</Title>
           </Body>
@@ -153,7 +155,7 @@ Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
               tabBarUnderlineStyle={styles.tabBar_style}
               style={{backgroundColor: 'black'}}
               //tabStyle={{backgroundColor: '#000000', color: color.text}}
-              locked={true}>
+              locked={false}>
           <Tab heading={studyIcon}>
             <Study />
           </Tab>
@@ -228,7 +230,9 @@ function mapStateToProps(state) {
 }
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    changeTab
+    changeTab,
+    showScore,
+    setFontInfo
   }, dispatch);
 }
 

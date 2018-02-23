@@ -1,5 +1,5 @@
 
-import { AsyncStorage, Dimensions} from 'react-native'
+import { AsyncStorage, Alert} from 'react-native'
 
 const initState = {
 	zomiLang: true,
@@ -13,26 +13,57 @@ export default function(state = initState, action) {
   switch(action.type) {
     case 'GET_FONT_INFO':
       //console.log('get font')
-      console.log(action.family + action.size)
-      if (action.size == null || action.family == null) {
+      //console.log(action.family + action.size)
+      if (action.fontSize == null || action.lang == null) {
         console.log('nan')
+        Alert.alert('nan')
         return state 
       } else {
         //console.log(action.size)
+        Alert.alert(action.lang)
+        if (action.lang == 'ZOMI') {
+          return {
+            ...state,
+            zomiLang: true,
+            burmeseLang: false,
+            fontSize: parseInt(action.fontSize)
+          }
+        } else if (action.lang == 'BURMESE') {
+          Alert.alert(action.lang)
+          return {
+            ...state,
+            zomiLang: false,
+            burmeseLang: true,
+            fontSize: parseInt(action.fontSize)
+          }
+        } else {}
         return {
-          ...state,
-          fontFamily: action.family,
-          fontSize: parseInt(action.size),
+          ...state
         }
-        
-
       }
     case 'SET_FONT_INFO':
       //console.log('set info' + state.fontFamily)
+      let language;
+      if (state.zomiLang) {
+        language = 'ZOMI'
+      } else {
+        language = 'BURMESE'
+      }
       let stringFontSize = state.fontSize.toString()
-      const fontInfoSet = [['@lang', state.lang], ['@fontSize', stringFontSize]]
+      const fontInfoSet = [['@lang', language], ['@fontSize', stringFontSize]]
       // console.log(fontInfo)
       AsyncStorage.multiSet(fontInfoSet)
+      /*
+      AsyncStorage.multiGet(['@fontSize', '@lang'])
+      .then((fontInfo) => {
+         //console.log(fontInfo[0][1])
+         // console.log(fontInfo)
+         // console.log(fontInfo[0][1])
+         Alert.alert(fontInfo[0][1], fontInfo[1][1])
+
+         //this.props.getFontInfo(fontInfo[0][1], fontInfo[1][1])
+    })
+    */
       return state
     case 'SET_ZOMI_LANG':
     	if (!action.payload) {

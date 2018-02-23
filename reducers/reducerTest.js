@@ -1,5 +1,6 @@
 import fs from 'react-native-fs'
 import * as color from '../app/components/color';
+import { Alert } from 'react-native'
 const Realm = require('realm')
 
 const initState = {
@@ -39,8 +40,8 @@ const test = {
 export default function(state = initState, action) {
  	switch(action.type){
  		case 'GET_ALL_TEST_DATA':
- 			//const realm = new Realm({path: fs.LibraryDirectoryPath + '/' + 'uscis_test.realm', scheme: [test]})
- 			const realm = new Realm({path: fs.MainBundlePath + '/' + 'uscis_test.realm', scheme: [test]})
+ 			const realm = new Realm({path: fs.LibraryDirectoryPath + '/' + 'uscis_test.realm', scheme: [test]})
+ 			//const realm = new Realm({path: fs.MainBundlePath + '/' + 'uscis_test.realm', scheme: [test]})
  		    const dataObj = realm.objects('test')
  		    const allTestData = []
  		    for (let data of dataObj) {
@@ -104,11 +105,18 @@ export default function(state = initState, action) {
  				nextBtn: false,
  			}
  		case 'HIDE_SCORE':
+ 		//Alert.alert('Hide Score')
  			return {
  				...state,
  				showScore: false,
  				//isTesting: true,
  			}
+ 		case 'SHOW_SCORE': {
+ 			return {
+ 				...state,
+ 				showScore: true,
+ 			}
+ 		}
  		case 'SUBMIT':
  			let percentage = state.score * 100/20
  			console.log(state.score)
