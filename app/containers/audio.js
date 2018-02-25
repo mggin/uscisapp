@@ -44,42 +44,47 @@ class Audio extends Component<{}> {
   //console.log(this.props.studyData.engData)
   console.disableYellowBox = true;
   const fontSize = this.props.settingData.fontSize
+  const lineHeight = this.props.settingData.fontSize + 10
+  const marginHorizontal = this.props.layoutData.audioMarginLeft
+  const marginLeft = this.props.layoutData.audioMarginLeft
+  const iconSize = this.props.layoutData.audioIconSize
+  const marginHorizontalOfControlBox = this.props.layoutData.audioMarginLeft - 30
 
     
     return (
       <View style={{flex: 1, backgroundColor: color.bg}}>
-        <View style={styles.num_box}>
+        <View style={[styles.num_box, {marginLeft}]}>
           <View style={styles.num_style}>
             <Text style={styles.num_text}>{this.props.audioData.index}/100</Text>
           </View>
         </View>
-        <View style={styles.txt_box}>
+        <View style={[styles.txt_box, {marginHorizontal}]}>
           <View style={styles.card_innerbox}>
-            <Text style={[styles.card_txt, {fontSize}]}>{this.props.studyData.engData[this.props.audioData.index - 1].quesEng}</Text>
+            <Text style={[styles.card_txt, {fontSize, lineHeight}]}>{this.props.studyData.engData[this.props.audioData.index - 1].quesEng}</Text>
           </View>
           <Text style={styles.dash_line}> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  </Text>
           <View style={styles.card_innerbox}>
-             <Text style={[styles.card_txt, {fontSize}]}>{this.props.studyData.engData[this.props.audioData.index - 1].ansEng}</Text>
+             <Text style={[styles.card_txt, {fontSize, lineHeight}]}>{this.props.studyData.engData[this.props.audioData.index - 1].ansEng}</Text>
           </View>
         </View>
-        <View style={styles.control_box}>
+        <View style={[styles.control_box, {marginHorizontal: marginHorizontalOfControlBox}]}>
           <View style={styles.auto_box}>
-            <Text style={{fontFamily: font.cabin_bold, color: color.white}}>AUTO</Text>
+            <Text style={{fontFamily: font.cabin_bold, color: color.white, fontSize: iconSize - 15}}>AUTO</Text>
           </View>
           <View style={styles.btn_box}>
             <TouchableOpacity style={styles.skip_backward} onPress={() => this.props.changeAudio('PREV')}>
-              <Icon name='md-skip-backward' style={{fontSize: 20, color: 'white'}}/>
+              <Icon name='md-skip-backward' style={{fontSize: iconSize - 10, color: 'white'}}/>
             </TouchableOpacity>
             <TouchableOpacity style={styles.play_box} onPress={() => this.props.controlAudio()}>
-              { this.props.audioData.isPlaying ? <Icon name='md-pause' style={{fontSize: 30, color: 'white'}}/> :  <Icon name='md-play' style={{fontSize: 30, color: 'white'}}/> }
+              { this.props.audioData.isPlaying ? <Icon name='md-pause' style={{fontSize: iconSize, color: 'white'}}/> :  <Icon name='md-play' style={{fontSize: iconSize, color: 'white'}}/> }
             </TouchableOpacity>
             <TouchableOpacity style={styles.skip_forward} onPress={() => this.props.changeAudio('NEXT')}>
-              <Icon name='md-skip-forward' style={{fontSize: 20, color: 'white'}}/>
+              <Icon name='md-skip-forward' style={{fontSize: iconSize - 10, color: 'white'}}/>
             </TouchableOpacity>
           </View>
           <TouchableOpacity style={styles.repeat_box} onPress={() => this.props.loopControl()}>
             <View>
-              {this.props.audioData.loop ? <Icon name='ios-repeat' style={{fontSize: 30, color: color.red}}/> : <Icon name='ios-repeat' style={{fontSize: 30, color: color.white}}/> } 
+              {this.props.audioData.loop ? <Icon name='ios-repeat' style={{fontSize: iconSize, color: color.red}}/> : <Icon name='ios-repeat' style={{fontSize: iconSize, color: color.white}}/> } 
             </View>
           </TouchableOpacity>
         </View>
@@ -93,20 +98,24 @@ const styles=StyleSheet.create({
   txt_box: {
     flex: 4,
     marginVertical: 20,
-    marginHorizontal: 20,
+    //marginHorizontal: 20,
   },
   num_box: {
-    marginTop: 30,
-    marginLeft: 20,
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: color.white,
-    width: responsiveWidth(22),
-    justifyContent: 'center',
-    alignItems: 'center',
+    flex: 1,
+    marginVertical: 10,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
+    //backgroundColor: '#000000'
+  },
+  num_style: {
     borderRadius: 5,
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
     paddingVertical: 5,
+    //width: responsiveWidth(22),
+    borderWidth: 1.5,
+    borderColor: color.white,
+    justifyContent: 'center',
+    alignItems: 'center', 
   },
   num_text: {
     fontFamily: font.cabin_semibold,
@@ -172,6 +181,7 @@ function mapStateToProps(state) {
     audioData: state.audioData,
     studyData: state.studyData,
     settingData: state.settingData,
+    layoutData: state.layoutData
 
   }
 }

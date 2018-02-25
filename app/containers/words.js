@@ -79,7 +79,7 @@ class Words extends Component<{}> {
 
     
     return (
-      <View style={{flex: 1, backgroundColor: color.bg}}>
+      <View style={{flex: 1, backgroundColor: 'white'}}>
         <SectionList
           style={styles.section_style}
           sections={dataSource}

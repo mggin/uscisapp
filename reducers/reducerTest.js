@@ -40,8 +40,8 @@ const test = {
 export default function(state = initState, action) {
  	switch(action.type){
  		case 'GET_ALL_TEST_DATA':
- 			const realm = new Realm({path: fs.LibraryDirectoryPath + '/' + 'uscis_test.realm', scheme: [test]})
- 			//const realm = new Realm({path: fs.MainBundlePath + '/' + 'uscis_test.realm', scheme: [test]})
+ 			//const realm = new Realm({path: fs.LibraryDirectoryPath + '/' + 'uscis_test.realm', scheme: [test]})
+ 			const realm = new Realm({path: fs.MainBundlePath + '/' + 'uscis_test.realm', scheme: [test]})
  		    const dataObj = realm.objects('test')
  		    const allTestData = []
  		    for (let data of dataObj) {
@@ -147,15 +147,20 @@ export default function(state = initState, action) {
  		
  		case 'GET_SCORE': {
  			if (action.payload == null) {
- 				Alert.alert(action.payload)
+ 				//Alert.alert(action.payload)
  				return {
  					...state,
  					percentage: 0,
  				}
  			} else {
+ 				let isSuccess;
+ 				if (parseInt(action.payload) >= 50) {
+ 					isSuccess = true
+ 				}
 				return {
  					...state,
- 					percentage: parseInt(action.payload)
+ 					percentage: parseInt(action.payload),
+ 					isSuccess
  				}
  			}
  		}

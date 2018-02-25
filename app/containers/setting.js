@@ -101,7 +101,7 @@ const styles=StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: color.white,
-    marginTop: 0.8,
+    marginVertical: 0,
   },
   itemtxt: {
     flex: 4,
@@ -113,10 +113,13 @@ const styles=StyleSheet.create({
   switch_box: {
     flex: 1,
     padding: 10,
+    //backgroundColor: '#000000',
+    alignItems: 'flex-end',
+    marginRight: 20,
   },
   font_box: {
     flexDirection: 'row',
-    marginRight: 20,
+    marginRight: 30,
     borderColor: color.text,
     borderWidth: 0.5,
     borderRadius: 3
@@ -128,7 +131,7 @@ const styles=StyleSheet.create({
     margin: 5,
   },
   switch_style: {
-    padding: 10,
+    //padding: 10,
 
   },
   font_sty: {

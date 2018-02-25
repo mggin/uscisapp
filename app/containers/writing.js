@@ -60,7 +60,7 @@ class Writing extends Component<{}> {
 
     
     return (
-      <View style={{flex: 1, backgroundColor: color.bg}}>
+      <View style={{flex: 1, backgroundColor: 'white'}}>
         <FlatList
           style={styles.section_style}
           data={words.writingContent} 

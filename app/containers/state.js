@@ -62,7 +62,7 @@ class State extends Component<{}> {
           this.setState({searchStateList: this.state.stateList })
       }       
   }
-  _renderItems(state, index, fontSize) {
+  _renderItems(state, index, fontSize, lineHeight) {
     const tab = '     '
     // const fontSize = this.props.settingData.fontSize
     return (
@@ -72,7 +72,7 @@ class State extends Component<{}> {
             <Image source={state.flag} style={{}}/>
           </View>
           <View style={styles.name_box}>
-            <Text style={styles.name_txt}>{state.name}</Text>
+            <Text style={[styles.name_txt, {fontSize, lineHeight}]}>{state.name}</Text>
           </View>
           <View style={styles.num_box}>
             <Text style={styles.num_text}>{index+1}</Text>
@@ -80,10 +80,10 @@ class State extends Component<{}> {
         </View>
         <View style={styles.box_two}>
           <View style={styles.city_box}>
-            <Text style={[styles.city_txt, {fontSize}]}>City:{tab}{tab}{tab}{state.city}</Text>
+            <Text style={[styles.city_txt, {fontSize, lineHeight}]}>City:{tab}{tab}{tab}{state.city}</Text>
           </View>
           <View style={styles.governor_box}>
-            <Text style={[styles.governor_txt, {fontSize}]}>Governor:{tab}{state.governor}</Text>
+            <Text style={[styles.governor_txt, {fontSize, lineHeight}]}>Governor:{tab}{state.governor}</Text>
           </View>
         </View>
       </View>
@@ -92,17 +92,18 @@ class State extends Component<{}> {
   render() {
     console.log('state.js')
     const fontSize = this.props.settingData.fontSize - 1
+    const lineHeight = this.props.settingData.fontSize + 10
     const header = <SearchBar placeholder="search" 
                               //placeholderTextColor="#000000"
-                              //containerStyle={{height: 100,alignItems: 'center'}}
-                              inputStyle={{color: '#000'}}
-                              lightTheme
+                              containerStyle={{backgroundColor: color.bg, borderColor: 'white'}}
+                              inputStyle={{backgroundColor: 'white'}}
+                              //lightTheme
                               onChangeText={(text) => this._searchAction(text)} round />;
     return (
-      <View style={{flex: 1, backgroundColor: color.blue_color}}>
+      <View style={{flex: 1, backgroundColor: 'white'}}>
         <FlatList data={this.state.searchStateList}
                   ListHeaderComponent={header}
-                  renderItem={({item, index}) => this._renderItems(item, index, fontSize )}
+                  renderItem={({item, index}) => this._renderItems(item, index, fontSize, lineHeight)}
         />
         <View style={{height: responsiveHeight(8)}}/>
       </View>
@@ -165,7 +166,6 @@ const styles=StyleSheet.create({
   governor_txt: {
     fontFamily: font.cabin_regular,
     fontWeight: '500',
-    lineHeight: 22,
     color: color.text,
     //fontSize: 15,
   },

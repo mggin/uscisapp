@@ -70,10 +70,13 @@ class Study extends Component<{}> {
   //Piggy wake up early!!
   //Don't leave me on seen please again.:-)
   const fontSize = this.props.settingData.fontSize
+  const lineHeight = this.props.settingData.fontSize + 10
+  const marginHorizontal = this.props.layoutData.studyMarginHorizontal
+  const marginLeft = this.props.layoutData.studyMarginHorizontal
     return (
       <View style={{flex: 1, backgroundColor: color.white}}> 
         <View style={{flex: 1, backgroundColor: color.bg}}>
-          <View style={styles.num_box}>
+          <View style={[styles.num_box, {marginLeft}]}>
             <View style={styles.num_style}>
               <Text style={styles.num_text}>{this.props.flashCard.count + 1}/100</Text>
             </View>
@@ -105,14 +108,14 @@ class Study extends Component<{}> {
                  //Shwe Htoo Infinity was driving me crazy !!!!!
                   renderCard={(data) => {
                     return (
-                      <View style={styles.card_style}>
+                      <View style={[styles.card_style, {marginHorizontal}]}>
                    <TouchableOpacity style={{flex: 1}} key={data.id} activeOpacity={0.7} onPress={() => this.props.flipCard()}>
                     <View style={styles.card_innerbox}>
-                      <Text style={[styles.card_txt, {fontSize}]}>{this.props.flashCard.front ? data.quesEng : data.quesLang}</Text>
+                      <Text style={[styles.card_txt, {fontSize, lineHeight}]}>{this.props.flashCard.front ? data.quesEng : data.quesLang}</Text>
                     </View>
                     <Text style={styles.dash_line}> . . . . . . . . </Text>
-                    <ScrollView style={styles.card_innerbox} adjustsFontSizeToFit={true}>
-                       <Text style={[styles.card_txt, {fontSize}]}>{this.props.flashCard.front ? data.ansEng : data.ansLang}</Text>
+                    <ScrollView style={styles.card_innerbox}>
+                       <Text style={[styles.card_txt, {fontSize, lineHeight}]}>{this.props.flashCard.front ? data.ansEng : data.ansLang}</Text>
                     </ScrollView>
                   </TouchableOpacity>
                   </View>
@@ -146,7 +149,6 @@ class Study extends Component<{}> {
 const styles=StyleSheet.create({
   num_box: {
     flex: 1,
-    marginLeft: 15,
     marginVertical: 15,
     justifyContent: 'center',
     alignItems: 'flex-start',
@@ -167,14 +169,13 @@ const styles=StyleSheet.create({
     borderRadius: 5,
     padding: 15,
     overflow: 'hidden',
-    marginHorizontal: 15,
     backgroundColor: 'white',
   },
   num_style: {
     borderRadius: 5,
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
     paddingVertical: 5,
-    width: responsiveWidth(22),
+    //width: responsiveWidth(22),
     borderWidth: 1.5,
     borderColor: color.white,
     justifyContent: 'center',
@@ -190,7 +191,6 @@ const styles=StyleSheet.create({
   },
   card_txt: {
     fontFamily: font.cabin_regular,
-    lineHeight: 25,
     color: color.text,
   },
   dash_line: {
@@ -202,7 +202,8 @@ function mapStateToProps(state) {
   return {
     studyData: state.studyData,
     flashCard: state.flashCard,
-    settingData: state.settingData
+    settingData: state.settingData,
+    layoutData: state.layoutData
   }
 }
 function matchDispatchToProps(dispatch) {

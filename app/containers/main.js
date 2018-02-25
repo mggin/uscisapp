@@ -44,13 +44,14 @@ class Main extends Component<{}> {
     this.props.changeTab(index)
   }
   componentDidMount() {
-    Tts.addEventListener('tts-start', (event) => console.log("start", event));
-Tts.addEventListener('tts-finish', (event) => console.log("finish", event));
-Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
+    //Tts.addEventListener('tts-start', (event) => console.log("start", event));
+    //Tts.addEventListener('tts-finish', (event) => console.log("finish", event));
+    //Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
     }
   render() {
   //console.log(this.props.mainData.settingTab)
   console.disableYellowBox = true;
+  const fontSize = this.props.layoutData.audioIconSize - 10
 
     const studyIcon = (
       <View style={styles.icon_box}>
@@ -148,14 +149,16 @@ Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
         <Header hasTabs
                 style={{backgroundColor: "#bf0a30ff"}}>
           <Body>
-            <Title style={{fontFamily: font.righteous, color: color.white, fontSize: 20}}>USCIS</Title>
+            <Title style={{fontFamily: font.righteous, color: color.white, fontSize}}>USCIS</Title>
           </Body>
         </Header>
-        <Tabs renderTabBar={()=> <ScrollableTab />} 
-              tabBarPosition='overlayBottom'
+        <Tabs renderTabBar={()=> <ScrollableTab tabBarBackgroundColor={color.bg} />} 
+              tabBarPosition='bottom'
               onChangeTab={(index) => this._onChangeTab(index)}
               tabBarUnderlineStyle={styles.tabBar_style}
-              style={{backgroundColor: 'black'}}
+              style={{color: 'black'}}
+              tabBarBackgroundColor={color.white}
+              //tabBarBackgroundColor={color.bg}
               //scrollWithoutAnimation={true}
               //tabStyle={{backgroundColor: '#000000', color: color.text}}
               locked={true}>
@@ -196,7 +199,7 @@ const styles=StyleSheet.create({
   },
    icon_box: {
     flexDirection: 'column',
-    //backgroundColor: 'black'
+    backgroundColor: color.white
   },
   tabBar_style: {
     backgroundColor: color.white_color,
@@ -229,6 +232,7 @@ const styles=StyleSheet.create({
 function mapStateToProps(state) {
   return {
     mainData: state.mainData,
+    layoutData: state.layoutData
   }
 }
 function matchDispatchToProps(dispatch) {

@@ -213,3 +213,9 @@ export const storeScore = () => {
 		type: 'STORE_SCORE',
 	}
 }
+
+export const layoutChanged = () => {
+	return {
+		type: 'LAYOUT_CHANGED'
+	}
+}

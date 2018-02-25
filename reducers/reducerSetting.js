@@ -16,7 +16,7 @@ export default function(state = initState, action) {
       //console.log(action.family + action.size)
       if (action.fontSize == null || action.lang == null) {
         console.log('nan')
-        Alert.alert('nan')
+        //Alert.alert('nan')
         return state 
       } else {
         //console.log(action.size)

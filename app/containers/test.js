@@ -96,6 +96,11 @@ class Test extends Component<{}> {
   }
   render() {
   console.disableYellowBox = true;
+  const circleSize = this.props.layoutData.testCircleSize
+  const circleWidth = this.props.layoutData.testCircleSize / 13
+  const marginHorizontal = this.props.layoutData.testMargin
+  const marginTop = this.props.layoutData.marginTopOfTest
+  const fontSize = this.props.layoutData.audioIconSize - 10
     
     return (
         <View style={{flex: 1}}>
@@ -105,8 +110,8 @@ class Test extends Component<{}> {
                  <Text style={styles.score_txt}>YOUR SCORE</Text>
               </View>
               <AnimatedCircularProgress
-                    size={200}
-                    width={15}
+                    size={circleSize}
+                    width={circleWidth}
                     style={{alignSelf: 'center'}}
                     fill={this.props.testData.percentage}
                     tintColor={this.props.testData.isSuccess ? color.green: color.red}
@@ -121,12 +126,12 @@ class Test extends Component<{}> {
                     }
             </AnimatedCircularProgress>
             <TouchableOpacity onPress={() => this._udpateScreen()} style={styles.beginBtn} activeOpacity={0.8}>
-              <Text style={{fontFamily: font.cabin_bold, fontSize: 20, color: color.white}}>BEGIN TEST</Text>
+              <Text style={{fontFamily: font.cabin_bold, fontSize, color: color.white}}>BEGIN TEST</Text>
             </TouchableOpacity>
     
           </View> :
           <View style={{flex: 1, backgroundColor: color.bg}}>
-            <View style={styles.main} pointerEvents={this.props.testData.showResult ? 'none' : 'auto'}>
+            <View style={[styles.main, {marginHorizontal}]} pointerEvents={this.props.testData.showResult ? 'none' : 'auto'}>
               <Swiper style={styles.swiper_box}
                           onTouchStart={() => this.props.resetResult()}
                           onIndexChanged={(index) => this.props.indexChanged(index)}
@@ -139,13 +144,13 @@ class Test extends Component<{}> {
 
                   {
                     this.props.testData.testItems.map((data, index) => 
-                      <View style={styles.main} key={index}>
+                      <View style={[styles.main, {marginTop}]} key={index}>
                         <View style={styles.ques_box}>
                           <Text style={styles.count_txt}>{index+1}/20</Text>
                           <Text style={styles.ques_txt}>{data.ques}</Text>
                         </View>
                         <View style={styles.ans_box}>
-                          <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans0.correct)} activeOpacity={0.7}>
+                          <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans0.correct)} activeOpacity={0.6}>
                             {
                               this._showResultElement(data.ans0.correct)
                             }
@@ -153,7 +158,7 @@ class Test extends Component<{}> {
                               <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans0.correct && true? 'yellow' : 'white'}}>{data.ans0.answer}</Text>
                             </View>
                           </TouchableOpacity>
-                          <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans1.correct)} activeOpacity={0.7}>
+                          <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans1.correct)} activeOpacity={0.6}>
                             {
                               this._showResultElement(data.ans1.correct)
                             }
@@ -161,7 +166,7 @@ class Test extends Component<{}> {
                               <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans1.correct && true? 'yellow' : 'white'}}>{data.ans1.answer}</Text>
                             </View>
                           </TouchableOpacity>
-                          <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans2.correct)} activeOpacity={0.7}>
+                          <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans2.correct)} activeOpacity={0.6}>
                             {
                               this._showResultElement(data.ans2.correct)
                             }
@@ -169,7 +174,7 @@ class Test extends Component<{}> {
                               <Text style={{fontFamily: font.cabin_regular, fontSize: 14, color: this.props.testData.showResult && data.ans2.correct && true? 'yellow' : 'white'}}>{data.ans2.answer}</Text>
                             </View>
                           </TouchableOpacity>
-                          <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans3.correct)} activeOpacity={0.7}>
+                          <TouchableOpacity style={styles.outter_choice_box} onPress={() => this.props.checkAnswer(data.ans3.correct)} activeOpacity={0.6}>
                             {
                               this._showResultElement(data.ans3.correct)
                             }
@@ -188,7 +193,7 @@ class Test extends Component<{}> {
                 <View style={styles.next_box}>
                 { this.props.testData.nextBtn ?
                   <TouchableOpacity style={styles.nav_box}
-                                    activeOpacity={0.8}
+                                    activeOpacity={0.6}
                                     onPress={() => this._nextFunc()}>
                     {this.props.testData.isSubmit ? 
                     <Text style={styles.next_text}>VIEW RESULT</Text> :
@@ -211,7 +216,7 @@ const styles=StyleSheet.create({
   },
   main: {
     flex: 1,
-    marginHorizontal: 15,
+    //marginHorizontal: 15,
   },
   ques_box: {
     flexShrink: 0.5,
@@ -224,7 +229,7 @@ const styles=StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     paddingVertical: 5,
-    width: responsiveWidth(22),
+    width: 80,
     borderWidth: 1.5,
     borderColor: color.white,
     textAlign: 'center',
@@ -249,7 +254,7 @@ const styles=StyleSheet.create({
     borderRadius: 5,
     backgroundColor: color.text,
     borderColor: color.white,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 0.1,
     paddingHorizontal: 15,
     paddingVertical: 15,
     //marginLeft: 7,
@@ -309,7 +314,7 @@ const styles=StyleSheet.create({
   },
   nav_box: {
     borderColor: color.white,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 0.1,
     backgroundColor: color.text,
     borderRadius: 50,
     paddingHorizontal: 25,
@@ -321,6 +326,7 @@ function mapStateToProps(state) {
   return {
     testData: state.testData,
     mainData: state.mainData,
+    layoutData: state.layoutData
   }
 }
 function matchDispatchToProps(dispatch) {

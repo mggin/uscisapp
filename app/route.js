@@ -20,13 +20,14 @@ import Main from './containers/main'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getCardData, setCardData, getAllTestData, getFontInfo, getScore} from '../actions'
+import { getCardData, setCardData, getAllTestData, getFontInfo, getScore, layoutChanged} from '../actions'
 //import About from './components/about'
 import Study from './containers/study'
 
 class Route extends Component {
 
   componentWillMount() {
+    this.props.layoutChanged()
     this._getFontInfo()
   }
 
@@ -78,7 +79,8 @@ function matchDispatchToProps(dispatch) {
     setCardData,
     getAllTestData,
     getFontInfo,
-    getScore
+    getScore,
+    layoutChanged,
   }, dispatch);
 }
 export default connect(null, matchDispatchToProps)(Route);
