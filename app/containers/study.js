@@ -111,11 +111,11 @@ class Study extends Component<{}> {
                       <View style={[styles.card_style, {marginHorizontal}]}>
                    <TouchableOpacity style={{flex: 1}} key={data.id} activeOpacity={0.7} onPress={() => this.props.flipCard()}>
                     <View style={styles.card_innerbox}>
-                      <Text style={[styles.card_txt, {fontSize, lineHeight, fontFamily: this.props.settingData.burmeseLang ? font.zawgyi : font.cabin_regular}]}>{this.props.flashCard.front ? data.quesEng : data.quesLang}</Text>
+                      <Text style={[styles.card_txt, {fontSize, lineHeight, fontFamily: this.props.settingData.burmeseLang ? font.pyidaungsu : font.cabin_regular}]}>{this.props.flashCard.front ? data.quesEng : data.quesLang}</Text>
                     </View>
                     <Text style={styles.dash_line}> . . . . . . . . </Text>
                     <ScrollView style={styles.card_innerbox}>
-                       <Text style={[styles.card_txt, {fontSize, lineHeight, fontFamily: this.props.settingData.burmeseLang ? font.zawgyi : font.cabin_regular}]}>{this.props.flashCard.front ? data.ansEng : data.ansLang}</Text>
+                       <Text style={[styles.card_txt, {fontSize, lineHeight, fontFamily: this.props.settingData.burmeseLang ? font.pyidaungsu : font.cabin_regular}]}>{this.props.flashCard.front ? data.ansEng : data.ansLang}</Text>
                     </ScrollView>
                   </TouchableOpacity>
                   </View>

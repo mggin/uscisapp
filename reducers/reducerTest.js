@@ -40,8 +40,8 @@ const test = {
 export default function(state = initState, action) {
  	switch(action.type){
  		case 'GET_ALL_TEST_DATA':
- 			//const realm = new Realm({path: fs.LibraryDirectoryPath + '/' + 'uscis_test.realm', scheme: [test]})
- 			const realm = new Realm({path: fs.MainBundlePath + '/' + 'uscis_test.realm', scheme: [test]})
+ 			const realm = new Realm({path: fs.LibraryDirectoryPath + '/' + 'uscis_test.realm', scheme: [test]})
+ 			//const realm = new Realm({path: fs.MainBundlePath + '/' + 'uscis_test.realm', scheme: [test]})
  		    const dataObj = realm.objects('test')
  		    const allTestData = []
  		    for (let data of dataObj) {
