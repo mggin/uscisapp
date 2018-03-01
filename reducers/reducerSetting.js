@@ -1,5 +1,5 @@
 
-import { AsyncStorage, Alert} from 'react-native'
+import { AsyncStorage, Dimensions} from 'react-native'
 
 const initState = {
 	zomiLang: true,
@@ -119,7 +119,21 @@ export default function(state = initState, action) {
           fontSize: state.fontSize - 1
         }
       }
-    
+    case 'INITIAL_FONT': 
+      var {height, width} = Dimensions.get('window');
+      if (width == 375 || height == 667) {
+        return {
+          ...state,
+          fontSize: 15
+        }
+      } else if (width >= 768 || height >= 1024) {
+        return {
+          ...state,
+          fontSize: 20
+        }
+      } else {
+        return state
+      }
     
     default:
 

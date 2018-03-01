@@ -74,7 +74,7 @@ class Writing extends Component<{}> {
 const styles=StyleSheet.create({
   section_style: {
     marginTop: 1,
-    marginBottom: 52,
+    //marginBottom: 52,
   },
   speaker: {
     width: 25,

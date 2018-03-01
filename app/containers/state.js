@@ -105,7 +105,6 @@ class State extends Component<{}> {
                   ListHeaderComponent={header}
                   renderItem={({item, index}) => this._renderItems(item, index, fontSize, lineHeight)}
         />
-        <View style={{height: responsiveHeight(8)}}/>
       </View>
     );
   }

@@ -62,7 +62,7 @@ class Audio extends Component<{}> {
           <View style={styles.card_innerbox}>
             <Text style={[styles.card_txt, {fontSize, lineHeight}]}>{this.props.studyData.engData[this.props.audioData.index - 1].quesEng}</Text>
           </View>
-          <Text style={styles.dash_line}> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  </Text>
+          <Text style={styles.dash_line}> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   </Text>
           <View style={styles.card_innerbox}>
              <Text style={[styles.card_txt, {fontSize, lineHeight}]}>{this.props.studyData.engData[this.props.audioData.index - 1].ansEng}</Text>
           </View>
@@ -88,7 +88,7 @@ class Audio extends Component<{}> {
             </View>
           </TouchableOpacity>
         </View>
-        <View style={{height: responsiveHeight(15)}}/>
+        <View style={{height: responsiveHeight(10)}}/>
       </View>
     );
   }
@@ -122,13 +122,15 @@ const styles=StyleSheet.create({
     color: color.white,
   },
   control_box: {
-    flex: 0.5,
+    flex: 0.6,
     flexDirection: 'row',
+    //backgroundColor: '#000000'
   },
   auto_box: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    //backgroundColor: '#000000'
   },
   btn_box: {
     flex: 3,
@@ -138,6 +140,7 @@ const styles=StyleSheet.create({
     borderColor: color.white,
     justifyContent: 'center',
     padding: 10,
+    //backgroundColor: '#000000'
   },
   repeat_box: {
     flex: 1,
@@ -153,6 +156,7 @@ const styles=StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'flex-start',
+    //backgroundColor: '#000000'
   },
   skip_backward: {
     flex: 1,

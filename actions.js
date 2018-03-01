@@ -219,3 +219,9 @@ export const layoutChanged = () => {
 		type: 'LAYOUT_CHANGED'
 	}
 }
+
+export const initFont = () => {
+	return {
+		type: 'INITIAL_FONT'
+	}
+}
