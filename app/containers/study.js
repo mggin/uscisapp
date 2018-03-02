@@ -88,7 +88,7 @@ class Study extends Component<{}> {
                  cardIndex={0}
                  verticalSwipe={false}
                  //showSecondCard={false}
-                 horizontalThreshold={responsiveHeight(5)}
+                 horizontalThreshold={responsiveHeight(1)}
 
                  secondCardZoom={1}
                  zoomAnimationDuration={10}
@@ -108,7 +108,7 @@ class Study extends Component<{}> {
                  //Shwe Htoo Infinity was driving me crazy !!!!!
                   renderCard={(data) => {
                     return (
-                      <View style={[styles.card_style, {marginHorizontal}]}>
+                      <View style={[styles.card_style, {marginHorizontal, height: this.props.flashCard.count == 54 ? responsiveHeight(65) : responsiveHeight(55)}]}>
                    <TouchableOpacity style={{flex: 1}} key={data.id} activeOpacity={0.7} onPress={() => this.props.flipCard()}>
                     <View style={styles.card_innerbox}>
                       <Text style={[styles.card_txt, {fontSize, lineHeight, fontFamily: this.props.settingData.burmeseLang ? font.pyidaungsu : font.cabin_regular}]}>{this.props.flashCard.front ? data.quesEng : data.quesLang}</Text>
@@ -154,7 +154,7 @@ const styles=StyleSheet.create({
     alignItems: 'flex-start',
   },
   card_box: {
-    flex: 6,
+    flexGrow: 6,
     marginHorizontal: 0,
   },
    slider_box: {
@@ -165,7 +165,8 @@ const styles=StyleSheet.create({
 
   },
   card_style: {
-    height: responsiveHeight(55),
+    //flexGrow: 1,
+    //height: responsiveHeight(58),
     borderRadius: 5,
     padding: 15,
     overflow: 'hidden',

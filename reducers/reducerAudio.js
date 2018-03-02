@@ -47,6 +47,11 @@ export default function(state = initState, action) {
             .release();
           mainTrack = null
           track_num = state.index + 1
+          if (track_num == 101) {
+              track_num = 1
+          } else if (track_num == 0) {
+              track_num = 100
+          } else { }
           let name = 'track_' +  track_num + '.mp3'
           const track = new Sound(name, Sound.MAIN_BUNDLE, (e) => {
               if (e) { 
@@ -98,7 +103,18 @@ export default function(state = initState, action) {
             isPlaying: false
           }
       } else if (state.resumeMode) {
-          mainTrack.play()
+          mainTrack.play((success) => {
+                    if (success) {
+                      console.log('successfully finished playing');
+                      nextMode = true
+                    } else {
+                      console.log('playback failed due to audio decoding errors');
+                      // reset the player to its uninitialized state (android only)
+                      // this is the only option to recover after an error occured and use the player again
+                      track.reset();
+                    }
+                });
+          //nextMode = true
           return {
             ...state,
             isPlaying: true,
@@ -154,14 +170,14 @@ export default function(state = initState, action) {
       let newIndex = state.index
       if (action.payload == 'NEXT') {
         newIndex = newIndex + 1
-        if (newIndex == 100) {
+        if (newIndex == 101) {
           newIndex = 1
         }
         console.log(action.payload)
       } else if (action.payload == 'PREV') {
         newIndex = newIndex - 1
         if (newIndex == 0) {
-          newIndex = 99
+          newIndex = 100
         }
         console.log(action.payload)
       } else { }
