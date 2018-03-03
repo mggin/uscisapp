@@ -61,6 +61,11 @@ export default function(state = initState, action) {
  			} else {
  				console.log('Piggy got mad')
  			}
+ 		case 'INITIAL_COUNT':
+ 			return {
+ 				...state,
+ 				count: 0
+ 			}
  		default:
  			return state
  	}

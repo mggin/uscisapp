@@ -124,7 +124,7 @@ export default function(state = initState, action) {
       if (width == 375 || height == 667) {
         return {
           ...state,
-          fontSize: 15
+          fontSize: 16
         }
       } else if (width >= 768 || height >= 1024) {
         return {

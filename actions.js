@@ -225,3 +225,9 @@ export const initFont = () => {
 		type: 'INITIAL_FONT'
 	}
 }
+
+export const setInitialCount = () => {
+	return {
+		type: 'INITIAL_COUNT'
+	}
+}

@@ -27,6 +27,7 @@ import {
   setBurmeseLang,
   increaseFontSize,
   decreaseFontSize,
+  setInitialCount
 } from '../../actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux' 
@@ -49,6 +50,7 @@ class Setting extends Component<{}> {
     //this.props.setLang(value)
     //this.getData(value)
     //this.props.setCardData(value)
+    this.props.setInitialCount()
   }
   render() {
   console.disableYellowBox = true;
@@ -70,7 +72,7 @@ class Setting extends Component<{}> {
           </View>
         </View>
         <View style={styles.itembox}>
-          <Text style={styles.itemtxt}>Zomi</Text>
+          <Text style={styles.itemtxt}>Zolai</Text>
           <View style={styles.switch_box}>
             <Switch style={styles.switch_style}
                     onValueChange={(value) => this._onValueChange(value, 'ZOMI')}
@@ -156,6 +158,7 @@ function matchDispatchToProps(dispatch) {
     setBurmeseLang,
     increaseFontSize,
     decreaseFontSize,
+    setInitialCount,
   }, dispatch);
 }
 
