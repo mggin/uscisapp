@@ -6,7 +6,7 @@ export const holidays = ['Presidents\' Day', 'Memorial Day', 'Flag Day', 'Indepe
 export const verbs = ['can', 'come', 'elect', 'have/has', 'is/was/be', 'lives/lived', 'meets', 'pay', 'vote', 'want']
 export const otherFunction = ['and', 'during', 'for', 'here', 'in', 'of', 'on', 'the', 'to', 'we']
 export const otherContent = ['blue', 'dollar bill', 'fifty/50', 'first', 'largest', 'most', 'north', 'one', 'one hundred/100', 'people', 'red', 'second', 'south', 'taxes', 'white']
-export const writingContent = ["Adams was the second President.", "Adams was the second President.", "Alaska is the largest state.",
+export const writingContent = ["Adams was the second President.", "Alaska is the largest state.",
 "California has the most people.", "Canada is north of the United States.", "Citizens can vote.", "Columbus Day is in October.", "Delaware is the first state.", "Flag Day is in June.", "Washington was the first President.", "Independence Day is in July.",
 "Labor Day is in September.", "Lincoln was President during the Civil War.", "Memorial is Day is in May.", "Mexico is South of the United States.",
 "New York City was the first capital.", "People come to the United State to be free.", "People vote for President in November.",

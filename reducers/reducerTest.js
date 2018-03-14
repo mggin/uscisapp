@@ -40,26 +40,49 @@ const test = {
 export default function(state = initState, action) {
  	switch(action.type){
  		case 'GET_ALL_TEST_DATA':
- 			const realm = new Realm({path: fs.LibraryDirectoryPath + '/' + 'uscis_test.realm', scheme: [test]})
- 			//const realm = new Realm({path: fs.MainBundlePath + '/' + 'uscis_test.realm', scheme: [test]})
- 		    const dataObj = realm.objects('test')
- 		    const allTestData = []
- 		    for (let data of dataObj) {
- 		    	allTestData.push({
- 		    		id: data.id,
- 		    		ques: data.ques,
- 		    		ans0: { answer: data.ans0[0].answer, correct: data.ans0[0].correct },
- 		    		ans1: { answer: data.ans1[0].answer, correct: data.ans1[0].correct },
- 		    		ans2: { answer: data.ans2[0].answer, correct: data.ans2[0].correct },
- 		    		ans3: { answer: data.ans3[0].answer, correct: data.ans3[0].correct }
+	 		try {
+	 			const realm = new Realm({path: fs.LibraryDirectoryPath + '/' + 'uscis_test.realm', scheme: [test]})
+	 			//const realm = new Realm({path: fs.MainBundlePath + '/' + 'uscis_test.realm', scheme: [test]})
+	 		    const dataObj = realm.objects('test')
+	 		    const allTestData = []
+	 		    for (let data of dataObj) {
+	 		    	allTestData.push({
+	 		    		id: data.id,
+	 		    		ques: data.ques,
+	 		    		ans0: { answer: data.ans0[0].answer, correct: data.ans0[0].correct },
+	 		    		ans1: { answer: data.ans1[0].answer, correct: data.ans1[0].correct },
+	 		    		ans2: { answer: data.ans2[0].answer, correct: data.ans2[0].correct },
+	 		    		ans3: { answer: data.ans3[0].answer, correct: data.ans3[0].correct }
 
- 		    	})
- 		    }
- 		    //console.log(testData)
- 		    return {
- 		    	...state,
- 		    	allTestData,
- 		    }
+	 		    	})
+	 		    }
+	 		    //console.log(testData)
+	 		    return {
+	 		    	...state,
+	 		    	allTestData,
+	 		    }
+	 		 } catch(err) {
+	 		 	//const realm = new Realm({path: fs.LibraryDirectoryPath + '/' + 'uscis_test.realm', scheme: [test]})
+	 			const realm = new Realm({path: fs.MainBundlePath + '/' + 'uscis_test.realm', scheme: [test]})
+	 		    const dataObj = realm.objects('test')
+	 		    const allTestData = []
+	 		    for (let data of dataObj) {
+	 		    	allTestData.push({
+	 		    		id: data.id,
+	 		    		ques: data.ques,
+	 		    		ans0: { answer: data.ans0[0].answer, correct: data.ans0[0].correct },
+	 		    		ans1: { answer: data.ans1[0].answer, correct: data.ans1[0].correct },
+	 		    		ans2: { answer: data.ans2[0].answer, correct: data.ans2[0].correct },
+	 		    		ans3: { answer: data.ans3[0].answer, correct: data.ans3[0].correct }
+
+	 		    	})
+	 		    }
+	 		    //console.log(testData)
+	 		    return {
+	 		    	...state,
+	 		    	allTestData,
+	 		    }
+	 		 }
  			break
  		case 'GET_TEST_DATA':
  			testItems = []
