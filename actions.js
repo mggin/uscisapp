@@ -1,11 +1,146 @@
 import { Alert } from 'react-native'
+import RNFS from 'react-native-fs'
+import Realm from 'realm'
 
+function addTodo(text) {
+  return (dispatch) => {
+    dispatch({ type: 'ADD_TODO_START' });
+    Api.createTodo(text).then(
+      (todo) => dispatch({
+        type: 'ADD_TODO_SUCCESS',
+        payload: todo
+      }),
+      (err) => dispatch({
+        type: 'ADD_TODO_FAIL',
+        error: true,
+        payload: err
+      })
+    );
+  }
+}
+/*
 export const getCardData = (value) => {
 	return {
 		type: 'GET_CARD_DATA',
 		payload: value,
 	}
 }
+*/
+const stringObj = {
+  name: 'stringObj',
+  properties: {
+    ques: 'string',
+    ans: 'string'
+  }
+}
+
+const uscis = {
+  name: 'uscis',
+  properties: {
+    id: 'int',
+    english: 'stringObj[]',
+    zomi: 'stringObj[]',
+    burma: 'stringObj[]'
+  }
+}
+export const getCardData = (value) => {
+	const sourcePath = RNFS.MainBundlePath + '/uscis.realm';
+    const destinPath = RNFS.DocumentDirectoryPath + '/uscis.realm';
+    const zomiCardData = []
+    const burmeseCardData = []
+    const engData = []
+	let dataLoaded = false;
+	return (dispatch) => {
+		dispatch({type: 'GET_CARD'})
+		RNFS.unlink(destinPath)
+		RNFS.copyFile(sourcePath, destinPath)
+			.then(success => {
+				const realm = new Realm({path: 'uscis.realm'})
+				const dataObj = realm.objects('uscis')
+			    for (let data of dataObj) {
+			        let burQues = data.burma[0].ques.replace(new RegExp('\\\\', 'g'), '')
+			        let burAns = data.burma[0].ans.replace(new RegExp('\\\\', 'g'), '')
+			        let engQues = data.english[0].ques.replace(new RegExp('\\\\', 'g'), '')
+			        let engAns = data.english[0].ans.replace(new RegExp('\\\\', 'g'), '')
+			        let zomiQues = data.zomi[0].ques.replace(new RegExp('\\\\', 'g'), '')
+			        let zomiAns = data.zomi[0].ans.replace(new RegExp('\\\\', 'g'), '')
+			      
+			        engData.push(
+			          {
+			            quesEng: engQues,
+			            ansEng: engAns
+			          })
+			        zomiCardData.push(
+			          {
+			            id: data.id,
+			            quesEng: engQues,
+			            ansEng: engAns,
+			            quesLang: zomiQues,
+			            ansLang: zomiAns  
+			          })
+			        burmeseCardData.push(
+			          {
+			            id: data.id,
+			            quesEng: engQues,
+			            ansEng: engAns,
+			            quesLang: burQues,
+			            ansLang: burAns
+			          })
+				}
+				console.log(burmeseCardData)
+				dispatch({
+					type: 'GET_CARD_DATA',
+					zomiPayload: zomiCardData,
+					burmesePayload: burmeseCardData,
+					engPayload: engData,
+					dataLoaded: true,
+				})
+			})
+			.catch((err) => {
+				//console.log(err)
+				const realm = new Realm({path: 'uscis.realm'})
+				const dataObj = realm.objects('uscis')
+			    for (let data of dataObj) {
+			        let burQues = data.burma[0].ques.replace(new RegExp('\\\\', 'g'), '')
+			        let burAns = data.burma[0].ans.replace(new RegExp('\\\\', 'g'), '')
+			        let engQues = data.english[0].ques.replace(new RegExp('\\\\', 'g'), '')
+			        let engAns = data.english[0].ans.replace(new RegExp('\\\\', 'g'), '')
+			        let zomiQues = data.zomi[0].ques.replace(new RegExp('\\\\', 'g'), '')
+			        let zomiAns = data.zomi[0].ans.replace(new RegExp('\\\\', 'g'), '')
+			      
+			        engData.push(
+			          {
+			            quesEng: engQues,
+			            ansEng: engAns
+			          })
+			        zomiCardData.push(
+			          {
+			            id: data.id,
+			            quesEng: engQues,
+			            ansEng: engAns,
+			            quesLang: zomiQues,
+			            ansLang: zomiAns  
+			          })
+			        burmeseCardData.push(
+			          {
+			            id: data.id,
+			            quesEng: engQues,
+			            ansEng: engAns,
+			            quesLang: burQues,
+			            ansLang: burAns
+			          })
+				}
+				console.log(burmeseCardData)
+				dispatch({
+					type: 'GET_CARD_DATA',
+					zomiPayload: zomiCardData,
+					burmesePayload: burmeseCardData,
+					engPayload: engData,
+					dataLoaded: true,
+				})
+			})
+		}
+	}
 
 export const getFontInfo = (fontSize, lang) => {
 	return {
@@ -90,9 +225,54 @@ export const autoControl = () => {
 }
 
 export const getAllTestData = () => {
-	return {
-		type: 'GET_ALL_TEST_DATA'
-	}
+	const sourcePath2 = RNFS.MainBundlePath + '/uscis_test.realm';
+    const destinPath2 = RNFS.DocumentDirectoryPath + '/uscis_test.realm';
+    const allTestData = []
+	return (dispatch) => {
+		dispatch({type: 'GET_TEST'})
+	    RNFS.unlink(destinPath2);
+		RNFS.copyFile(sourcePath2, destinPath2)
+			.then(success => {
+			console.log(success)
+			const realm = new Realm({path: 'uscis_test.realm'})
+			const dataObj = realm.objects('test')
+			for (let data of dataObj) {
+				allTestData.push({
+					id: data.id,
+		    		ques: data.ques,
+		    		ans0: { answer: data.ans0[0].answer, correct: data.ans0[0].correct },
+		    		ans1: { answer: data.ans1[0].answer, correct: data.ans1[0].correct },
+		    		ans2: { answer: data.ans2[0].answer, correct: data.ans2[0].correct },
+		    		ans3: { answer: data.ans3[0].answer, correct: data.ans3[0].correct }
+
+				})
+			}
+			dispatch({
+				type: 'GET_ALL_TEST_DATA',
+				allTestPayload: allTestData
+			})	
+		})
+		.catch((err) => {
+			//console.log(err)
+			const realm = new Realm({path: 'uscis_test.realm'})
+			const dataObj = realm.objects('test')
+			for (let data of dataObj) {
+				allTestData.push({
+					id: data.id,
+		    		ques: data.ques,
+		    		ans0: { answer: data.ans0[0].answer, correct: data.ans0[0].correct },
+		    		ans1: { answer: data.ans1[0].answer, correct: data.ans1[0].correct },
+		    		ans2: { answer: data.ans2[0].answer, correct: data.ans2[0].correct },
+		    		ans3: { answer: data.ans3[0].answer, correct: data.ans3[0].correct }
+
+				})
+			}
+			dispatch({
+				type: 'GET_ALL_TEST_DATA',
+				allTestPayload: allTestData
+			})
+		})
+	}	
 }
 
 export const getTestData = () => {

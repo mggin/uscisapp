@@ -15,6 +15,7 @@
     "react-native-elements": "^0.19.0",
     "react-native-fs": "^2.9.6",
     "react-native-grading": "^1.0.3",
+    "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-page-swiper": "^0.3.0",
     "react-native-pages": "^0.6.1",
     "react-native-parallax-swiper": "^1.1.7",
@@ -31,7 +32,8 @@
     "react-swipeable-views-native": "^0.12.9",
     "realm": "^2.1.1",
     "redux": "^3.7.2",
-    "redux-ignore": "^1.2.5"
+    "redux-ignore": "^1.2.5",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-jest": "21.2.0",

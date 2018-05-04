@@ -1,4 +1,4 @@
-import fs from 'react-native-fs'
+import RNFS from 'react-native-fs'
 const Realm = require('realm')
 
 const initState = {
@@ -6,6 +6,7 @@ const initState = {
   burmeseCardData: [],
   zomiCardData: [],
   engData: [],
+  dataLoaded: false,
 }
 
 const stringObj = {
@@ -26,118 +27,26 @@ const uscis = {
   }
 }
 export default function(state = initState, action) {
-  
+    
   switch(action.type) {
     case 'GET_CARD_DATA':
     	// console.log(fs)
-
-    	  //const realm = new Realm({path: fs.MainBundlePath +'/' +'uscis.realm', scheme: [uscis]})
-        try {
-          const realm = new Realm({path: fs.LibraryDirectoryPath +'/' +'uscis.realm', scheme: [uscis]})
-   		    const dataObj = realm.objects('uscis')
-   		    const zomiCardData = []
-   		    const burmeseCardData = []
-          const engData = []
-   		    for (let data of dataObj) {
-   		    	let burQues = data.burma[0].ques.replace(new RegExp('\\\\', 'g'), '')
-   		    	let burAns = data.burma[0].ans.replace(new RegExp('\\\\', 'g'), '')
-   		    	let engQues = data.english[0].ques.replace(new RegExp('\\\\', 'g'), '')
-   		    	let engAns = data.english[0].ans.replace(new RegExp('\\\\', 'g'), '')
-   		    	let zomiQues = data.zomi[0].ques.replace(new RegExp('\\\\', 'g'), '')
-   		    	let zomiAns = data.zomi[0].ans.replace(new RegExp('\\\\', 'g'), '')
-   		    	/*
-   		    	if (action.payload === 'BURMESE') {
-   		    		langQues = burQues
-   		    		langAns = burAns
-   		    	} else {
-   		    		langQues = zomiQues
-   		    		langAns = zomiAns
-   		    	}
-   		    	*/
-   		    	//let langQues = data.burma[0].ques.replace(new RegExp('\\\\', 'g'), '')
-   		    	//let langAns = data.burma[0].ans.replace(new RegExp('\\\\', 'g'), '')
-          engData.push(
-            {
-              quesEng: engQues,
-              ansEng: engAns
-            })
-  				zomiCardData.push(
-  					{
-  						id: data.id,
-  						quesEng: engQues,
-  						ansEng: engAns,
-  						quesLang: zomiQues,
-  						ansLang: zomiAns  
-  					})
-  				burmeseCardData.push(
-  					{
-  						id: data.id,
-  						quesEng: engQues,
-  						ansEng: engAns,
-  						quesLang: burQues,
-  						ansLang: burAns
-  					})
-          }
-          return {
-          	...state,
-          	burmeseCardData,
-          	zomiCardData,
-            engData,
-          }
-        } catch(err) {
-          //const realm = new Realm({path: fs.LibraryDirectoryPath +'/' +'uscis.realm', scheme: [uscis]})
-          const realm = new Realm({path: fs.MainBundlePath +'/' +'uscis.realm', scheme: [uscis]})
-          const dataObj = realm.objects('uscis')
-          const zomiCardData = []
-          const burmeseCardData = []
-          const engData = []
-          for (let data of dataObj) {
-            let burQues = data.burma[0].ques.replace(new RegExp('\\\\', 'g'), '')
-            let burAns = data.burma[0].ans.replace(new RegExp('\\\\', 'g'), '')
-            let engQues = data.english[0].ques.replace(new RegExp('\\\\', 'g'), '')
-            let engAns = data.english[0].ans.replace(new RegExp('\\\\', 'g'), '')
-            let zomiQues = data.zomi[0].ques.replace(new RegExp('\\\\', 'g'), '')
-            let zomiAns = data.zomi[0].ans.replace(new RegExp('\\\\', 'g'), '')
-            /*
-            if (action.payload === 'BURMESE') {
-              langQues = burQues
-              langAns = burAns
-            } else {
-              langQues = zomiQues
-              langAns = zomiAns
-            }
-            */
-            //let langQues = data.burma[0].ques.replace(new RegExp('\\\\', 'g'), '')
-            //let langAns = data.burma[0].ans.replace(new RegExp('\\\\', 'g'), '')
-          engData.push(
-            {
-              quesEng: engQues,
-              ansEng: engAns
-            })
-          zomiCardData.push(
-            {
-              id: data.id,
-              quesEng: engQues,
-              ansEng: engAns,
-              quesLang: zomiQues,
-              ansLang: zomiAns  
-            })
-          burmeseCardData.push(
-            {
-              id: data.id,
-              quesEng: engQues,
-              ansEng: engAns,
-              quesLang: burQues,
-              ansLang: burAns
-            })
-          }
-          return {
-            ...state,
-            burmeseCardData,
-            zomiCardData,
-            engData,
-          }
-        }
+      const zomiCardData = action.zomiPayload
+      const burmeseCardData = action.burmesePayload
+      const engData = action.engPayload
+      const dataLoaded = action.dataLoaded
+      return {
+        ...state,
+        burmeseCardData,
+        zomiCardData,
+        engData,
+        dataLoaded,
+        cardData: zomiCardData
+      }
+      break
+    case 'GET_CARD': 
+      return state;
+      break
     case 'SET_CARD_DATA':
     	console.log('SET_CARD_DATA')
     	if (action.payload === 'BURMESE') {
@@ -151,6 +60,7 @@ export default function(state = initState, action) {
     			cardData: state.zomiCardData
     		}
     	}
+      break
     default:
 
       return state

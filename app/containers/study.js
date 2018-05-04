@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
+import Spinner from 'react-native-loading-spinner-overlay';
 import React, { Component } from 'react';
 import {
   Platform,
@@ -15,6 +15,8 @@ import {
   ScrollView,
   FlatList,
   Alert,
+  Button,
+  ActivityIndicator
 } from 'react-native';
 import { 
   responsiveHeight, 
@@ -27,6 +29,7 @@ import {
           updateIndex,
           getCardData,
           countIndex,
+          setCardData
         } from '../../actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux' 
@@ -45,6 +48,7 @@ class Study extends Component<{}> {
       cardCount: -1,
     }
   }
+
   _flipCard() {
     if (this.state.cardFront) {
       this.setState({cardFront: false})
@@ -64,7 +68,8 @@ class Study extends Component<{}> {
 
   render() {
   console.disableYellowBox = true;
-  console.log('study.js')
+  console.log(this.props.studyData.cardData)
+  
   //console.log(this.props.studyData.cardData[this.props.flashCard.index])
   //console.log('re run')
   //Piggy wake up early!!
@@ -75,72 +80,81 @@ class Study extends Component<{}> {
   const marginLeft = this.props.layoutData.studyMarginHorizontal
     return (
       <View style={{flex: 1, backgroundColor: color.white}}> 
-        <View style={{flex: 1, backgroundColor: color.bg}}>
-          <View style={[styles.num_box, {marginLeft}]}>
-            <View style={styles.num_style}>
-              <Text style={styles.num_text}>{this.props.flashCard.count + 1}/100</Text>
-            </View>
-          </View>
-          <View style={styles.card_box}>
+        {
+          this.props.studyData.dataLoaded ? 
+              <View style={{flex: 1}}>
+                <View style={{flex: 1, backgroundColor: color.bg}}>
+              <View style={[styles.num_box, {marginLeft}]}>
+                <View style={styles.num_style}>
+                  <Text style={styles.num_text}>{this.props.flashCard.count + 1}/100</Text>
+                </View>
+              </View>
+              <View style={styles.card_box}>
 
-              <Swiper
-                 cards={this.props.studyData.cardData}
-                 cardIndex={0}
-                 verticalSwipe={false}
-                 //showSecondCard={false}
-                 horizontalThreshold={responsiveHeight(1)}
+                  <Swiper
+                     cards={this.props.studyData.cardData}
+                     cardIndex={0}
+                     verticalSwipe={false}
+                     //showSecondCard={false}
+                     horizontalThreshold={responsiveHeight(1)}
 
-                 secondCardZoom={1}
-                 zoomAnimationDuration={10}
-                 cardHorizontalMargin={0}
-                 cardVerticalMargin={0}
-                 //animateCardOpacity={true}
-                 infinite={true}
-                 //childrenOnTop={true}
-                 backgroundColor={'rgba(0,0,0,0)'}
-                 goBackToPreviousCardOnSwipeLeft={true}
-                 //animatedCardOpacity={false}
-                 //outputRotationRange={["-2deg", "0deg", "2deg"]}
-                 // cardStyle={{flex: }}
-                 onSwiped={() => this.props.updateCard()}
-                 onSwipedRight={(index) => this.props.countIndex(index, 'RIGHT')}
-                 onSwipedLeft={(index) => this.props.countIndex(index, 'LEFT')}
-                 //Shwe Htoo Infinity was driving me crazy !!!!!
-                  renderCard={(data) => {
-                    return (
-                      <View style={[styles.card_style, {marginHorizontal, height: this.props.flashCard.count == 54 ? responsiveHeight(65) : responsiveHeight(55)}]}>
-                   <TouchableOpacity style={{flex: 1}} key={data.id} activeOpacity={0.7} onPress={() => this.props.flipCard()}>
-                    <View style={styles.card_innerbox}>
-                      <Text style={[styles.card_txt, {fontSize, lineHeight, fontFamily: this.props.settingData.burmeseLang ? font.pyidaungsu : font.cabin_regular}]}>{this.props.flashCard.front ? data.quesEng : data.quesLang}</Text>
-                    </View>
-                    <Text style={styles.dash_line}> . . . . . . . . </Text>
-                    <ScrollView style={styles.card_innerbox}>
-                       <Text style={[styles.card_txt, {fontSize, lineHeight, fontFamily: this.props.settingData.burmeseLang ? font.pyidaungsu : font.cabin_regular}]}>{this.props.flashCard.front ? data.ansEng : data.ansLang}</Text>
-                    </ScrollView>
-                  </TouchableOpacity>
+                     secondCardZoom={1}
+                     zoomAnimationDuration={10}
+                     cardHorizontalMargin={0}
+                     cardVerticalMargin={0}
+                     //animateCardOpacity={true}
+                     infinite={true}
+                     //childrenOnTop={true}
+                     backgroundColor={'rgba(0,0,0,0)'}
+                     goBackToPreviousCardOnSwipeLeft={true}
+                     //animatedCardOpacity={false}
+                     //outputRotationRange={["-2deg", "0deg", "2deg"]}
+                     // cardStyle={{flex: }}
+                     onSwiped={() => this.props.updateCard()}
+                     onSwipedRight={(index) => this.props.countIndex(index, 'RIGHT')}
+                     onSwipedLeft={(index) => this.props.countIndex(index, 'LEFT')}
+                     //Shwe Htoo Infinity was driving me crazy !!!!!
+                      renderCard={(data) => {
+                        return (
+                          <View style={[styles.card_style, {marginHorizontal, height: this.props.flashCard.count == 54 ? responsiveHeight(65) : responsiveHeight(55)}]}>
+                       <TouchableOpacity style={{flex: 1}} key={data.id} activeOpacity={0.7} onPress={() => this.props.flipCard()}>
+                        <View style={styles.card_innerbox}>
+                          <Text style={[styles.card_txt, {fontSize, lineHeight, fontFamily: this.props.settingData.burmeseLang ? font.pyidaungsu : font.cabin_regular}]}>{this.props.flashCard.front ? data.quesEng : data.quesLang}</Text>
+                        </View>
+                        <Text style={styles.dash_line}> . . . . . . . . </Text>
+                        <ScrollView style={styles.card_innerbox}>
+                           <Text style={[styles.card_txt, {fontSize, lineHeight, fontFamily: this.props.settingData.burmeseLang ? font.pyidaungsu : font.cabin_regular}]}>{this.props.flashCard.front ? data.ansEng : data.ansLang}</Text>
+                        </ScrollView>
+                      </TouchableOpacity>
+                      </View>
+
+                   )}      
+                  }>   
+                  </Swiper>
+                  
+              </View>
+              <View style={styles.slider_box}>
+              {/*
+                <Slider //thumbImage={require('../../assets/thumb.png')}
+                        minimumTrackTintColor="white"
+                        //maximumTrackTintColor=''
+                        step={1}
+                        maximumValue={99}
+                        minimumValue={0}
+                        horizontal={true}
+                        value={this.state.index}
+                        onValueChange={(value) => this._countIndex(value)}
+                        onSlidingComplete={(value) => this._sliderFunc(value)}/>
+              }
+            */}
                   </View>
-
-               )}      
-              }>   
-        </Swiper>
-              
+                </View>
+              </View> 
+          :
+          <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: color.bg}}>
+            <ActivityIndicator size='small' color={color.white}/>
           </View>
-          <View style={styles.slider_box}>
-          {/*
-            <Slider //thumbImage={require('../../assets/thumb.png')}
-                    minimumTrackTintColor="white"
-                    //maximumTrackTintColor=''
-                    step={1}
-                    maximumValue={99}
-                    minimumValue={0}
-                    horizontal={true}
-                    value={this.state.index}
-                    onValueChange={(value) => this._countIndex(value)}
-                    onSlidingComplete={(value) => this._sliderFunc(value)}/>
-          }
-        */}
-          </View>
-        </View>
+        }
       </View>
     );
   }
@@ -214,6 +228,7 @@ function matchDispatchToProps(dispatch) {
     updateIndex,
     getCardData,
     countIndex,
+    setCardData
   }, dispatch);
 }
 

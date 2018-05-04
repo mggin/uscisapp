@@ -58,19 +58,22 @@ class Route extends Component {
             this.props.getScore(result)
       })
   }
-  render() {
-    console.disableYellowBox = true;
-    const sourcePath2 = RNFS.MainBundlePath + '/' + 'uscis_test.realm';
-    const destinPath2 = RNFS.LibraryDirectoryPath + '/' + 'uscis_test.realm';
-    RNFS.copyFile(sourcePath2, destinPath2)
+   componentDidMount() {
     this.props.getCardData()
-    this.props.setCardData()
     this.props.getAllTestData()
+   }
+  render() {
+    //console.disableYellowBox = true;
     return (
       <View style={{flex: 1}}>
         <Main />
       </View>
     )
+  }
+}
+function mapStateToProps(state) {
+  return {
+    studyData: state.studyData,
   }
 }
 
@@ -85,4 +88,4 @@ function matchDispatchToProps(dispatch) {
     initFont
   }, dispatch);
 }
-export default connect(null, matchDispatchToProps)(Route);
+export default connect(mapStateToProps, matchDispatchToProps)(Route);

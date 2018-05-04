@@ -156,7 +156,6 @@ class Main extends Component<{}> {
               tabBarPosition='bottom'
               onChangeTab={(index) => this._onChangeTab(index)}
               tabBarUnderlineStyle={styles.tabBar_style}
-              style={{color: 'black'}}
               tabBarBackgroundColor={color.white}
               //tabBarBackgroundColor={color.bg}
               //scrollWithoutAnimation={true}
